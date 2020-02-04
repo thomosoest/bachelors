@@ -3,7 +3,7 @@ const app = express();
 
 const PORT = process.env.PORT || 5000;
 
-app.get("/users", (rew, res)=> res.json(
+app.get("/", (rew, res)=> res.json(
     {users:[
         {username: "per",
             kurs: [
@@ -16,7 +16,9 @@ app.get("/users", (rew, res)=> res.json(
         {username: "kål"}
     ]
 }
-
 ));
+
+app.use('/api/users',require('./routes/users'));
+app.use('/api/auth',require('./routes/auth'));
 
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));
