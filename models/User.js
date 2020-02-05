@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const courseSchema = mongoose.Schema({
+    id: {type: String, require:true},
+}, {_id: false});
+
 const UserSchema = mongoose.Schema({
     name: {
         type: String,
@@ -14,6 +18,9 @@ const UserSchema = mongoose.Schema({
         type: String,
         require: true
     },
+
+    kurs: [courseSchema],
+
     date: {
         type: Date,
         default: Date.now
