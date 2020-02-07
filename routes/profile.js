@@ -83,6 +83,7 @@ router.get("/", async (req, res) => {
 router.get("/user/:id", async (req, res) => {
     try {
         const profile = await Profile.findOne({user: req.params.id}).populate("user", ["name"]);
+        if(!profile) res.json({msg: "User is not here"});
         res.json(profile);
         
     } catch (err) {
