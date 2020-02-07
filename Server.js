@@ -29,5 +29,6 @@ app.get("/", (rew, res)=> res.json(
 app.use('/api/users',require('./routes/users'));
 app.use('/api/auth',require('./routes/auth'));
 app.use("/api/profile", require("./routes/profile"));
+app.use('/api/companies', require('./routes/companies'));
 
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));
