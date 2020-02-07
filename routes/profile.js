@@ -51,12 +51,44 @@ router.post("/", auth,  async (req, res) =>{
         // create profile
         profile = new Profile(profileFields);
         await profile.save();
-        req.json(profile);
+        res.json(profile);
         
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");
     }
-})
+});
+
+
+// @route   GET api/profile
+// @desc    Get all profiles
+// @access  public
+
+router.get("/", async (req, res) => {
+    try {
+        const profiles = await Profile.find().populate("user", ["name"]);
+        res.json(profiles);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error");
+    }
+});
+
+
+// @route   GET api/profile/user/:id
+// @desc    Get all profiles
+// @access  public
+
+router.get("/user/:id", async (req, res) => {
+    try {
+        const profile = await Profile.findOne({user: req.params.id}).populate("user", ["name"]);
+        res.json(profile);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("Server error");
+    }
+});
 
 module.exports = router;
