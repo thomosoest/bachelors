@@ -1,5 +1,6 @@
 import React, {Fragment, useContext} from 'react';
 import CompanyContext from '../../context/company/companyContext';
+import CompanyItem from '../../components/companies/CompanyItem';
 
 const Companies = () => {
     const companyContext = useContext(CompanyContext);
@@ -8,7 +9,7 @@ const Companies = () => {
     return (
         <Fragment>
             {companies.map(company => (
-            <h3>{company.companyName}</h3>
+            <CompanyItem key={company.id} company={company}/>
             ))}
         </Fragment>
     );

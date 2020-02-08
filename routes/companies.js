@@ -6,6 +6,26 @@ const Company = require('../models/Company');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
 
+
+// @router      GET api/companies
+// @desc        Get all companies
+// @access      Private
+router.get('/', auth, 
+
+    
+async (req, res) => {
+
+try {
+    const companies = await Company.find();
+    res.json(companies);
+
+} catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+}
+
+})
+
 // @router      Post api/companies
 // @desc        Create a company
 // @access      Private
