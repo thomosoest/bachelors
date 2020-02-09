@@ -4,12 +4,16 @@ import Home from './components/pages/Home';
 import About from './components/pages/About';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import CompanyState from './context/company/CompanyState';
+import AuthState from './context/auth/AuthState';
+import Register from './components/auth/Register';
+import Login from './components/auth/Login';
 
 
 import './App.css';
 
 const App = () => {
   return (
+    <AuthState>
     <CompanyState>
     <Router>
       <div className="App">
@@ -18,11 +22,14 @@ const App = () => {
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/about" component={About}/>
+            <Route exact path="/register" component={Register}/>
+            <Route exact path="/login" component={Login}/>
           </Switch>
         </div>
       </div>
     </Router>
     </CompanyState>
+    </AuthState>
   );
 }
 
