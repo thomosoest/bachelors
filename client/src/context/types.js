@@ -1,5 +1,5 @@
 export const ADD_COMPANY = "ADD_COMPANY";
-export const UPDATE_COMPANY = "UPDATE_COMPANY";
+export const JOIN_COMPANY = "JOIN_COMPANY";
 export const SEARCH_COMPANY = "SEARCH_COMPANY";
 export const ERR_COMPANY = "ERR_COMPANY";
 export const GET_COMPANIES = "GET_COMPANIES";

@@ -4,7 +4,7 @@ import CompanyContext from './companyContext';
 import companyReducer from './companyReducer';
 import {
     ADD_COMPANY,
-    UPDATE_COMPANY,
+    JOIN_COMPANY,
     ERR_COMPANY,
     GET_COMPANIES
 } from '../types';
@@ -55,7 +55,27 @@ const CompanyState = props => {
         }
     }
 
-    // UPDATE COMPANY
+    // JOIN COMPANY
+    const joinCompany = async id => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.put(`/api/companies/join/${id}`, config);
+            dispatch({
+                type: JOIN_COMPANY,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
 
     return (
         <CompanyContext.Provider 
@@ -63,7 +83,8 @@ const CompanyState = props => {
             companies: state.companies,
 
             addCompany,
-            getCompanies
+            getCompanies,
+            joinCompany
         }}>
             {props.children}
         </CompanyContext.Provider>
