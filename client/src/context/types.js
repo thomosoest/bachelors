@@ -1,2 +1,3 @@
 export const ADD_COMPANY = "ADD_COMPANY";
 export const UPDATE_COMPANY = "UPDATE_COMPANY";
+export const SEARCH_COMPANY = "SEARCH_COMPANY";
