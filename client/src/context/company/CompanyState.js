@@ -5,16 +5,34 @@ import companyReducer from './companyReducer';
 import {
     ADD_COMPANY,
     UPDATE_COMPANY,
-    ERR_COMPANY
+    ERR_COMPANY,
+    GET_COMPANIES
 } from '../types';
 
 const CompanyState = props => {
     const initialState = {
-        companies: []
+        companies: [],
+        loading: true
     };
 
     const [state, dispatch] = useReducer(companyReducer, initialState);
 
+    // GET COMPANIES
+    const getCompanies = async () => {
+        
+        try {
+            const res = await axios.get("/api/companies");
+            dispatch({
+                type: GET_COMPANIES,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
     // ADD COMPANY
     const addCompany = async company => {
         const config = {
@@ -44,7 +62,8 @@ const CompanyState = props => {
         value={{
             companies: state.companies,
 
-            addCompany
+            addCompany,
+            getCompanies
         }}>
             {props.children}
         </CompanyContext.Provider>

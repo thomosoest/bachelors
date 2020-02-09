@@ -10,6 +10,9 @@ const Navbar = (props) => {
     const authLinks = (
         <Fragment>
             <li>
+                <Link to="/">Hjem</Link>
+            </li>
+            <li>
                 <Link to="/companies">Bedrifter</Link>
             </li>
             <li>
