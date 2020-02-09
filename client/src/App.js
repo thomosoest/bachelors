@@ -1,9 +1,14 @@
 import React, {Fragment} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
+
+// Pages
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Profile from './components/pages/Profile';
+import SearchCompany from './components/pages/SearchCompanies';
+import CreateCompany from './components/pages/CreateCompany';
+
 import PrivateRoute from './components/routing/PrivateRoute';
 import CompanyState from './context/company/CompanyState';
 import AuthState from './context/auth/AuthState';
@@ -28,6 +33,8 @@ const App = () => {
         <div className="container">
           <Switch>
             <PrivateRoute exact path="/" component={Home}/>
+            <PrivateRoute exact path="/companies" component={SearchCompany}/>
+            <PrivateRoute exact path="/companies/make" component={CreateCompany}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>

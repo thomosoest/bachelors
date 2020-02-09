@@ -5,10 +5,13 @@ import AuthContext from '../../context/auth/authContext';
 const Navbar = (props) => {
     const authContext = useContext(AuthContext);
 
-    const {isAuthenticated, logout, user, loading} = authContext;
+    const {isAuthenticated, logout, loading} = authContext;
 
     const authLinks = (
         <Fragment>
+            <li>
+                <Link to="/companies">Bedrifter</Link>
+            </li>
             <li>
                 <a onClick={logout} href="#!">
                     <i className="fas fa-sign-out-alt"/>
@@ -35,9 +38,6 @@ const Navbar = (props) => {
                 <i className={props.icon}> {props.title}</i>
             </h1>
             <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
                 <li>
                     <Link to="/about">About</Link>
                 </li>

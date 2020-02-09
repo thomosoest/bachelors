@@ -1,6 +1,7 @@
 export const ADD_COMPANY = "ADD_COMPANY";
 export const UPDATE_COMPANY = "UPDATE_COMPANY";
 export const SEARCH_COMPANY = "SEARCH_COMPANY";
+export const ERR_COMPANY = "ERR_COMPANY";
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';

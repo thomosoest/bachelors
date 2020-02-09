@@ -1,7 +1,6 @@
 import React, {useContext, useEffect} from 'react';
-import Companies from '../../components/companies/Companies';
-import Search from '../companies/Search';
 import AuthContext from '../../context/auth/authContext';
+import {Link} from 'react-router-dom';
 
 const Home = () => {
     const authContext = useContext(AuthContext);
@@ -14,8 +13,7 @@ const Home = () => {
     return (
         <div>
             <h1>Home</h1>
-            <Search/>
-            <Companies/>
+            <Link to="/companies/make">Opprett bedrift</Link>
         </div>
     )
 }
