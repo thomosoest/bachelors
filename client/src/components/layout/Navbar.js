@@ -5,15 +5,14 @@ import AuthContext from '../../context/auth/authContext';
 const Navbar = (props) => {
     const authContext = useContext(AuthContext);
 
-    const {isAuthenticated, logout, user} = authContext;
+    const {isAuthenticated, logout, user, loading} = authContext;
 
     const authLinks = (
         <Fragment>
-            <li>Hello</li>
             <li>
-                <a href="#!">
-                    <i className="fas fa-sign-out-alt"></i>
-                    <span className="hide-sm">Logg ut</span>
+                <a onClick={logout} href="#!">
+                    <i className="fas fa-sign-out-alt"/>
+                    Logg ut
                 </a>
             </li>
         </Fragment>
@@ -21,12 +20,11 @@ const Navbar = (props) => {
 
     const guestLinks = (
         <Fragment>
-            <li>Hello</li>
             <li>
-                <a href="#!">
-                    <i className="fas fa-sign-out-alt"></i>
-                    <span className="hide-sm">Logg ut</span>
-                </a>
+                <Link to="/login">Logg inn</Link>
+            </li>
+            <li>
+                <Link to="/register">Registrer</Link>
             </li>
         </Fragment>
     );
@@ -43,6 +41,9 @@ const Navbar = (props) => {
                 <li>
                     <Link to="/about">About</Link>
                 </li>
+                {!loading && (<Fragment>
+                    {isAuthenticated? authLinks : guestLinks}
+                </Fragment>)}
             </ul>
         </div>
     )
