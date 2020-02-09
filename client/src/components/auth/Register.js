@@ -1,6 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import AuthContext from '../../context/auth/authContext';
+import { PromiseProvider } from 'mongoose';
 
-const Register = () => {
+const Register = (props) => {
+    const authContext = useContext(AuthContext);
+
     const [ user, setUser] = useState({
         name:  '',
         email: '',
@@ -8,12 +12,22 @@ const Register = () => {
     });
 
     const { name, email, password } = user;
+    const {register, isAuthenticated} = authContext;
+
+    useEffect(() => {
+        if(isAuthenticated) props.history.push("/");
+        // eslint-disable-next-lint
+    }, [isAuthenticated, props.history])
 
     const onChange = e => setUser({ ...user, [e.target.name]: e.target.value });
     
     const onSubmit = e => {
         e.preventDefault();
-        console.log('Register submit');
+        register({
+            name,
+            email,
+            password
+        });
     }
 
     return (
