@@ -37,7 +37,10 @@ async (req, res) => {
 
 try {
     let companyName = req.params.companyName;
-    const companies = await Company.find({companyName: companyName}).populate("user", ["name"]);
+    const companies = await Company
+        .find({companyName: new RegExp(`^${companyName}$`, 'i')})
+        .populate("user", ["name"]);
+        
     res.json(companies);
 
 } catch (err) {
