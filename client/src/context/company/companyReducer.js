@@ -1,6 +1,6 @@
 import {
     ADD_COMPANY,
-    UPDATE_COMPANY,
+    JOIN_COMPANY,
     ERR_COMPANY,
     GET_COMPANIES
 } from '../types';

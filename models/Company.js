@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const CompanySchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+        ref: 'user'
     },
     companyName: {
         type: String,
@@ -13,7 +13,7 @@ const CompanySchema = mongoose.Schema({
         {
             user: {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'users'
+                ref: 'user'
             }
         }
     ]

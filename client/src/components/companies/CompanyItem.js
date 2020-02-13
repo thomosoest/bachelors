@@ -12,7 +12,7 @@ const CompanyItem = (props) => {
     return (
         <div className="card bg-light">
             <h3>{props.company.companyName}</h3>
-            <p>Owner {props.company.user}</p>
+            <p>Owner {props.company.user.name}</p>
             <button onClick={join} className="btn btn-dark btn-sm">JOIN</button>
         </div>
     )

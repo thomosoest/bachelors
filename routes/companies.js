@@ -16,7 +16,7 @@ router.get('/', auth,
 async (req, res) => {
 
 try {
-    const companies = await Company.find();
+    const companies = await Company.find().populate("user", ["name"]);
     res.json(companies);
 
 } catch (err) {
