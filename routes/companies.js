@@ -24,7 +24,28 @@ try {
     res.status(500).send('Server error');
 }
 
-})
+});
+
+
+// @router      GET api/companies/:companyName
+// @desc        Get company by name
+// @access      Private
+router.get('/:companyName', auth, 
+
+    
+async (req, res) => {
+
+try {
+    let companyName = req.params.companyName;
+    const companies = await Company.find({companyName: companyName}).populate("user", ["name"]);
+    res.json(companies);
+
+} catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+}
+
+});
 
 // @router      Post api/companies
 // @desc        Create a company

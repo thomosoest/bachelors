@@ -2,11 +2,13 @@ import {
     ADD_COMPANY,
     JOIN_COMPANY,
     ERR_COMPANY,
-    GET_COMPANIES
+    GET_COMPANIES,
+    GET_COMPANIES_BY_NAME
 } from '../types';
 
 export default (state, action) => {
     switch(action.type){
+        case GET_COMPANIES_BY_NAME:
         case GET_COMPANIES:
             return {
                 ...state,

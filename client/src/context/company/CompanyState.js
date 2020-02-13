@@ -6,7 +6,8 @@ import {
     ADD_COMPANY,
     JOIN_COMPANY,
     ERR_COMPANY,
-    GET_COMPANIES
+    GET_COMPANIES,
+    GET_COMPANIES_BY_NAME
 } from '../types';
 
 const CompanyState = props => {
@@ -33,6 +34,26 @@ const CompanyState = props => {
             });
         }
     }
+
+     // GET COMPANY BY NAME
+     const getCompaniesByName = async companyName => {
+        
+        try {
+            companyName = encodeURIComponent(companyName.trim()); // In case of spaces
+            const res = await axios.get(`/api/companies/${companyName}`);
+            dispatch({
+                type: GET_COMPANIES_BY_NAME,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
     // ADD COMPANY
     const addCompany = async company => {
         const config = {
@@ -84,7 +105,8 @@ const CompanyState = props => {
 
             addCompany,
             getCompanies,
-            joinCompany
+            joinCompany,
+            getCompaniesByName
         }}>
             {props.children}
         </CompanyContext.Provider>

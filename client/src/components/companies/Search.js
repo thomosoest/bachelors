@@ -11,7 +11,7 @@ const Search = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-       // companyContext.searchCompanies(text);
+        companyContext.getCompaniesByName(text);
         setText("");
     }
 
