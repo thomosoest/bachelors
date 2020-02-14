@@ -8,10 +8,12 @@ import About from './components/pages/About';
 import Profile from './components/pages/Profile';
 import SearchCompany from './components/pages/SearchCompanies';
 import CreateCompany from './components/pages/CreateCompany';
+import Dashboard from './components/dashboard/Dashboard';
 
 import PrivateRoute from './components/routing/PrivateRoute';
 import CompanyState from './context/company/CompanyState';
 import AuthState from './context/auth/AuthState';
+import ProfileState from './context/profile/profileState';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import setAuthToken from "./utils/setAuthToken";
@@ -26,6 +28,7 @@ if(localStorage.token){
 const App = () => {
   return (
     <AuthState>
+    <ProfileState>
     <CompanyState>
     <Router>
       <div className="App">
@@ -35,6 +38,7 @@ const App = () => {
             <PrivateRoute exact path="/" component={Home}/>
             <PrivateRoute exact path="/companies" component={SearchCompany}/>
             <PrivateRoute exact path="/companies/make" component={CreateCompany}/>
+            <PrivateRoute exact path="/dashboard" component={Dashboard}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
@@ -44,6 +48,7 @@ const App = () => {
       </div>
     </Router>
     </CompanyState>
+    </ProfileState>
     </AuthState>
   );
 }

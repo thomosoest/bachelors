@@ -102,7 +102,7 @@ const CompanyState = props => {
         <CompanyContext.Provider 
         value={{
             companies: state.companies,
-
+            
             addCompany,
             getCompanies,
             joinCompany,
