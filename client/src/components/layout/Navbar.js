@@ -15,6 +15,9 @@ const Navbar = (props) => {
     const authLinks = (
         <Fragment>
             <li>
+                <Link to="/dashboard">Min profil</Link>
+            </li>
+            <li>
                 <Link to="/">Hjem</Link>
             </li>
             <li>
