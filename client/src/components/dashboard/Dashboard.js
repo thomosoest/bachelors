@@ -1,18 +1,22 @@
-import React, { useContext, useEffect } from 'react'
+import React, { Fragment, useContext, useEffect } from 'react'
 import ProfileContext from '../../context/profile/profileContext'
 import AuthContext from '../../context/auth/authContext'
 
-const Dashboard = props => {
-    const profileContext = useContext(ProfileContext);
+const Dashboard = () => {
+
+    const {getCurrentProfile, loading} = useContext(ProfileContext);
+    const {user} = useContext(AuthContext);
+
     useEffect(() => {
-        profileContext.getCurrentProfile();
+        getCurrentProfile();
     }, []);
     
-    return(
-        <div>
-            Dashboard
-        </div>
-    )
+    return loading? <p>Loading...</p> :
+        <Fragment>
+            <h1>Dashboard</h1>
+            <p>Velkommen {user && user.name}</p>
+        </Fragment>
+
 }
 
 
