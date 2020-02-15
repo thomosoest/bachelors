@@ -4,7 +4,8 @@ import ProfileContext from './profileContext';
 import profileReducer from './profileReducer';
 import {
     GET_PROFILE,
-    PROFILE_ERROR
+    PROFILE_ERROR,
+    CLEAR_PROFILE
 } from '../types';
 
 const ProfileState = props => {
@@ -33,6 +34,10 @@ const ProfileState = props => {
         }
     }
 
+    const clearProfile = () => {
+        dispatch({type: CLEAR_PROFILE});
+    }
+
 
     // GET Profiles
 
@@ -43,7 +48,8 @@ const ProfileState = props => {
             profiles: state.profiles,
             loading: state.loading,
 
-            getCurrentProfile
+            getCurrentProfile,
+            clearProfile
         }}>
             {props.children}
         </ProfileContext.Provider>

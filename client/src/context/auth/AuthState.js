@@ -1,8 +1,9 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useContext} from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import setAuthToken from "../../utils/setAuthToken";
 import axios from 'axios';
+import ProfileContext from '../profile/profileContext';
 
 import {
 
@@ -25,6 +26,7 @@ const AuthState = props => {
         error: null
     };
 
+    
     const [state, dispatch] = useReducer(authReducer, initialState);
 
 
@@ -88,6 +90,7 @@ const AuthState = props => {
                 payload: res.data
             });
 
+
             loadUser();
         } catch (err) {
             dispatch({
@@ -98,7 +101,7 @@ const AuthState = props => {
     }
 
     // Logout
-    const logout = () => {
+    const logout = () => {  
         dispatch({
             type: LOGOUT
         });
