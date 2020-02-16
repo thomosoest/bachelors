@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 
@@ -9,6 +9,7 @@ import Profile from './components/pages/Profile';
 import SearchCompany from './components/pages/SearchCompanies';
 import CreateCompany from './components/pages/CreateCompany';
 import Dashboard from './components/dashboard/Dashboard';
+import CreateProfile from './components/pages/ProfileCreate';
 
 import PrivateRoute from './components/routing/PrivateRoute';
 import CompanyState from './context/company/CompanyState';
@@ -39,6 +40,7 @@ const App = () => {
             <PrivateRoute exact path="/companies" component={SearchCompany}/>
             <PrivateRoute exact path="/companies/make" component={CreateCompany}/>
             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
+            <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>

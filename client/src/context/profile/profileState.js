@@ -5,7 +5,8 @@ import profileReducer from './profileReducer';
 import {
     GET_PROFILE,
     PROFILE_ERROR,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    CREATE_PROFILE
 } from '../types';
 
 const ProfileState = props => {
@@ -34,6 +35,28 @@ const ProfileState = props => {
         }
     }
 
+    const createProfile = async profileData => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.post("/api/profile", profileData, config);
+            dispatch({
+                type: CREATE_PROFILE,
+                payload: res.data
+            });
+
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+    }
+
     const clearProfile = () => {
         dispatch({type: CLEAR_PROFILE});
     }
@@ -49,7 +72,8 @@ const ProfileState = props => {
             loading: state.loading,
 
             getCurrentProfile,
-            clearProfile
+            clearProfile,
+            createProfile
         }}>
             {props.children}
         </ProfileContext.Provider>

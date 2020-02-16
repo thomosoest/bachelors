@@ -1,9 +1,9 @@
-import React, {useReducer, useContext} from 'react';
+import React, {useReducer} from 'react';
 import AuthContext from './authContext';
 import authReducer from './authReducer';
 import setAuthToken from "../../utils/setAuthToken";
 import axios from 'axios';
-import ProfileContext from '../profile/profileContext';
+
 
 import {
 
@@ -13,8 +13,7 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT,
-    CLEAR_ERRORS
+    LOGOUT
 } from '../types';
 
 const AuthState = props => {
@@ -38,7 +37,7 @@ const AuthState = props => {
         }
         try {
             const res = await axios.get("/api/auth");
-            console.log(res);
+            
             dispatch({
                 type: USER_LOADED,
                 payload: res.data

@@ -1,7 +1,5 @@
 import {
     ADD_COMPANY,
-    JOIN_COMPANY,
-    ERR_COMPANY,
     GET_COMPANIES,
     GET_COMPANIES_BY_NAME
 } from '../types';

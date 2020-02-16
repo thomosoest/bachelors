@@ -1,15 +1,18 @@
 import {
     GET_PROFILE,
     PROFILE_ERROR,
-    CLEAR_PROFILE
+    CLEAR_PROFILE,
+    CREATE_PROFILE
 } from '../types';
 
 export default (state, action) => {
     switch(action.type){
+        case CREATE_PROFILE:
         case GET_PROFILE:
             return {
                 ...state, 
-                profile: action.payload, 
+                profile: action.payload,
+                error: null,
                 loading: false
             }
         case PROFILE_ERROR:
