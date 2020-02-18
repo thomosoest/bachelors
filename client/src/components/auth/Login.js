@@ -33,7 +33,7 @@ const Login = (props) => {
     return (
         <div className='form-container'>
             <h1>
-                <span className="text-primate">Log inn</span>
+                <span className="text-primate">Logg inn</span>
             </h1>
             <form onSubmit={onSubmit}>
                 <div className="form-group"> 
