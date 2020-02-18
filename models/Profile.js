@@ -9,7 +9,12 @@ const ProfileSchema = mongoose.Schema({
 
     bio: {
         type: String
+    },
+
+    skills: {
+        type: [String]
     }
+
 });
 
 module.exports = mongoose.model('profile', ProfileSchema);
