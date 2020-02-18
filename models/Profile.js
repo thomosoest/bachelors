@@ -13,7 +13,16 @@ const ProfileSchema = mongoose.Schema({
 
     skills: {
         type: [String]
-    }
+    },
+
+    companies: [
+            {
+                company: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'company'
+                }
+        }
+    ]
 
 });
 

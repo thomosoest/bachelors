@@ -27,26 +27,28 @@ try {
 });
 
 
+
+
 // @router      GET api/companies/:companyName
 // @desc        Get company by name
 // @access      Private
 router.get('/:companyName', auth, 
 
     
-async (req, res) => {
+    async (req, res) => {
 
-try {
-    let companyName = req.params.companyName;
-    const companies = await Company
-        .find({companyName: new RegExp(`^${companyName}$`, 'i')})
-        .populate("user", ["name"]);
-        
-    res.json(companies);
+    try {
+        let companyName = req.params.companyName;
+        const companies = await Company
+            .find({companyName: new RegExp(`^${companyName}$`, 'i')})
+            .populate("user", ["name"]);
+            
+        res.json(companies);
 
-} catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server error');
-}
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
 
 });
 
@@ -86,6 +88,8 @@ router.put('/join/:id', auth,
     async (req,res) =>{
 
         try {
+            const profile = await Profile.findOne({user: req.user.id}); // Newly joined company should also show here
+            if(profile === null) return res.status(400).json({msg: "Can't join without profile"});
             const company = await Company.findById(req.params.id);
 
             //Check if the user already exists in the company
@@ -96,6 +100,10 @@ router.put('/join/:id', auth,
             company.ansatte.unshift({ user: req.user.id});
 
             await company.save();
+
+            profile.companies.unshift({company: req.params.id});
+            
+            await profile.save();
 
             res.json(company.ansatte);
         } catch (err) {
