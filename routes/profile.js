@@ -33,10 +33,14 @@ router.get("/me", auth, async (req, res) => {
 // @access  private
 
 router.post("/", auth,  async (req, res) =>{
-    const bio = req.body.bio;
-    profileFields = {};
+    const {bio,skills} = req.body;
+    const profileFields = {};
     profileFields.user = req.user.id;
     profileFields.bio = bio;
+    profileFields.skills = skills.split(',').map(skill => skill.trim());
+    
+
+    
 
     try {
         let profile = await Profile.findOne({user: req.user.id});
