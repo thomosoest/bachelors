@@ -1,7 +1,9 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import ProfileContext from '../../context/profile/profileContext';
 import AuthContext from '../../context/auth/authContext';
-import {Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import About from '../../components/pages/About';
+import DashNavbar from './DashNavbar';
 
 const Dashboard = () => {
 
@@ -14,12 +16,19 @@ const Dashboard = () => {
     }, []);
     
     return loading? <p>Loading...</p> :
+        <Router>
         <Fragment>
             <h1>Dashboard</h1>
             <p>Velkommen {user && user.name}</p>
             {profile !== null?
                 <Fragment> 
                     <p>You have a profile</p>
+                    <DashNavbar/>
+                    <div className="container">
+                    <Switch>
+                        <Route exact path="/test" component={About}/>
+                    </Switch>
+                    </div>
                 </Fragment>:
                 <Fragment>
                     <p>Opprett profil først</p>
@@ -27,6 +36,7 @@ const Dashboard = () => {
                 </Fragment>}
 
         </Fragment>
+        </Router>
 
 }
 
