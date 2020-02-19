@@ -16,6 +16,13 @@ const CompanySchema = mongoose.Schema({
                 ref: 'user'
             }
         }
+    ],
+
+    bank: [
+        {
+            skill:{type: String},
+            users: [{user:{type: mongoose.Schema.Types.ObjectId, ref: 'user'}}]
+        }
     ]
 });
 

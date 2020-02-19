@@ -65,7 +65,8 @@ try {
 
     const newCompany = new Company( {
         companyName: req.body.companyName,
-        user: req.user.id
+        user: req.user.id,
+        bank: []
         })
     
     const company = await newCompany.save();
@@ -106,6 +107,41 @@ router.put('/join/:id', auth,
             await profile.save();
 
             res.json(company.ansatte);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+});
+
+
+// @route       PUT api/companies/skillify/:id
+// @desc        Send a skill / or add logged user to skill in company
+// @access      Private
+
+router.put('/skillify/:id', auth, 
+    async (req,res) =>{
+
+        try {
+            var company = await Company.findById(req.params.id);
+            if(!company) return res.status(400).json({ msg: 'Company does not exist'});
+            
+            let reqSkill = req.body.skill
+            let bank = company.bank;
+            let index = -1;
+            for(let i in bank){
+                if(bank[i].skill == reqSkill) index = i;
+            }
+
+            // If the skill doesn't already exist yet, add it
+            if(index == -1) bank.push({skill: reqSkill, users:[{user: req.user.id}]})
+            else { // Else add the user to the existing skill list
+                bank[index].users.push({user: req.user.id});
+            }
+
+            await company.save();
+            res.json(bank);
+
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
