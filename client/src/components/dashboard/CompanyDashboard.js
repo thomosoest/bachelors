@@ -1,9 +1,10 @@
 import React from 'react';
 import SearchCompanies from '../pages/SearchCompanies';
+import Companies from '../companies/Companies';
 
 const CompanyDashboard = () => {
     return (<div>
-        <SearchCompanies case="owner"></SearchCompanies>
+        <Companies case="owner"/>
         <SearchCompanies></SearchCompanies>
 
 

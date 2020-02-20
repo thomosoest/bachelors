@@ -13,7 +13,7 @@ const CompanyItem = (props) => {
     if (props.case === "owner") {
         output = null;
     } 
-    else if(props.case == "employee") {
+    else if(props.case === "employee") {
         output = <p>Employee view</p>;
     }
 

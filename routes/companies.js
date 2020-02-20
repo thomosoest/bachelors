@@ -35,8 +35,8 @@ router.get('/mine', auth,
     async (req, res) => {
 
     try {
-        console.log("hahahah");
-        const companies = await Company.find({user: req.user.id});
+       
+        const companies = await Company.find({user: req.user.id}).populate("user", ["name"]);
         res.json(companies);
 
     } catch (err) {

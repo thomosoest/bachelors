@@ -6,7 +6,6 @@ import Navbar from './components/layout/Navbar';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
 import Profile from './components/pages/Profile';
-import SearchCompany from './components/pages/SearchCompanies';
 import CreateCompany from './components/pages/CreateCompany';
 import Dashboard from './components/dashboard/Dashboard';
 import CreateProfile from './components/pages/ProfileCreate';
