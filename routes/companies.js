@@ -52,11 +52,12 @@ router.get('/:companyName', auth,
 
 });
 
+
+
 // @router      Post api/companies
 // @desc        Create a company
 // @access      Private
 router.post('/', auth, 
-
     
 async (req, res) => {
 
