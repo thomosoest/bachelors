@@ -26,8 +26,8 @@ try {
 
 });
 
-// @router      GET api/companies/:companyName
-// @desc        Get company by name
+// @router      GET api/companies/mine
+// @desc        Get companies owned by logged in user
 // @access      Private
 router.get('/mine', auth, 
 

@@ -8,7 +8,7 @@ import About from './components/pages/About';
 import Profile from './components/pages/Profile';
 import CreateCompany from './components/pages/CreateCompany';
 import Dashboard from './components/dashboard/Dashboard';
-import CreateProfile from './components/pages/ProfileCreate';
+import ProfileCreate from './components/pages/ProfileCreate';
 import CompanyDashoard from './components/dashboard/CompanyDashboard';
 
 import PrivateRoute from './components/routing/PrivateRoute';
@@ -40,7 +40,7 @@ const App = () => {
             <PrivateRoute exact path="/companies" component={CompanyDashoard}/>
             <PrivateRoute exact path="/companies/make" component={CreateCompany}/>
             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
-            <PrivateRoute exact path="/create-profile" component={CreateProfile}/>
+            <PrivateRoute exact path="/create-profile" component={ProfileCreate}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>

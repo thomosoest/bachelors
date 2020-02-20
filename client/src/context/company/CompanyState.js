@@ -8,7 +8,8 @@ import {
     ERR_COMPANY,
     GET_COMPANIES,
     GET_COMPANIES_BY_NAME,
-    GET_OWNED_COMPANIES
+    GET_OWNED_COMPANIES,
+    CLEAR_SEARCH_COMPANIES
 } from '../types';
 
 const CompanyState = props => {
@@ -115,7 +116,20 @@ const CompanyState = props => {
                 payload: err.response.msg
             });
         }
-    }   
+    }
+    
+    const clearSearchCompanies = async () => {
+        try {
+            dispatch({
+                type: CLEAR_SEARCH_COMPANIES,
+            })
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
 
     return (
         <CompanyContext.Provider 
@@ -127,7 +141,8 @@ const CompanyState = props => {
             getCompanies,
             joinCompany,
             getCompaniesByName,
-            getOwnedCompanies
+            getOwnedCompanies,
+            clearSearchCompanies
         }}>
             {props.children}
         </CompanyContext.Provider>

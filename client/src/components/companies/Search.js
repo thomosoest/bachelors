@@ -32,7 +32,7 @@ const Search = () => {
             />
         </form>
         {companyContext.companies.length > 0 &&
-        <button onClick={companyContext.clearCompanies}>Clear</button>}
+        <button onClick={companyContext.clearSearchCompanies}>Clear</button>}
     </div>
     )
     
