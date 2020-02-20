@@ -23,6 +23,7 @@ const Dashboard = () => {
             {profile !== null?
                 <Fragment> 
                     <p>You have a profile</p>
+                    
                     <DashNavbar/>
                     <div className="container">
                     <Switch>

@@ -26,7 +26,25 @@ try {
 
 });
 
+// @router      GET api/companies/:companyName
+// @desc        Get company by name
+// @access      Private
+router.get('/mine', auth, 
 
+    
+    async (req, res) => {
+
+    try {
+        console.log("hahahah");
+        const companies = await Company.find({user: req.user.id});
+        res.json(companies);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+
+});
 
 
 // @router      GET api/companies/:companyName
