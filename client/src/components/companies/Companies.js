@@ -1,8 +1,9 @@
 import React, {Fragment, useContext, useEffect} from 'react';
 import CompanyContext from '../../context/company/companyContext';
 import CompanyItem from '../../components/companies/CompanyItem';
+import { PromiseProvider } from 'mongoose';
 
-const Companies = () => {
+const Companies = (props) => {
     const companyContext = useContext(CompanyContext);
     const {companies, getCompanies} = companyContext;
 
@@ -14,7 +15,7 @@ const Companies = () => {
     return (
         <Fragment>
             {companies.map(company => (
-            <CompanyItem key={company._id} company={company}/>
+            <CompanyItem key={company._id} case={props.case} company={company}/>
             ))}
         </Fragment>
     );

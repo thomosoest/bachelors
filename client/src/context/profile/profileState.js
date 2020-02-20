@@ -13,6 +13,7 @@ const ProfileState = props => {
     const initialState = {
             profile: null,
             profiles: [],
+            company: null,
             loading: true,
             error: {}
     };

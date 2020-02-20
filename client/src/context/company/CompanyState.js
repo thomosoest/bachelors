@@ -7,12 +7,14 @@ import {
     JOIN_COMPANY,
     ERR_COMPANY,
     GET_COMPANIES,
-    GET_COMPANIES_BY_NAME
+    GET_COMPANIES_BY_NAME,
+    GET_OWNED_COMPANIES
 } from '../types';
 
 const CompanyState = props => {
     const initialState = {
         companies: [],
+        ownedCompanies: [],
         loading: true
     };
 
@@ -98,15 +100,34 @@ const CompanyState = props => {
         }
     }
 
+    // GET_OWNED_COMPANIES
+    const getOwnedCompanies = async id => {
+        
+        try {
+            const res = await axios.get(`/api/companies/mine`);
+            dispatch({
+                type: GET_OWNED_COMPANIES,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }   
+
     return (
         <CompanyContext.Provider 
         value={{
-            companies: state.companies,
+            companies: state.companies, 
+            ownedCompanies: state.ownedCompanies,
             
             addCompany,
             getCompanies,
             joinCompany,
-            getCompaniesByName
+            getCompaniesByName,
+            getOwnedCompanies
         }}>
             {props.children}
         </CompanyContext.Provider>

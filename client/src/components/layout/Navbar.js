@@ -37,6 +37,7 @@ const Navbar = (props) => {
                     Logg ut
                 </a>
             </li>
+            
         </Fragment>
     );
 
@@ -57,9 +58,7 @@ const Navbar = (props) => {
                 <i className={props.icon}> {props.title}</i>
             </h1>
             <ul>
-                <li>
-                    <Link to="/about">About</Link>
-                </li>
+
                 {!loading && (<Fragment>
                     {isAuthenticated? authLinks : guestLinks}
                 </Fragment>)}
