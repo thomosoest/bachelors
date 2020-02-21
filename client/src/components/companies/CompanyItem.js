@@ -1,7 +1,9 @@
 import React, {useContext} from 'react';
 import CompanyContext from '../../context/company/companyContext';
+import { useHistory } from 'react-router-dom';
 
 const CompanyItem = (props) => {
+    const history = useHistory();
     const companyContext = useContext(CompanyContext);
     const {joinCompany} = companyContext;
 
@@ -11,6 +13,7 @@ const CompanyItem = (props) => {
 
     const toDashboard = () => {
         console.log("To Dashboard");
+        history.push("yass");
     }
 
 

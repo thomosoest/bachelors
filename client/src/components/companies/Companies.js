@@ -29,11 +29,13 @@ const Companies = (props) => {
     }
 
     return (
+   
         <Fragment>
             {selectedCompanies.map(company => (
             <CompanyItem key={company._id} case={props.case} company={company}/>
             ))}
         </Fragment>
+       
     );
 }
 
