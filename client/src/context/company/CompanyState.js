@@ -16,6 +16,7 @@ const CompanyState = props => {
     const initialState = {
         companies: [],
         ownedCompanies: [],
+        currentCompany: null,
         loading: true
     };
 
@@ -56,6 +57,21 @@ const CompanyState = props => {
         }
     }
 
+
+        // GET CURRENT COMPANY
+        const getCurrentCompany = async id => {
+        
+            try {
+               // const res = await axios.get(`api/companies/${id}`);
+
+                
+            } catch (err) {
+                dispatch({
+                    type: ERR_COMPANY,
+                    payload: err.response.msg
+                });
+            }
+        }
 
     // ADD COMPANY
     const addCompany = async company => {
