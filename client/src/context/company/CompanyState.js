@@ -9,7 +9,8 @@ import {
     GET_COMPANIES,
     GET_COMPANIES_BY_NAME,
     GET_OWNED_COMPANIES,
-    CLEAR_SEARCH_COMPANIES
+    CLEAR_SEARCH_COMPANIES,
+    GET_CURRENT_COMPANY
 } from '../types';
 
 const CompanyState = props => {
@@ -62,8 +63,11 @@ const CompanyState = props => {
         const getCurrentCompany = async id => {
         
             try {
-               // const res = await axios.get(`api/companies/${id}`);
-
+                const res = await axios.get(`api/companies/mine/${id}`);
+                dispatch({
+                    type: GET_CURRENT_COMPANY,
+                    payload: res.data
+                })
                 
             } catch (err) {
                 dispatch({
@@ -152,13 +156,15 @@ const CompanyState = props => {
         value={{
             companies: state.companies, 
             ownedCompanies: state.ownedCompanies,
+            currentCompany: state.currentCompany,
             
             addCompany,
             getCompanies,
             joinCompany,
             getCompaniesByName,
             getOwnedCompanies,
-            clearSearchCompanies
+            clearSearchCompanies,
+            getCurrentCompany
         }}>
             {props.children}
         </CompanyContext.Provider>

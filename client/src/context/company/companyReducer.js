@@ -3,11 +3,18 @@ import {
     GET_COMPANIES,
     GET_COMPANIES_BY_NAME,
     GET_OWNED_COMPANIES,
-    CLEAR_SEARCH_COMPANIES
+    CLEAR_SEARCH_COMPANIES,
+    GET_CURRENT_COMPANY
 } from '../types';
 
 export default (state, action) => {
     switch(action.type){
+        case GET_CURRENT_COMPANY:
+            return {
+                ...state,
+                currentCompany: action.payload,
+                loading: false
+            }
         case CLEAR_SEARCH_COMPANIES:
             return {
                 ...state,
