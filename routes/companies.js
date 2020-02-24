@@ -5,6 +5,7 @@ const auth = require('../middleware/auth');
 const Company = require('../models/Company');
 const Profile = require('../models/Profile');
 const User = require('../models/User');
+const mongoose = require('mongoose'); // for ObjectId 
 
 
 // @router      GET api/companies
@@ -39,7 +40,7 @@ router.get('/mine', auth,
     try {
        
         const companies = await Company.find({user: req.user.id})
-        .select('user, name, companyName')
+        .select('user, companyName')
         .populate("user", ["name"]);
         res.json(companies);
 
@@ -60,11 +61,86 @@ router.get('/mine/:id', auth,
 
     try {
        
-        const company = await Company.findOne({_id: req.params.id}).populate("user", ["name", "_id"]);
+        const company = await Company.findOne({_id: req.params.id})
+            .select('-bank')
+            .populate("user", ["name", "_id"]);
         if(company.user._id == req.user.id) res.json(company);
         else {
             res.json({msg: "Unauthorized"});
         }
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+
+});
+
+
+// @router      GET api/companies/mine/bank/:id
+// @desc        Get Skillbank of selected company
+// @access      Private
+router.get('/mine/bank/:id', auth,
+
+    
+    async (req, res) => {
+
+    try {
+       
+        const skills = await Company.findOne({_id: req.params.id})
+                                .select('-bank.users -ansatte');
+
+        if(skills.user == req.user.id) 
+            res.json(skills);
+        else return res.status(400).send("Unauthorized");
+        
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+
+});
+
+
+// @router      GET api/companies/mine/bank/:id/:skill
+// @desc        Get Skillbank of selected company
+// @access      Private                     /* NOTE: NOT SECURE YET: AUTHORIZED TO ANYONE WHO IS LOGGED  */
+router.get('/mine/bank/:id/:skill', auth,
+
+    
+    async (req, res) => {
+
+    try {
+       
+        const users = await Company.aggregate([
+            { 
+                $match: { _id: mongoose.Types.ObjectId('5e4d31096c8bce249c5eeee8') } 
+            },
+            {
+                $project: {
+                    users: {
+                        $filter: {
+                            input: "$bank",
+                            cond: { $eq: ["$$this.skill", req.params.skill] }
+                        }
+                    }
+                }
+            },
+            {
+                $replaceRoot: {
+                    newRoot: {
+                        users: { $arrayElemAt: ["$users.users", 0] }
+                    }
+                }
+            }
+        ])
+                                
+
+       // if(skills.user == req.user.id) 
+            res.json(users);
+      //  else return res.status(400).send("Unauthorized");
+        
 
     } catch (err) {
         console.error(err.message);
@@ -110,8 +186,7 @@ router.post('/', auth,
 async (req, res) => {
 
 try {
-    const user = await User.findById(req.user.id).select('-password');
-
+    
     const newCompany = new Company( {
         companyName: req.body.companyName,
         user: req.user.id,
@@ -198,27 +273,6 @@ router.put('/skillify/:id', auth,
 
 });
 
-
-// @router      GET api/companies/mine/:id
-// @desc        Get SPECIFIC owned Company by logged in user
-// @access      Private
-router.get('/mine/bank/:id', auth, 
-
-    
-    async (req, res) => {
-
-    try {
-       
-        const skills = await Company.find({_id: req.params.id}).select('bank.skill');
-        res.json(skills);
-        
-
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server error');
-    }
-
-});
 
 
 module.exports = router;
