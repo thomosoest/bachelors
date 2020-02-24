@@ -70,6 +70,9 @@ router.get('/mine/:id', auth,
 });
 
 
+
+
+
 // @router      GET api/companies/:companyName
 // @desc        Get company by name
 // @access      Private
@@ -188,6 +191,28 @@ router.put('/skillify/:id', auth,
             console.error(err.message);
             res.status(500).send('Server Error');
         }
+
+});
+
+
+// @router      GET api/companies/mine/:id
+// @desc        Get SPECIFIC owned Company by logged in user
+// @access      Private
+router.get('/mine/bank/:id', auth, 
+
+    
+    async (req, res) => {
+
+    try {
+       
+        const skills = await Company.find({_id: req.params.id}).select('bank.skill');
+        res.json(skills);
+        
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
 
 });
 
