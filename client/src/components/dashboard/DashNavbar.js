@@ -17,6 +17,7 @@ const DashNavbar = (props) => {
     );
 
     return (
+        
         <div className="navbar bg-primary">
             <h1>
                 <i className={props.icon}> {props.title}</i>
@@ -24,7 +25,7 @@ const DashNavbar = (props) => {
             <ul>
                 {guestLinks}
             </ul>
-        </div>
+       </div>
     )
 }
 
