@@ -115,7 +115,7 @@ router.get('/mine/bank/:id/:skill', auth,
        
         const users = await Company.aggregate([
             { 
-                $match: { _id: mongoose.Types.ObjectId('5e4d31096c8bce249c5eeee8') } 
+                $match: { _id: mongoose.Types.ObjectId(req.params.id) } 
             },
             {
                 $project: {
