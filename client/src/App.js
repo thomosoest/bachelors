@@ -10,6 +10,7 @@ import CreateCompany from './components/pages/CreateCompany';
 import Dashboard from './components/dashboard/Dashboard';
 import ProfileCreate from './components/pages/ProfileCreate';
 import CompanyLists from './components/companies/CompanyLists';
+import CompanyDashboard from './components/dashboard/CompanyDashboard';
 
 import PrivateRoute from './components/routing/PrivateRoute';
 import CompanyState from './context/company/CompanyState';
@@ -41,6 +42,7 @@ const App = () => {
             <PrivateRoute exact path="/companies/make" component={CreateCompany}/>
             <PrivateRoute exact path="/dashboard" component={Dashboard}/>
             <PrivateRoute exact path="/create-profile" component={ProfileCreate}/>
+            <PrivateRoute exact path="/company-dashboard" component={CompanyDashboard}/>
             <Route exact path="/about" component={About}/>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>

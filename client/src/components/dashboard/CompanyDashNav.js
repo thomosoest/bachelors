@@ -2,16 +2,16 @@ import React, {Fragment} from 'react';
 import {Link} from 'react-router-dom';
 
 
-const DashNavbar = (props) => {
+const CompanyDashNav = (props) => {
     
 
     const guestLinks = (
         <Fragment>
             <li>
-                <Link to="/test">Hei</Link>
+                <Link to="/bank">Kompetansebank</Link>
             </li>
             <li>
-                <Link to="/test">Ho</Link>
+                <Link to="/test">Kurs</Link>
             </li>
         </Fragment>
     );
@@ -25,13 +25,13 @@ const DashNavbar = (props) => {
             <ul>
                 {guestLinks}
             </ul>
-       </div> 
+       </div>
     )
 }
 
-DashNavbar.defaultProps = {
+CompanyDashNav.defaultProps = {
     title: "Kompi",
     icon: "fas fa-id-card-alt"
 };
 
-export default DashNavbar;
+export default CompanyDashNav;
