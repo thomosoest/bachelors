@@ -14,7 +14,7 @@ const CompanyItem = (props) => {
     const toDashboard = () => {
         console.log("To Dashboard");
         getCurrentCompany(props.company._id);
-        history.push("yass");
+        history.push("company-dashboard");
     }
 
 

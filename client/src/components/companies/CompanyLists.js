@@ -2,7 +2,7 @@ import React from 'react';
 import SearchCompanies from '../pages/SearchCompanies';
 import Companies from '../companies/Companies';
 
-const CompanyDashboard = () => {
+const CompanyLists = () => {
     return (<div>
         <Companies case="owner"/>
         <SearchCompanies></SearchCompanies>
@@ -12,4 +12,4 @@ const CompanyDashboard = () => {
 }
 
 
-export default CompanyDashboard;
+export default CompanyLists;
