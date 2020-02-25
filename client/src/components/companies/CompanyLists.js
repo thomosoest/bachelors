@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchCompanies from '../pages/SearchCompanies';
-import Companies from '../companies/Companies';
+import Companies from './Companies';
 
 const CompanyLists = () => {
     return (<div>

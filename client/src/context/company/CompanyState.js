@@ -10,7 +10,8 @@ import {
     GET_COMPANIES_BY_NAME,
     GET_OWNED_COMPANIES,
     CLEAR_SEARCH_COMPANIES,
-    GET_CURRENT_COMPANY
+    GET_CURRENT_COMPANY,
+    GET_BANK
 } from '../types';
 
 const CompanyState = props => {
@@ -18,6 +19,7 @@ const CompanyState = props => {
         companies: [],
         ownedCompanies: [],
         currentCompany: null,
+        bank: null,
         loading: true
     };
 
@@ -137,6 +139,24 @@ const CompanyState = props => {
             });
         }
     }
+
+    // GET_OWNED_COMPANIES
+    const getBank = async () => {
+        
+        try {
+            console.log(state.currentCompany._id);
+            const res = await axios.get(`/api/companies/mine/bank/${state.currentCompany._id}`);
+            dispatch({
+                type: GET_BANK,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
     
     const clearSearchCompanies = async () => {
         try {
@@ -157,6 +177,7 @@ const CompanyState = props => {
             companies: state.companies, 
             ownedCompanies: state.ownedCompanies,
             currentCompany: state.currentCompany,
+            bank: state.bank,
             
             addCompany,
             getCompanies,
@@ -164,7 +185,8 @@ const CompanyState = props => {
             getCompaniesByName,
             getOwnedCompanies,
             clearSearchCompanies,
-            getCurrentCompany
+            getCurrentCompany,
+            getBank
         }}>
             {props.children}
         </CompanyContext.Provider>
