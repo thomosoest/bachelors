@@ -138,7 +138,7 @@ router.get('/mine/bank/:id/:skill', auth,
                                 
 
        // if(skills.user == req.user.id) 
-            res.json(users);
+            res.json(users[0]);
       //  else return res.status(400).send("Unauthorized");
         
 
