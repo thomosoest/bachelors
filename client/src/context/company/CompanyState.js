@@ -11,7 +11,8 @@ import {
     GET_OWNED_COMPANIES,
     CLEAR_SEARCH_COMPANIES,
     GET_CURRENT_COMPANY,
-    GET_BANK
+    GET_BANK,
+    GET_BANK_EMPLOYEES
 } from '../types';
 
 const CompanyState = props => {
@@ -20,6 +21,7 @@ const CompanyState = props => {
         ownedCompanies: [],
         currentCompany: null,
         bank: null,
+        employees: null,
         loading: true
     };
 
@@ -61,23 +63,23 @@ const CompanyState = props => {
     }
 
 
-        // GET CURRENT COMPANY
-        const getCurrentCompany = async id => {
-        
-            try {
-                const res = await axios.get(`api/companies/mine/${id}`);
-                dispatch({
-                    type: GET_CURRENT_COMPANY,
-                    payload: res.data
-                })
-                
-            } catch (err) {
-                dispatch({
-                    type: ERR_COMPANY,
-                    payload: err.response.msg
-                });
-            }
+    // GET CURRENT COMPANY
+    const getCurrentCompany = async id => {
+    
+        try {
+            const res = await axios.get(`api/companies/mine/${id}`);
+            dispatch({
+                type: GET_CURRENT_COMPANY,
+                payload: res.data
+            })
+            
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
         }
+    }
 
     // ADD COMPANY
     const addCompany = async company => {
@@ -140,7 +142,7 @@ const CompanyState = props => {
         }
     }
 
-    // GET_OWNED_COMPANIES
+    // GET_BANK
     const getBank = async () => {
         
         try {
@@ -148,6 +150,24 @@ const CompanyState = props => {
             const res = await axios.get(`/api/companies/mine/bank/${state.currentCompany._id}`);
             dispatch({
                 type: GET_BANK,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
+    // GET BANK EMPLOYEES
+    const getBankEmployees = async skill => {
+        
+        try {
+            const res = await axios.get(`api/companies/mine/bank/${state.currentCompany._id}/${skill}`);
+            dispatch({
+                type: GET_BANK_EMPLOYEES,
                 payload: res.data
             });
         } catch (err) {
@@ -178,6 +198,7 @@ const CompanyState = props => {
             ownedCompanies: state.ownedCompanies,
             currentCompany: state.currentCompany,
             bank: state.bank,
+            employees: state.employees,
             
             addCompany,
             getCompanies,
@@ -186,7 +207,8 @@ const CompanyState = props => {
             getOwnedCompanies,
             clearSearchCompanies,
             getCurrentCompany,
-            getBank
+            getBank,
+            getBankEmployees
         }}>
             {props.children}
         </CompanyContext.Provider>
