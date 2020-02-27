@@ -135,10 +135,12 @@ router.get('/mine/bank/:id/:skill', auth,
                 }
             }
         ])
-                                
+          
+        const result = users[0].users;
+        await User.populate(result, {path: "user", select:  {_id: 1, name: 1}});
 
        // if(skills.user == req.user.id) 
-            res.json(users[0]);
+            res.json(result);
       //  else return res.status(400).send("Unauthorized");
         
 

@@ -1,10 +1,13 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import CompanyContext from '../../context/company/companyContext';
 import SkillItem from '../skill/SkillItem';
+import Modal from '../UI/Modal';
 
 
 const Bank = () => {
 
+    // * Use state for Modal
+    const [showModal, setModal] = useState(true);
     const companyContext = useContext(CompanyContext);
     const {getBank, bank, getBankEmployees, employees} = companyContext;
     useEffect(() => {
@@ -12,17 +15,37 @@ const Bank = () => {
         // eslint-disable-next-line
     }, []);
 
+
+    const modalOn = () => {
+        setModal(true);
+    }
+
+    const modalOff = () => {
+        setModal(false);
+    }
+
     return (<div>
         {bank != null ?
-        bank.bank.map(skill => (
-            <SkillItem 
-                key={skill.skill} 
-                skill={skill} 
-                getEmployees={getBankEmployees}
-                employees={employees}
-            />
-        )) : null
+            bank.bank.map(skill => (
+                <SkillItem 
+                    key={skill.skill} 
+                    skill={skill} 
+                    getEmployees={getBankEmployees}
+                    employees={employees}
+                    showModal={modalOn}
+                />
+            )) : null
         }
+
+        <Modal show={showModal} clicked={modalOff} >
+            {employees != null ?
+                employees.map(user => (
+                    <div key={user._id}>
+                        <p>User: {user.user.name}</p>
+                    </div>
+                )) : null
+            }
+        </Modal>
         
     </div>)
 }

@@ -1,4 +1,6 @@
 import React from 'react'
+import Card from '../UI/Card';
+
 
 
 const SkillItem = (props) => {
@@ -6,14 +8,12 @@ const SkillItem = (props) => {
     const displayEmployees = () => {
         props.getEmployees(props.skill.skill);
         console.log(props.employees);
+        props.showModal();
     }
 
     return(
-
-        <div className="card bg-light">
-            <p>{props.skill.skill}</p> 
-            <button onClick={displayEmployees} className="btn btn-dark btn-sm">Se kompetanse</button>
-        {props.employees ?  (<p>Finnes</p>) : (<p>Ikke</p>)}
+        <div>
+            <Card title={props.skill.skill} click={displayEmployees} buttonName="Se ansatte"/>
         </div>
 
     )

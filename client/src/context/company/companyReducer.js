@@ -14,7 +14,7 @@ export default (state, action) => {
         case GET_BANK_EMPLOYEES:
             return {
                 ...state,
-                employees: action.payload
+                employees: [...action.payload]
             }
         case GET_BANK: 
             return {

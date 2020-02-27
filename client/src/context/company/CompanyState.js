@@ -21,7 +21,7 @@ const CompanyState = props => {
         ownedCompanies: [],
         currentCompany: null,
         bank: null,
-        employees: null,
+        employees: [],
         loading: true
     };
 
