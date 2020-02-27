@@ -27,7 +27,7 @@ const Bank = () => {
 
     return (<div>
         {bank != null ?
-            bank.bank.map(skill => (
+            bank.map(skill => (
                 <SkillItem 
                     key={skill.skill} 
                     skill={skill} 

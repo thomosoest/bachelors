@@ -20,7 +20,7 @@ const CompanyState = props => {
         companies: [],
         ownedCompanies: [],
         currentCompany: null,
-        bank: null,
+        bank: [],
         employees: [],
         loading: true
     };
@@ -147,7 +147,7 @@ const CompanyState = props => {
         
         try {
             console.log(state.currentCompany._id);
-            const res = await axios.get(`/api/companies/mine/bank/${state.currentCompany._id}`);
+            const res = await axios.get(`/api/skills/${state.currentCompany._id}`);
             dispatch({
                 type: GET_BANK,
                 payload: res.data
@@ -165,7 +165,7 @@ const CompanyState = props => {
     const getBankEmployees = async skill => {
         
         try {
-            const res = await axios.get(`api/companies/mine/bank/${state.currentCompany._id}/${skill}`);
+            const res = await axios.get(`api/skills/${state.currentCompany._id}/${skill}`);
             dispatch({
                 type: GET_BANK_EMPLOYEES,
                 payload: res.data

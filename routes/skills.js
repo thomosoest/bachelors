@@ -91,7 +91,7 @@ router.get('/:id/:skill', auth,
     try {
        
         const employees = await Skill.findOne({company: req.params.id, skill: req.params.skill})
-                                .select('employees');
+                                .select('employees').populate("employees.user", ["name"]);
 
         
         res.json(employees.employees);

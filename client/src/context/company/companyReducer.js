@@ -19,7 +19,7 @@ export default (state, action) => {
         case GET_BANK: 
             return {
                 ...state,
-                bank: action.payload,
+                bank: [...action.payload],
                 loading: false
             }
         case GET_CURRENT_COMPANY:
