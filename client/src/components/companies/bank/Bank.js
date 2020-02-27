@@ -1,15 +1,16 @@
 import React, {useContext, useEffect, useState} from 'react';
-import CompanyContext from '../../context/company/companyContext';
-import SkillItem from '../skill/SkillItem';
-import Modal from '../UI/Modal';
+import CompanyContext from '../../../context/company/companyContext';
+import SkillItem from './SkillItem';
+import Modal from '../../UI/Modal';
 
 
 const Bank = () => {
 
     // * Use state for Modal
-    const [showModal, setModal] = useState(true);
+    const [showModal, setModal] = useState(false);
     const companyContext = useContext(CompanyContext);
     const {getBank, bank, getBankEmployees, employees} = companyContext;
+
     useEffect(() => {
         getBank();
         // eslint-disable-next-line

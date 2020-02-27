@@ -3,7 +3,7 @@ import ProfileContext from '../../context/profile/profileContext';
 // import AuthContext from '../../context/auth/authContext';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import About from '../../components/pages/About';
-import Bank from '../companies/Bank';
+import Bank from '../companies/bank/Bank';
 import CompanyDashNav from './CompanyDashNav';
 
 const CompanyDashboard = () => {
