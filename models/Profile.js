@@ -15,6 +15,14 @@ const ProfileSchema = mongoose.Schema({
         type: [String]
     },
 
+    experiences: {
+        type: [String]
+    },
+
+    title: {
+        type: String
+    },
+
     companies: [
             {
                 company: {

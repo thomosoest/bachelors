@@ -33,11 +33,13 @@ router.get("/me", auth, async (req, res) => {
 // @access  private
 
 router.post("/", auth,  async (req, res) =>{
-    const {bio,skills} = req.body;
+    const {bio,skills, experiences, title} = req.body;
     const profileFields = {};
     profileFields.user = req.user.id;
     profileFields.bio = bio;
+    profileFields.title = title;
     profileFields.skills = skills.split(',').map(skill => skill.trim());
+    profileFields.experiences = experiences.split(',').map(experience => experience.trim());
     
 
     

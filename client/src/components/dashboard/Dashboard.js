@@ -16,22 +16,20 @@ const Dashboard = () => {
     }, []);
     
     return loading? <p>Loading...</p> :
-        <Router>    
+          
         <Fragment>
             <h1>Dashbord</h1>
-            <p>Velkommen til Kompi, {user && user.name}!</p>
-            <p>Ditt brukernavn: {user && user.email} </p>
-            <p>Kontoen din ble laget: {user && user.date} </p>
+            
             {profile !== null?
                 <Fragment> 
                     <p>Du har opprettet en profil.</p>
-                    
-                    
-                    <div className="container">
-                    <Switch>
-                        <Route exact path="/test" component={About}/>
-                    </Switch>
-                    </div>
+                    <p>Velkommen til Kompi, {user && user.name}!</p>
+                    <p>Ditt brukernavn: {user && user.email} </p>
+                    <p>Kontoen din ble laget: {user && user.date} </p>
+                    <p>bio: {profile.bio}</p>
+                    <p>tittel: {profile.title}</p>
+                    <p>Kompetanser: {profile.skills}</p>
+                    <p>Erfaringer: {profile.experiences}</p>  
                 </Fragment>:
                 <Fragment>
                     <p>Opprett profil først</p>
@@ -39,7 +37,7 @@ const Dashboard = () => {
                 </Fragment>}
 
         </Fragment>
-        </Router>
+      
 
 }
 

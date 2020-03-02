@@ -4,10 +4,12 @@ import ProfileContext from '../../context/profile/profileContext';
 const ProfileCreate = () => {
     const [ profile, setProfile] = useState({
         bio: '',
-        skills: ''
+        skills: '',
+        experiences: '',
+        title: ''
     });
 
-    const { bio, skills } = profile;
+    const { bio, skills, title, experiences } = profile;
 
     const onChange = e => setProfile({ ...profile, [e.target.name]: e.target.value });
     const profileContext = useContext(ProfileContext);
@@ -16,7 +18,7 @@ const ProfileCreate = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         profileContext.createProfile(
-            {bio, skills}
+            {bio, skills, title, experiences}
         );
     }
 
@@ -36,6 +38,20 @@ const ProfileCreate = () => {
                     onChange={onChange}
                     value={profile.skills}
                     placeholder="Dine kompetanser adskilt med komma (,)..."
+                />
+                <input 
+                    type="text" 
+                    name="experiences" 
+                    onChange={onChange}
+                    value={profile.experiences}
+                    placeholder="Dine jobb-erfaringer adskilt med komma (,)..."
+                />
+                <input 
+                    type="text" 
+                    name="title" 
+                    onChange={onChange}
+                    value={profile.title}
+                    placeholder="Din nåværende jobb tittel"
                 />
                 <input
                     type="submit"
