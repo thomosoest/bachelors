@@ -26,7 +26,7 @@ const Dashboard = () => {
                 <Fragment> 
                     <p>Du har opprettet en profil.</p>
                     
-                    <DashNavbar/>
+                    
                     <div className="container">
                     <Switch>
                         <Route exact path="/test" component={About}/>
