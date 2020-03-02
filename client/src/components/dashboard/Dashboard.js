@@ -16,13 +16,15 @@ const Dashboard = () => {
     }, []);
     
     return loading? <p>Loading...</p> :
-        <Router>
+        <Router>    
         <Fragment>
-            <h1>Dashboard</h1>
-            <p>Velkommen {user && user.name}</p>
+            <h1>Dashbord</h1>
+            <p>Velkommen til Kompi, {user && user.name}!</p>
+            <p>Ditt brukernavn: {user && user.email} </p>
+            <p>Kontoen din ble laget: {user && user.date} </p>
             {profile !== null?
                 <Fragment> 
-                    <p>You have a profile</p>
+                    <p>Du har opprettet en profil.</p>
                     
                     <DashNavbar/>
                     <div className="container">
