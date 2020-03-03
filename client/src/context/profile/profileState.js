@@ -12,6 +12,7 @@ import {
 const ProfileState = props => {
     const initialState = {
             profile: null,
+            dispProfile: null,
             profiles: [],
             company: null,
             loading: true,
