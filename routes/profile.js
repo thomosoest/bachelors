@@ -83,7 +83,7 @@ router.get("/", async (req, res) => {
 
 
 // @route   GET api/profile/user/:id
-// @desc    Get all profiles
+// @desc    Get a specific profile
 // @access  public
 
 router.get("/user/:id", async (req, res) => {
