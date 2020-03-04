@@ -26,3 +26,7 @@ export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const CREATE_PROFILE = "CREATE_PROFILE";
 
+
+export const ADD_COURSE = 'ADD_COURSE';
+export const ERR_COURSE = 'ERR_COURSE';
+

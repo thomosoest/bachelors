@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
 import CompanyDashNav from './CompanyDashNav';
+import CourseCreate from '../courses/CourseCreate';
 
 const CompanyDashboard = () => {
 
@@ -27,7 +28,7 @@ const CompanyDashboard = () => {
                     <CompanyDashNav/>
                     <div className="container">
                     <Switch>
-                        <Route exact path="/test" component={About}/>
+                        <Route exact path="/courses" component={CourseCreate}/>
                         <Route exact path="/bank" component={Bank}/>
                     </Switch>
                     </div>

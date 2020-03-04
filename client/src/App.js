@@ -14,6 +14,7 @@ import CompanyDashboard from './components/dashboard/CompanyDashboard';
 
 import PrivateRoute from './components/routing/PrivateRoute';
 import CompanyState from './context/company/CompanyState';
+import CourseState from './context/course/CourseState';
 import AuthState from './context/auth/AuthState';
 import ProfileState from './context/profile/profileState';
 import Register from './components/auth/Register';
@@ -33,6 +34,7 @@ const App = () => {
     <AuthState>
     <ProfileState>
     <CompanyState>
+    <CourseState>
     <Router>
       <div className="App">
         <Navbar/>
@@ -53,6 +55,7 @@ const App = () => {
         </div>
       </div>
     </Router>
+    </CourseState>
     </CompanyState>
     </ProfileState>
     </AuthState>
