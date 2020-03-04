@@ -4,6 +4,7 @@ import ProfileContext from './profileContext';
 import profileReducer from './profileReducer';
 import {
     GET_PROFILE,
+    GET_USER_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
     CREATE_PROFILE
@@ -12,7 +13,7 @@ import {
 const ProfileState = props => {
     const initialState = {
             profile: null,
-            dispProfile: null,
+            userProfile: null, // someone else's profile
             profiles: [],
             company: null,
             loading: true,
@@ -27,6 +28,23 @@ const ProfileState = props => {
             const res = await axios.get("/api/profile/me");
             dispatch({
                 type: GET_PROFILE,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+    }
+
+
+    const getUserProfile = async id => {
+        
+        try {
+            const res = await axios.get(`/api/profile/user/${id}`);
+            dispatch({
+                type: GET_USER_PROFILE,
                 payload: res.data
             });
         } catch (err) {
@@ -72,8 +90,10 @@ const ProfileState = props => {
             profile: state.profile,
             profiles: state.profiles,
             loading: state.loading,
+            userProfile: state.userProfile,
 
             getCurrentProfile,
+            getUserProfile,
             clearProfile,
             createProfile
         }}>

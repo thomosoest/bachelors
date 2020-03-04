@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from 'react';
 import CompanyContext from '../../../context/company/companyContext';
 import SkillItem from './SkillItem';
 import Modal from '../../UI/Modal';
+import ProfileLink from '../../profile/ProfileLink';
 
 
 const Bank = () => {
@@ -42,7 +43,7 @@ const Bank = () => {
             {employees != null ?
                 employees.map(user => (
                     <div key={user._id}>
-                        <p>User: {user.user.name}</p>
+                        <ProfileLink user={user.user}/>
                     </div>
                 )) : null
             }
