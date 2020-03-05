@@ -54,11 +54,11 @@ router.post("/", auth,  async (req, res) =>{
             return res.json(course);
         }
 
-        // create profile
+        // create course
         course = new Course(courseFields);
         await course.save();
         res.json(course);
-        
+    
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");
@@ -66,8 +66,8 @@ router.post("/", auth,  async (req, res) =>{
 });
 
 
-// @route   GET api/profile
-// @desc    Get all profiles
+// @route   GET api/courses
+// @desc    Get all courses
 // @access  public
 
 
