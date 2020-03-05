@@ -44,12 +44,12 @@ router.post("/", auth,  async (req, res) =>{
     courseFields.date = date;
     courseFields.skills = skills.split(',').map(skill => skill.trim());    
 
-    try {
-        // create profile
+    try {   
+        // create course
         let course = new Course(courseFields);
         await course.save();
         res.json(course);
-        
+    
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");
@@ -57,8 +57,8 @@ router.post("/", auth,  async (req, res) =>{
 });
 
 
-// @route   GET api/profile
-// @desc    Get all profiles
+// @route   GET api/courses
+// @desc    Get all courses
 // @access  public
 
 
