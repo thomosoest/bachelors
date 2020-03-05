@@ -28,5 +28,6 @@ export const CREATE_PROFILE = "CREATE_PROFILE";
 
 
 export const ADD_COURSE = 'ADD_COURSE';
+export const GET_COMPANY_COURSES = 'GET_COMPANY_COURSES';
 export const ERR_COURSE = 'ERR_COURSE';
 

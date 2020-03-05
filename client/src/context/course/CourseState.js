@@ -4,6 +4,7 @@ import CourseContext from './courseContext';
 import courseReducer from './courseReducer';
 import {
     ADD_COURSE,
+    GET_COMPANY_COURSES,
     ERR_COURSE
     
 } from '../types';
@@ -41,6 +42,24 @@ const CourseState = props => {
     }
 
 
+    const getCompanyCourses = async companyId => {
+        
+        try {
+            const res = await axios.get(`/api/courses/company/${companyId}`);
+            console.log(res.data);
+            dispatch({
+                type: GET_COMPANY_COURSES,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COURSE,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
 
     return (
         <CourseContext.Provider 
@@ -49,7 +68,8 @@ const CourseState = props => {
             courses: state.courses,
             loading: state.loading,
 
-            addCourse
+            addCourse,
+            getCompanyCourses
         }}>
             {props.children}
         </CourseContext.Provider>

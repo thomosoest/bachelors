@@ -6,7 +6,7 @@ import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
 import CompanyDashNav from './CompanyDashNav';
 import CourseCreate from '../courses/CourseCreate';
-import Course from '../courses/CourseCreate';
+import Course from '../courses/Course';
 
 const CompanyDashboard = () => {
 
