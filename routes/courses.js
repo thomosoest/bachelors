@@ -45,17 +45,8 @@ router.post("/", auth,  async (req, res) =>{
     courseFields.skills = skills.split(',').map(skill => skill.trim());    
 
     try {
-        let course = await Course.findOne({user: req.user.id});
-        if(course){
-            course = await Course.findOneAndUpdate({user: req.user.id}, {
-                $set: courseFields
-            }, {new: true});
-
-            return res.json(course);
-        }
-
         // create profile
-        course = new Course(courseFields);
+        let course = new Course(courseFields);
         await course.save();
         res.json(course);
         
