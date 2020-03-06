@@ -6,7 +6,7 @@ import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
 import CompanyDashNav from './CompanyDashNav';
 import CourseCreate from '../courses/CourseCreate';
-import Course from '../courses/Course';
+import Courses from '../courses/Courses';
 
 const CompanyDashboard = () => {
 
@@ -29,7 +29,7 @@ const CompanyDashboard = () => {
                     <CompanyDashNav/>
                     <div className="container">
                     <Switch>
-                        <Route exact path="/courses" component={Course}/>
+                        <Route exact path="/courses" component={Courses}/>
                         <Route exact path="/bank" component={Bank}/>
                     </Switch>
                     </div>

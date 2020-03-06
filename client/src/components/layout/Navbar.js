@@ -69,7 +69,7 @@ const Navbar = (props) => {
 
 Navbar.defaultProps = {
     title: "Kompi",
-    icon: "fas fa-id-card-alt"
+    icon: "fab fa-korvue"
 };
 
 export default Navbar;

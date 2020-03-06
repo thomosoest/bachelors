@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
 /* Global Styles */
 :root {
-  --primary-color: #333333;
+  --primary-color: #5f1a1a;
   --dark-color: #333333;
-  --light-color: #f4f4f4;
+  --light-color: #2c7085;
   --danger-color: #dc3545;
   --success-color: #28a745;
 }
@@ -16,8 +16,8 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 14px;
   line-height: 1.6;
   background-color: #fff;
   color: #333;
