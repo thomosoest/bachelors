@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const Profile = require("../models/Profile");
 const User = require("../models/User");
+const Company = require("../models/Company");
 const {check, validationResult} = require("express-validator");
 
 // @route   GET api/profile/me
@@ -25,7 +26,27 @@ router.get("/me", auth, async (req, res) => {
         console.error(err.message);
         res.status(500).send("server error");
     }
-})
+});
+
+
+router.get("/me/companies", auth, async (req, res) => {
+    try {
+        const companies = await Profile.findOne({user: req.user.id})
+            .populate("companies.company", ["-ansatte", "-bank"]).select("company");
+
+        if(!companies) return res.status(400).json({msg: "User not found by this name"});
+
+        let levelDownCompanies = [];
+        for(let i in companies.companies){
+            levelDownCompanies.push(companies.companies[i].company);
+        }
+        res.json(levelDownCompanies);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
 
 
 // @route   POST api/profile

@@ -24,11 +24,11 @@ const ProfileSchema = mongoose.Schema({
     },
 
     companies: [
-            {
-                company: {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: 'company'
-                }
+        {       
+            company: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'company'  
+            }      
         }
     ]
 

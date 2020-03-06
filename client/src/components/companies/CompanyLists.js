@@ -6,6 +6,7 @@ const CompanyLists = () => {
     return (
     <div>
         <Companies case="owner"/>
+        <Companies case="employee" />
         <SearchCompanies></SearchCompanies>
     </div>)
 }

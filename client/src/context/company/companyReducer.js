@@ -3,6 +3,7 @@ import {
     GET_COMPANIES,
     GET_COMPANIES_BY_NAME,
     GET_OWNED_COMPANIES,
+    GET_JOINED_COMPANIES,
     CLEAR_SEARCH_COMPANIES,
     GET_CURRENT_COMPANY,
     GET_BANK,
@@ -39,6 +40,12 @@ export default (state, action) => {
             return {
                 ...state,
                 ownedCompanies: action.payload,
+                loading: false
+            }
+        case GET_JOINED_COMPANIES:
+            return {
+                ...state,
+                joinedCompanies: action.payload,
                 loading: false
             }
         case GET_COMPANIES_BY_NAME:

@@ -30,7 +30,7 @@ const CompanyItem = (props) => {
                     buttonName="Se dashbord"
                 />
             break;
-        case "ansatt":
+        case "employee":
            // output = <p>Ansatt perspektiv</p>;  
                 output = <Card 
                     title={props.company.companyName}

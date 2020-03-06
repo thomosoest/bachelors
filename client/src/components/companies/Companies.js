@@ -5,12 +5,19 @@ import CompanyItem from '../../components/companies/CompanyItem';
 
 const Companies = (props) => {
     const companyContext = useContext(CompanyContext);
-    const {companies, ownedCompanies, getCompanies, getOwnedCompanies} = companyContext;
+    const {
+        companies, 
+        ownedCompanies, 
+        joinedCompanies, 
+        getCompanies, 
+        getOwnedCompanies, 
+        getJoinedCompanies} = companyContext;
 
     useEffect(() => {
         switch(props.case){
             case "owner": getOwnedCompanies(); break;
             case "all" : getCompanies(); break;
+            case "employee": getJoinedCompanies(); break;
             default: ;  break;
         }
     
@@ -22,7 +29,7 @@ const Companies = (props) => {
     switch(props.case){
         case "owner": selectedCompanies = ownedCompanies; break;      
         case "all": selectedCompanies = companies; break;
-        case "employee": selectedCompanies = []; break;
+        case "employee": selectedCompanies = joinedCompanies; break;
               
         default: selectedCompanies = companies;
                 
