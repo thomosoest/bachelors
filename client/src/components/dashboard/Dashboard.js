@@ -22,9 +22,9 @@ const Dashboard = () => {
             
             {profile !== null?
                 <Fragment> 
-                    <p>Du har opprettet en profil.</p>
+                    <p style={{color: "red"}}>Du har opprettet en profil.</p>
                     <p>Velkommen til Kompi,     {user && user.name}!</p>
-                    <p>Ditt brukernavn:         {user && user.email} </p>
+                    <h4>Ditt brukernavn:         {user && user.email} </h4>
                     <p>Kontoen din ble laget:   {user && user.date} </p>
                     <p>Bio:                     {profile && profile.bio}</p>
                     <p>Firma:                   </p>
@@ -34,7 +34,7 @@ const Dashboard = () => {
                 </Fragment>:
                 
                 <Fragment>
-                    <p>Opprett profil først</p>
+                    <p style={{color: "red"}}>Opprett profil først</p>
                     <Link to="create-profile" className="btn btn-primary">Opprett</Link>
                 </Fragment>}
 
