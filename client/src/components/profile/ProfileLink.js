@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const ProfileLink = props => {
 
     const click = () => {

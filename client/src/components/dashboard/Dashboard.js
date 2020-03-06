@@ -23,22 +23,22 @@ const Dashboard = () => {
             {profile !== null?
                 <Fragment> 
                     <p>Du har opprettet en profil.</p>
-                    <p>Velkommen til Kompi, {user && user.name}!</p>
-                    <p>Ditt brukernavn: {user && user.email} </p>
-                    <p>Kontoen din ble laget: {user && user.date} </p>
-                    <p>bio: {profile.bio}</p>
-                    <p>tittel: {profile.title}</p>
-                    <p>Kompetanser: {profile.skills}</p>
-                    <p>Erfaringer: {profile.experiences}</p>  
+                    <p>Velkommen til Kompi,     {user && user.name}!</p>
+                    <p>Ditt brukernavn:         {user && user.email} </p>
+                    <p>Kontoen din ble laget:   {user && user.date} </p>
+                    <p>Bio:                     {profile && profile.bio}</p>
+                    <p>Firma:                   </p>
+                    <p>Tittel:                  {profile && profile.title}</p>
+                    <p>Kompetanse:             {profile && profile.skills}</p>
+                    <p>Erfaringer:              {profile && profile.experiences}</p>  
                 </Fragment>:
+                
                 <Fragment>
                     <p>Opprett profil først</p>
                     <Link to="create-profile" className="btn btn-primary">Opprett</Link>
                 </Fragment>}
 
         </Fragment>
-      
-
 }
 
 
