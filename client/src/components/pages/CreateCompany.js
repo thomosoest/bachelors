@@ -6,10 +6,7 @@ const CreateCompany = () => {
     const companyContext = useContext(CompanyContext);
     const {addCompany} = companyContext;
 
-
     const [ companyName, setName] = useState("");
-
-
 
     const onChange = e => setName(e.target.value);
     

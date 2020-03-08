@@ -23,12 +23,12 @@ const Search = () => {
                 name="text" 
                 onChange={onChangeHandler}
                 value={text}
-                placeholder="Søk din bedrift..."
+                placeholder="Finn din bedrift..."
             />
             <input
                 type="submit"
-                value="search"
-                className="btn btn-dark btn-block"
+                value="Søk"
+                className="btn btn-dark width1"
             />
         </form>
         {companyContext.companies.length > 0 &&

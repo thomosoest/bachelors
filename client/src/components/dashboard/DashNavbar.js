@@ -3,14 +3,10 @@ import {Link} from 'react-router-dom';
 
 
 const DashNavbar = (props) => {
-    
 
     const guestLinks = (
+
         <Fragment>
-            
-
-            
-
             <li>
                 <Link to="/test">Hei</Link>
             </li>
@@ -21,7 +17,6 @@ const DashNavbar = (props) => {
     );
 
     return (
-        
         <div className="navbar bg-primary">
             <h1>
                 <i className={props.icon}> {props.title}</i>

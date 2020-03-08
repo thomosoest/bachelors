@@ -15,13 +15,18 @@ const Dashboard = () => {
         // eslint-disable-next-line
     }, []);
     
+    //<img src="" class="w3-round" alt="Norway"></img>
+                    
+
     return loading? <p>Loading...</p> :
           
         <Fragment>
+            
             <h1>Dashbord</h1>
             
             {profile !== null?
                 <Fragment> 
+                    <div class="card">
                     <p style={{color: "red"}}>Du har opprettet en profil.</p>
                     <p>Velkommen til Kompi,     {user && user.name}!</p>
                     <h4>Ditt brukernavn:         {user && user.email} </h4>
@@ -31,8 +36,9 @@ const Dashboard = () => {
                     <p>Tittel:                  {profile && profile.title}</p>
                     <p>Kompetanse:             {profile && profile.skills}</p>
                     <p>Erfaringer:              {profile && profile.experiences}</p>  
+                    </div>
                 </Fragment>:
-                
+      
                 <Fragment>
                     <p style={{color: "red"}}>Opprett profil først</p>
                     <Link to="create-profile" className="btn btn-primary">Opprett</Link>
