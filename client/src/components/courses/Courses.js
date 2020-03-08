@@ -2,6 +2,7 @@ import React, {Fragment, useContext, useEffect} from 'react';
 import CourseContext from '../../context/course/courseContext';
 import CourseItem from '../../components/courses/CourseItem';
 import CompanyContext from '../../context/company/companyContext';
+import CourseCreate from './CourseCreate';
 
 const Courses = (props) => { 
     const courseContext = useContext(CourseContext);
@@ -15,6 +16,7 @@ const Courses = (props) => {
 
     return (   
         <Fragment>
+            <CourseCreate/>
             {courses.map(course => (
             <CourseItem key={course._id} case={props.case} course={course}/>
             ))}
