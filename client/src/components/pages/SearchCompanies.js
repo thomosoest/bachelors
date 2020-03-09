@@ -5,8 +5,8 @@ import Search from '../companies/Search';
 const SearchCompanies = () => {
    
     return (
-        <div>
-            <h1>Finn din bedrift</h1>
+        <div class="padding1">
+            <h1 >Finn din bedrift</h1>
             <Search/>
             <Companies/>
         </div>

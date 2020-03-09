@@ -95,8 +95,12 @@ img {
   padding: 1rem;
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
+  
 }
 
+.Half {
+  width: 500px;
+}
 /* List */
 .list {
   margin: 0.5rem 0;
@@ -474,11 +478,13 @@ table th {
 }
 
 .Alignment {
-
   align-items: center;
 }
 
+.padding1 {
+  padding-top: 2rem;
+}
 
-
-
-
+.width1 {
+ width: 75px;
+} 
