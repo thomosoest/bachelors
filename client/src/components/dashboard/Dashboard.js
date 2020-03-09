@@ -15,7 +15,7 @@ const Dashboard = () => {
         // eslint-disable-next-line
     }, []);
     
-    //<img src="" class="w3-round" alt="Norway"></img>
+// <img src="https://image.shutterstock.com/image-vector/example-stamp-600w-426673501.jpg" class="w3-round" alt="Norway"></img>
                     
 
     return loading? <p>Loading...</p> :
@@ -26,7 +26,7 @@ const Dashboard = () => {
             
             {profile !== null?
                 <Fragment> 
-                    <div class="card">
+                    <div class="card Half">
                     <p style={{color: "red"}}>Du har opprettet en profil.</p>
                     <p>Velkommen til Kompi,     {user && user.name}!</p>
                     <h4>Ditt brukernavn:         {user && user.email} </h4>
