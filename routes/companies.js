@@ -51,6 +51,7 @@ router.get('/mine', auth,
 
 });
 
+
 // @router      GET api/companies/mine/:id
 // @desc        Get SPECIFIC owned Company by logged in user
 // @access      Private
@@ -63,7 +64,8 @@ router.get('/mine/:id', auth,
        
         const company = await Company.findOne({_id: req.params.id})
             .select('-bank')
-            .populate("user", ["name", "_id"]);
+            .populate("user", ["name", "_id"])
+            .populate("ansatte.user", ["_id", "name"]);
         if(company.user._id == req.user.id) res.json(company);
         else {
             res.json({msg: "Unauthorized"});

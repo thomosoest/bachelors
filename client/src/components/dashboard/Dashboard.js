@@ -26,7 +26,7 @@ const Dashboard = () => {
             
             {profile !== null?
                 <Fragment> 
-                    <div class="card Half">
+                    <div className="card Half">
                     <p style={{color: "red"}}>Du har opprettet en profil.</p>
                     <p>Velkommen til Kompi,     {user && user.name}!</p>
                     <h4>Ditt brukernavn:         {user && user.email} </h4>

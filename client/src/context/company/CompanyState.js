@@ -231,6 +231,7 @@ const CompanyState = props => {
             getBank,
             getBankEmployees,
             getJoinedCompanies
+        
         }}>
             {props.children}
         </CompanyContext.Provider>

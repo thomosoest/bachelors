@@ -13,7 +13,7 @@ const ShowProfile = (props) => {
     console.log(userProfile);
 
     return (
-        <div class="card Half">
+        <div className="card Half">
                     <p>Brukernavn:     {userProfile && userProfile.user.name}</p>
                     <p>Bio:                     {userProfile && userProfile.bio}</p>
                     <p>Firma:                   </p>
