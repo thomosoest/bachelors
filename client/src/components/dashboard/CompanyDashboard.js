@@ -4,6 +4,7 @@ import ProfileContext from '../../context/profile/profileContext';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
+import Ansatte from '../companies/bank/Ansatte';
 import CompanyDashNav from './CompanyDashNav';
 import CourseCreate from '../courses/CourseCreate';
 import Courses from '../courses/Courses';
@@ -31,6 +32,7 @@ const CompanyDashboard = () => {
                     <Switch>
                         <Route exact path="/courses" component={Courses}/>
                         <Route exact path="/bank" component={Bank}/>
+                        <Route exact path="/ansatte" component={Ansatte}/>
                     </Switch>
                     </div>
                 </Fragment>:

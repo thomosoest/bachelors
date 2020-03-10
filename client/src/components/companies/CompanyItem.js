@@ -19,10 +19,9 @@ const CompanyItem = (props) => {
     }
 
 
-    let output = null;//<button onClick={join} className="btn btn-dark btn-sm">Bli Med</button>;
+    let output = null;
     switch (props.case ) {
         case "owner":
-               // output = <button onClick={toDashboard} className="btn btn-dark btn-sm">Se Dashbord</button>;
                 output = <Card 
                     title={props.company.companyName}
                     text={"Eier: " + props.company.user.name}
@@ -30,15 +29,13 @@ const CompanyItem = (props) => {
                     buttonName="Se dashbord"
                 />
             break;
-        case "employee":
-           // output = <p>Ansatt perspektiv</p>;  
+        case "employee":  
                 output = <Card 
                     title={props.company.companyName}
                 />      
             break;
     
         default: 
-            // output = <button onClick={join} className="btn btn-dark btn-sm">Bli Med</button>;
                 output = <Card 
                     title={props.company.companyName}
                     text={"Eier: " + props.company.user.name}
@@ -49,11 +46,6 @@ const CompanyItem = (props) => {
     }
 
     return (
-       /* <div className="card bg-light">
-            <h3>{props.company.companyName}</h3>
-            <p>Eier {props.company.user.name}</p>
-            {output}
-        </div>*/
         output
     )
 };

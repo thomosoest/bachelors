@@ -8,6 +8,9 @@ const CompanyDashNav = (props) => {
     const guestLinks = (
         <Fragment>
             <li>
+                <Link to="/ansatte">Ansatte</Link>
+            </li>
+            <li>
                 <Link to="/bank">Kompetansebank</Link>
             </li>
             <li>

@@ -44,7 +44,6 @@ const Companies = (props) => {
                    (<CompanyItem key={company._id} case={props.case} company={company}/>)
             ))}
         </Fragment>
-       
     );
 }
 

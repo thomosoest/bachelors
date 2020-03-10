@@ -2,7 +2,6 @@ import React from 'react'
 import Card from '../../UI/Card';
 
 
-
 const SkillItem = (props) => {
 
     const displayEmployees = () => {
@@ -17,9 +16,6 @@ const SkillItem = (props) => {
         </div>
 
     )
-
-
-
 }
 
 
