@@ -43,7 +43,9 @@ const Bank = () => {
             {employees != null ?
                 employees.map(user => (
                     <div key={user._id}>
-                        <ProfileLink user={user.user}/>
+                        <ProfileLink user={user.user}>
+                            <p>{user.user.name}</p>
+                        </ProfileLink>
                     </div>
                 )) : null
             }

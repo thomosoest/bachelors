@@ -8,8 +8,8 @@ const ProfileLink = props => {
     }
 
     return (
-        <div>
-            <p onClick={click}>{props.user.name}</p>
+        <div onClick={click}>
+            {props.children}
         </div>
     );
 }
