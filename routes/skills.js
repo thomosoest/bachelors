@@ -55,6 +55,38 @@ router.post('/skillify/:id', auth,
 });
 
 
+// @router      GET api/skills/graph/:id
+// @desc        Get Skills of selected company as graph
+// @access      Private
+router.get('/graph/:id', auth,
+
+    
+    async (req, res) => {
+
+    try {
+       
+        const skills = await Skill.aggregate([
+            {$match: {company: mongoose.Types.ObjectId(req.params.id)}},
+            {
+                $project: {
+                    skill: 1,
+                    employee_count: { $size: "$employees" }
+                }
+            }
+        ])
+
+        
+        res.json(skills);
+        
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+
+});
+
+
 // @router      GET api/skills/:id
 // @desc        Get Skills of selected company
 // @access      Private
