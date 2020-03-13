@@ -7,11 +7,17 @@ import {
     CLEAR_SEARCH_COMPANIES,
     GET_CURRENT_COMPANY,
     GET_BANK,
-    GET_BANK_EMPLOYEES
+    GET_BANK_EMPLOYEES,
+    GET_GRAPH_DATA
 } from '../types';
 
 export default (state, action) => {
     switch(action.type){
+        case GET_GRAPH_DATA:
+            return {
+                ...state,
+                graphData: [...action.payload]
+            }
         case GET_BANK_EMPLOYEES:
             return {
                 ...state,

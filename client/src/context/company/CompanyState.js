@@ -13,7 +13,8 @@ import {
     CLEAR_SEARCH_COMPANIES,
     GET_CURRENT_COMPANY,
     GET_BANK,
-    GET_BANK_EMPLOYEES
+    GET_BANK_EMPLOYEES,
+    GET_GRAPH_DATA
 } from '../types';
 
 const CompanyState = props => {
@@ -23,6 +24,7 @@ const CompanyState = props => {
         joinedCompanies: [],
         currentCompany: null,
         bank: [],
+        graphData: [],
         employees: [],
         loading: true
     };
@@ -181,6 +183,24 @@ const CompanyState = props => {
     }
 
 
+    // GET_GRAPH_DATA
+    const getGraphData = async () => {
+        
+        try {
+            const res = await axios.get(`/api/skills/graph/${state.currentCompany._id}`);
+            dispatch({
+                type: GET_GRAPH_DATA,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
     // GET BANK EMPLOYEES
     const getBankEmployees = async skill => {
         
@@ -220,6 +240,7 @@ const CompanyState = props => {
             currentCompany: state.currentCompany,
             bank: state.bank,
             employees: state.employees,
+            graphData: state.graphData,
             
             addCompany,
             getCompanies,
@@ -230,7 +251,8 @@ const CompanyState = props => {
             getCurrentCompany,
             getBank,
             getBankEmployees,
-            getJoinedCompanies
+            getJoinedCompanies,
+            getGraphData
         
         }}>
             {props.children}

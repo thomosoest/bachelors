@@ -3,17 +3,18 @@ import CompanyContext from '../../../context/company/companyContext';
 import SkillItem from './SkillItem';
 import Modal from '../../UI/Modal';
 import ProfileLink from '../../profile/ProfileLink';
-
+import {VictoryBar, VictoryChart} from 'victory';
 
 const Bank = () => {
 
     // * Use state for Modal
     const [showModal, setModal] = useState(false);
     const companyContext = useContext(CompanyContext);
-    const {getBank, bank, getBankEmployees, employees} = companyContext;
+    const {getBank, getGraphData, graphData, bank, getBankEmployees, employees} = companyContext;
 
     useEffect(() => {
         getBank();
+        getGraphData();
         // eslint-disable-next-line
     }, []);
 
@@ -27,6 +28,16 @@ const Bank = () => {
     }
 
     return (<div>
+        {graphData.length > 0 ? (
+            <VictoryChart domainPadding={20}>
+                <VictoryBar
+                    data={graphData}
+                    x="skill"
+                    y="employee_count"
+                />
+            </VictoryChart>
+        ) : null}
+
         {bank != null ?
             bank.map(skill => (
                 <SkillItem 
