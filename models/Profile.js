@@ -1,5 +1,10 @@
 const mongoose = require("mongoose");
 
+const CurrentCourseSchema = mongoose.Schema({
+    title: {type: String, require:true},
+    description: {type: String}
+}, {_id: false});
+
 
 const ProfileSchema = mongoose.Schema({
     user: {
@@ -30,7 +35,9 @@ const ProfileSchema = mongoose.Schema({
                 ref: 'company'  
             }      
         }
-    ]
+    ],
+
+    currentCourses: [CurrentCourseSchema]
 
 });
 
