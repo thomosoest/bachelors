@@ -99,7 +99,7 @@ img {
 }
 
 .Half {
-  width: 500px;
+  width: 350px;
 }
 /* List */
 .list {
@@ -362,7 +362,7 @@ table th {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.7rem 2rem;
+  padding: 1rem 2rem;
   z-index: 1;
   width: 100%;
   border-bottom: solid 1px var(--primary-color);
@@ -487,4 +487,20 @@ table th {
 
 .width1 {
  width: 75px;
-} 
+}
+
+
+.bio {
+  padding: 10px;
+  width: 650px;
+  right: 370;
+  position: relative;
+  left: 370px;
+  top: -560px;
+}
+
+.date {
+  padding: 10px;
+  position: relative;
+  top: -95px;
+}

@@ -22,9 +22,6 @@ const CompanyDashNav = (props) => {
     return (
         
         <div className="navbar bg-primary">
-            <h1>
-                <i className={props.icon}> {props.title}</i>
-            </h1>
             <ul>
                 {guestLinks}
             </ul>
