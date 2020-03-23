@@ -12,6 +12,7 @@ import {
     GET_JOINED_COMPANIES,
     CLEAR_SEARCH_COMPANIES,
     GET_CURRENT_COMPANY,
+    GET_COMPANY_PROFILE,
     GET_BANK,
     GET_BANK_EMPLOYEES,
     GET_GRAPH_DATA
@@ -23,6 +24,7 @@ const CompanyState = props => {
         ownedCompanies: [],
         joinedCompanies: [],
         currentCompany: null,
+        companyProfile: null,
         bank: [],
         graphData: [],
         employees: [],
@@ -74,6 +76,25 @@ const CompanyState = props => {
             const res = await axios.get(`api/companies/mine/${id}`);
             dispatch({
                 type: GET_CURRENT_COMPANY,
+                payload: res.data
+            })
+            
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
+    // GET COMPANY PROFILE
+    const getCompanyProfile = async id => {
+    
+        try {
+            const res = await axios.get(`api/companies/profile/${id}`);
+            dispatch({
+                type: GET_COMPANY_PROFILE,
                 payload: res.data
             })
             
@@ -238,6 +259,7 @@ const CompanyState = props => {
             ownedCompanies: state.ownedCompanies,
             joinedCompanies: state.joinedCompanies,
             currentCompany: state.currentCompany,
+            companyProfile: state.companyProfile,
             bank: state.bank,
             employees: state.employees,
             graphData: state.graphData,
@@ -249,6 +271,7 @@ const CompanyState = props => {
             getOwnedCompanies,
             clearSearchCompanies,
             getCurrentCompany,
+            getCompanyProfile,
             getBank,
             getBankEmployees,
             getJoinedCompanies,

@@ -6,8 +6,7 @@ import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
 import Ansatte from '../companies/bank/Ansatte';
 import CompanyDashNav from './CompanyDashNav';
-import CourseCreate from '../courses/CourseCreate';
-import Courses from '../courses/Courses';
+import CompanyCourseTab from './CompanyCourseTab';
 
 const CompanyDashboard = () => {
 
@@ -30,7 +29,7 @@ const CompanyDashboard = () => {
                     <CompanyDashNav/>
                     <div className="container">
                     <Switch>
-                        <Route exact path="/courses" component={Courses}/>
+                        <Route exact path="/courses" component={CompanyCourseTab}/>
                         <Route exact path="/bank" component={Bank}/>
                         <Route exact path="/ansatte" component={Ansatte}/>
                     </Switch>

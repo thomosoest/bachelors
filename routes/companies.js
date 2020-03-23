@@ -79,6 +79,30 @@ router.get('/mine/:id', auth,
 });
 
 
+// @router      GET api/companies/profile/:id
+// @desc        Get PROFILE of Company
+// @access      Private
+router.get('/profile/:id', auth, 
+
+    
+    async (req, res) => {
+
+    try {
+       
+        const company = await Company.findOne({_id: req.params.id})
+            .select('companyName');
+
+        res.json(company);
+        
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+
+});
+
+
 // @router      GET api/companies/mine/bank/:id
 // @desc        Get Skillbank of selected company
 // @access      Private

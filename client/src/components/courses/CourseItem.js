@@ -10,13 +10,13 @@ const CourseItem = (props) => {
         case "owner":
                 output = <Card 
                     title={props.course.name}
-                    text={"Beskrivelse: " + props.course.description}
+                    text={"Owner Beskrivelse: " + props.course.description}
                 />
             break;
         case "ansatt":  
                 output = <Card 
                     title={props.course.name}
-                    text={"Beskrivelse: " + props.course.description}
+                    text={"Employee Beskrivelse: " + props.course.description}
                 />      
             break;
     

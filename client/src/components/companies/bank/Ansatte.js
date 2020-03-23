@@ -19,7 +19,7 @@ const Ansatte = () => {
     return (<div>
         {currentCompany != null ?
             currentCompany.ansatte.map(ansatt => (
-                <ProfileLink user={ansatt.user}> <EmployeeCard name={ansatt.user.name} key={ansatt.user._id}/> </ProfileLink>
+                <ProfileLink key={ansatt.user._id}user={ansatt.user}> <EmployeeCard name={ansatt.user.name} key={ansatt.user._id}/> </ProfileLink>
             )) : null
         }
 

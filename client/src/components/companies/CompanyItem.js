@@ -6,16 +6,20 @@ import Card from '../UI/Card';
 const CompanyItem = (props) => {
     const history = useHistory();
     const companyContext = useContext(CompanyContext);
-    const {joinCompany, getCurrentCompany} = companyContext;
+    const {joinCompany, getCurrentCompany, getCompanyProfile} = companyContext;
 
     const join = () => {
         joinCompany(props.company._id);
     }
 
     const toDashboard = () => {
-        console.log("To Dashboard");
         getCurrentCompany(props.company._id);
         history.push("company-dashboard");
+    }
+
+    const toProfile = () => {
+        getCompanyProfile(props.company._id);
+        history.push("company-profile");
     }
 
 
@@ -32,6 +36,8 @@ const CompanyItem = (props) => {
         case "employee":  
                 output = <Card 
                     title={props.company.companyName}
+                    click={toProfile}
+                    buttonName="Mer"
                 />      
             break;
     

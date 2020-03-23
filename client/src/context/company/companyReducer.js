@@ -6,6 +6,7 @@ import {
     GET_JOINED_COMPANIES,
     CLEAR_SEARCH_COMPANIES,
     GET_CURRENT_COMPANY,
+    GET_COMPANY_PROFILE,
     GET_BANK,
     GET_BANK_EMPLOYEES,
     GET_GRAPH_DATA
@@ -13,6 +14,11 @@ import {
 
 export default (state, action) => {
     switch(action.type){
+        case GET_COMPANY_PROFILE: 
+            return {
+                ...state,
+                currentCompany: action.payload
+            }
         case GET_GRAPH_DATA:
             return {
                 ...state,
