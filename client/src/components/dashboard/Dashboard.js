@@ -22,9 +22,9 @@ const Dashboard = () => {
                 <Fragment> 
                     <div className="card Half">
                     <p style={{color: "red"}}>Du har opprettet en profil.</p>
-                    <img src="https://image.shutterstock.com/image-vector/example-stamp-600w-426673501.jpg" class="w3-round" alt="Norway"></img>
+                    <img src="https://image.shutterstock.com/image-vector/example-stamp-600w-426673501.jpg" className="w3-round" alt="Norway"></img>
                     <h2>{profile && profile.title}{user && user.name}</h2>
-                    <p><i className="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> Programmerer  {profile && profile.title} </p>
+                    <p><i className="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> {profile && profile.title} </p>
                     <p><i className="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i> Oslo, NO</p>
                     <p><i className="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i> {user && user.email} </p>
                     <p><i className="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i> 1224435534  </p>
@@ -33,7 +33,7 @@ const Dashboard = () => {
                 
                     <div className="card Half">
                     <h4>Bio</h4>
-                    <p>Lorem ipsum                     {profile && profile.bio}</p>
+                    <p>                     {profile && profile.bio}</p>
                     </div>
 
                                

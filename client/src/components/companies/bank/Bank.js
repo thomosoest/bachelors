@@ -3,6 +3,7 @@ import CompanyContext from '../../../context/company/companyContext';
 import SkillItem from './SkillItem';
 import Modal from '../../UI/Modal';
 import ProfileLink from '../../profile/ProfileLink';
+import Card from '../../UI/Card';
 import {VictoryBar, VictoryChart} from 'victory';
 
 const Bank = () => {
@@ -54,9 +55,11 @@ const Bank = () => {
             {employees != null ?
                 employees.map(user => (
                     <div key={user._id}>
-                        <ProfileLink user={user.user}>
-                            <p>{user.user.name}</p>
-                        </ProfileLink>
+                        <Card title={user.user.name} buttonName="Legg til oppdrag">
+                            <ProfileLink user={user.user}>
+                                <p>til profil</p>
+                            </ProfileLink>
+                        </Card>
                     </div>
                 )) : null
             }
