@@ -10,6 +10,7 @@ const Bank = () => {
 
     // * Use state for Modal
     const [showModal, setModal] = useState(false);
+    const [selected, setSelected] = useState([]);  // For when the owner assigns tasks to selected employees
     const companyContext = useContext(CompanyContext);
     const {getBank, getGraphData, graphData, bank, getBankEmployees, employees} = companyContext;
 
@@ -26,6 +27,11 @@ const Bank = () => {
 
     const modalOff = () => {
         setModal(false);
+    }
+
+    const addSelected = user => {
+        console.log("Bank->Selecte:", user);
+        setSelected([...selected, user]);
     }
 
     return (<div>
@@ -55,10 +61,15 @@ const Bank = () => {
             {employees != null ?
                 employees.map(user => (
                     <div key={user._id}>
-                        <Card title={user.user.name} buttonName="Legg til oppdrag">
-                            <ProfileLink user={user.user}>
+                        <Card 
+                            title={user.user.name} 
+                            click={addSelected} 
+                            buttonName="Legg til oppdrag"
+                            arg={{name: user.user.name, id: user.user._id}}
+                        >
+                            <button className="btn btn-dark btn-sm"><ProfileLink user={user.user}>
                                 <p>til profil</p>
-                            </ProfileLink>
+                            </ProfileLink></button>
                         </Card>
                     </div>
                 )) : null
