@@ -5,14 +5,18 @@ import Modal from '../../UI/Modal';
 import ProfileLink from '../../profile/ProfileLink';
 import Card from '../../UI/Card';
 import {VictoryBar, VictoryChart} from 'victory';
+import { get } from 'mongoose';
+
 
 const Bank = () => {
 
+ 
     // * Use state for Modal
     const [showModal, setModal] = useState(false);
     const [selected, setSelected] = useState([]);  // For when the owner assigns tasks to selected employees
     const companyContext = useContext(CompanyContext);
     const {getBank, getGraphData, graphData, bank, getBankEmployees, employees} = companyContext;
+  
 
     useEffect(() => {
         getBank();
@@ -30,11 +34,11 @@ const Bank = () => {
     }
 
     const addSelected = user => {
-        console.log("Bank->Selecte:", user);
+        console.log("Bank->Selectd:", user);
         setSelected([...selected, user]);
     }
 
-    return (<div>
+    return (<div><div>
         {graphData.length > 0 ? (
             <VictoryChart domainPadding={20}>
                 <VictoryBar
@@ -63,20 +67,32 @@ const Bank = () => {
                     <div key={user._id}>
                         <Card 
                             title={user.user.name} 
-                            click={addSelected} 
+                            click={addSelected}
                             buttonName="Legg til oppdrag"
                             arg={{name: user.user.name, id: user.user._id}}
                         >
                             <button className="btn btn-dark btn-sm"><ProfileLink user={user.user}>
-                                <p>til profil</p>
+                                <p>Se Profil</p>
                             </ProfileLink></button>
                         </Card>
                     </div>
                 )) : null
             }
         </Modal>
-        
-    </div>)
+        </div>
+            
+        <div className="card Half">
+        {selected != 0 ?
+           selected.map(user => (
+           <div>
+            <p>Id: {user.id}  </p>  
+            <p>Navn: {user.name} </p>
+           </div>
+            )) : <h4>Ingen valgte personer</h4>
+            
+        }
+        </div>
+    </div>)         //Boks for valgte personer
 }
 
 
