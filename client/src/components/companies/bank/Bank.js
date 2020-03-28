@@ -34,8 +34,13 @@ const Bank = () => {
     }
 
     const addSelected = user => {
-        console.log("Bank->Selectd:", user);
-        setSelected([...selected, user]);
+        for(let i = 0; i< selected.length; i++)
+            if(selected[i].id === user.id)
+                return;
+
+            setSelected([...selected, user]);
+        
+       
     }
 
     return (<div><div>
@@ -84,8 +89,7 @@ const Bank = () => {
         <div className="card Half">
         {selected != 0 ?
            selected.map(user => (
-           <div>
-            <p>Id: {user.id}  </p>  
+           <div key={user.id}>  
             <p>Navn: {user.name} </p>
            </div>
             )) : <h4>Ingen valgte personer</h4>
