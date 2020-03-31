@@ -4,9 +4,10 @@ import { PromiseProvider } from 'mongoose';
 const Card = ({title, text, click, buttonName, children, arg}) => {
 
     const clickHandler = () => {
-        if(arg !== null)
-            click(arg);
-        else click();
+        if (click)
+            if(arg) 
+                click(arg);
+            else click();
     }
 
     return (

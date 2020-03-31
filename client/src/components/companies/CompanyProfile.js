@@ -4,7 +4,7 @@ import Courses from '../courses/Courses';
 const CompanyProfile = () => {
     return (
         <div>
-            <h1>Company Profile</h1>
+            <h1>Tilgjengelige kurs</h1>
             <Courses case="ansatt"/>
         </div>
     );
