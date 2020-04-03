@@ -34,3 +34,6 @@ export const ADD_COURSE = 'ADD_COURSE';
 export const GET_COMPANY_COURSES = 'GET_COMPANY_COURSES';
 export const ERR_COURSE = 'ERR_COURSE';
 
+export const ADD_TASK = 'ADD_TASK';
+export const GET_TASK = 'GET_TASK';
+export const ERR_TASK = 'ERR_TASK';

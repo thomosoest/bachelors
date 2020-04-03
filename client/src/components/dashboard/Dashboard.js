@@ -5,6 +5,7 @@ import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import About from '../../components/pages/About';
 import DashNavbar from './DashNavbar';
 
+
 const Dashboard = () => {
 
     const {getCurrentProfile, loading, profile} = useContext(ProfileContext);
@@ -51,6 +52,9 @@ const Dashboard = () => {
                     <p style={{color: "red"}}>Opprett profil først</p>
                     <Link to="create-profile" className="btn btn-primary">Opprett</Link>
                 </Fragment>}
+               
+
+
         </Fragment>
 }
 

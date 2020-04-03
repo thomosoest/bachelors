@@ -64,7 +64,6 @@ router.post("/", auth,  async (req, res) =>{
 
 router.get("/", async (req, res) => {
     try {
-        console.log("Hallo12323232")
         const courses = await Course.find();
         res.json(courses);
         

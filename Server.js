@@ -18,5 +18,6 @@ app.use("/api/profile", require("./routes/profile"));
 app.use('/api/companies', require('./routes/companies'));
 app.use('/api/skills', require('./routes/skills'))
 app.use('/api/courses', require('./routes/courses'))
+app.use('/api/task', require('./routes/task'))
 
 app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`));

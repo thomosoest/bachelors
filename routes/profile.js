@@ -62,9 +62,6 @@ router.post("/", auth,  async (req, res) =>{
     profileFields.skills = skills.split(',').map(skill => skill.trim());
     profileFields.experiences = experiences.split(',').map(experience => experience.trim());
     
-
-    
-
     try {
         let profile = await Profile.findOne({user: req.user.id});
         if(profile){
