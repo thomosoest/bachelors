@@ -13,12 +13,12 @@ const {check, validationResult} = require("express-validator");
 
 
 router.post("/", auth,  async (req, res) =>{
-    const {taskName, description, students, completion} = req.body;
+    const {taskName, description, employees, completion} = req.body;
     const taskFields = {};
     
     taskFields.name = taskName;
     taskFields.description = description;
-    taskFields.students = students;
+    taskFields.employees = employees;
     taskFields.completion = completion;    
 
     try {   

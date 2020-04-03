@@ -12,12 +12,10 @@ const TaskSchema = mongoose.Schema({
         type: String
     },
     
-    students: [
+    employees: [
         {
-            user: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'user'
-            }
+            id: {type: mongoose.Schema.Types.ObjectId},
+            name: {type: String}
         }
     ],
 
