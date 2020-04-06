@@ -8,6 +8,12 @@ const TaskSchema = mongoose.Schema({
         require: true
     },
     
+    company: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'company',
+        require: true
+    },
+
     description: {
         type: String
     },

@@ -5,8 +5,9 @@ import taskReducer from './taskReducer';
 import {
     ADD_TASK,
     GET_TASK,
+    GET_COMPANY_TASKS,
     //GET_SINGLE_TASK
-    ERR_COURSE
+    ERR_TASK
 } from '../types';
 
 const TaskState = props => {
@@ -71,7 +72,7 @@ const TaskState = props => {
             });
         } catch (err) {
             dispatch({
-                type: ERR_COURSE,
+                type: ERR_TASK,
                 payload: err.response.msg
             });
         }
@@ -79,11 +80,29 @@ const TaskState = props => {
 
 */
 
+
+const getCompanyTasks = async companyId => {
+        
+    try {
+        const res = await axios.get(`/api/task/company/${companyId}`);
+        console.log(res.data);
+        dispatch({
+            type: GET_COMPANY_TASKS,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: ERR_TASK,
+            payload: err.response.msg
+        });
+    }
+}
+
     return (
         <TaskContext.Provider 
         value={{
-            task: state.course,
-            tasks: state.courses,
+            task: state.task,
+            tasks: state.tasks,
             loading: state.loading,
 
             addTask,

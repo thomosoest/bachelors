@@ -17,6 +17,7 @@ router.post("/", auth,  async (req, res) =>{
     const taskFields = {};
     
     taskFields.name = taskName;
+    taskFields.company = company;
     taskFields.description = description;
     taskFields.employees = employees;
     taskFields.completion = completion;    
@@ -73,6 +74,24 @@ router.get("/", async (req, res) => {
         res.status(500).send("Server error");
     }
 });
+
+
+// @router      GET api/task/company/:id
+// @desc        Get ALL tasks in specific company
+// @access      Private
+router.get('/company/:id', auth, 
+
+    async (req, res) => {
+
+    try {
+        const task = await Task.find({company: req.params.id});
+        res.json(task);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
 
 
 module.exports = router;

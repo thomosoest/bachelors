@@ -18,6 +18,7 @@ import CompanyState from './context/company/CompanyState';
 import CourseState from './context/course/CourseState';
 import AuthState from './context/auth/AuthState';
 import ProfileState from './context/profile/profileState';
+import TaskState from './context/task/taskState';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import setAuthToken from "./utils/setAuthToken";
@@ -36,6 +37,7 @@ const App = () => {
     <ProfileState>
     <CompanyState>
     <CourseState>
+    <TaskState>
     <Router>
       <div className="App">
         <Navbar/>
@@ -57,6 +59,7 @@ const App = () => {
         </div>
       </div>
     </Router>
+    </TaskState>
     </CourseState>
     </CompanyState>
     </ProfileState>
