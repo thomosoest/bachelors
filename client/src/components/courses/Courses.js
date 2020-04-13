@@ -17,7 +17,13 @@ const Courses = (props) => {
     return (   
         <Fragment>
             {courses.map(course => (
-            <CourseItem key={course._id} case={props.case} course={course}/>
+            <CourseItem 
+                key={course._id} 
+                case={props.case} 
+                course={course} 
+                buttonName={props.buttonName}
+                click={props.click}
+                />
             ))}
         </Fragment>
     );

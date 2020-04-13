@@ -4,7 +4,7 @@ import ProfileContext from '../../context/profile/profileContext';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
-import Ansatte from '../companies/bank/Ansatte';
+import Ansatte from '../dashboard/Ansatte';
 import CompanyDashNav from './CompanyDashNav';
 import CompanyCourseTab from './CompanyCourseTab';
 
