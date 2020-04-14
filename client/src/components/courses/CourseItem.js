@@ -10,6 +10,9 @@ const CourseItem = (props) => {
         case "owner":
                 output = <Card 
                     title={props.course.name}
+                    arg={{name: props.course.name, id: props.course._id}}
+                    click={props.click}
+                    buttonName={props.buttonName}
                     text={"Owner Beskrivelse: " + props.course.description}
                 />
             break;

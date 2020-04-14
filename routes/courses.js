@@ -3,6 +3,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const Course = require("../models/Courses");
 const User = require("../models/User");
+const Profile = require("../models/Profile");
 const {check, validationResult} = require("express-validator");
 
 // @router      GET api/courses/:courseID
@@ -34,7 +35,7 @@ router.get('/:id', auth,
 // @access  private
 
 router.post("/", auth,  async (req, res) =>{
-    const {company, description, skills, name, date} = req.body;
+    const {company, description, skills, name, date, competencies} = req.body;
     const courseFields = {};
     
     courseFields.user = req.user.id;
@@ -42,7 +43,8 @@ router.post("/", auth,  async (req, res) =>{
     courseFields.description = description;
     courseFields.name = name;
     courseFields.date = date;
-    courseFields.skills = skills.split(',').map(skill => skill.trim());    
+    courseFields.skills = skills.split(',').map(skill => skill.trim());  
+    courseFields.competencies = competencies;  
 
     try {   
         // create course
@@ -84,6 +86,32 @@ router.get('/company/:id', auth,
     try {
         const courses = await Course.find({company: req.params.id});
         res.json(courses);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+
+// @router      POST api/courses/assign/:userID
+// @desc        Assign a course to a user profile
+// @access      Private
+router.post('/assign/:userID', auth,  
+
+    async (req, res) => {
+
+    try {
+        const courses = await Course.find({  // Get all the courses
+                _id: {
+                    $in: req.body.courseIDs
+                }
+            }
+        ).select("name description"); 
+
+        await Profile.update({user: req.params.userID},
+            {"$push": {"currentCourses": courses}});
+
+        res.json({courses: courses});
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Server error');

@@ -22,6 +22,13 @@ const CourseSchema = mongoose.Schema({
         type: [String]
     },
 
+    competencies : [
+        {
+            skill: {type: String},
+            competency: {type: String}
+        } 
+    ],
+
     name: {
         type: String
     },
