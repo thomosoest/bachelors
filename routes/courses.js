@@ -35,7 +35,7 @@ router.get('/:id', auth,
 // @access  private
 
 router.post("/", auth,  async (req, res) =>{
-    const {company, description, skills, name, date} = req.body;
+    const {company, description, skills, name, date, competencies} = req.body;
     const courseFields = {};
     
     courseFields.user = req.user.id;
@@ -43,7 +43,8 @@ router.post("/", auth,  async (req, res) =>{
     courseFields.description = description;
     courseFields.name = name;
     courseFields.date = date;
-    courseFields.skills = skills.split(',').map(skill => skill.trim());    
+    courseFields.skills = skills.split(',').map(skill => skill.trim());  
+    courseFields.competencies = competencies;  
 
     try {   
         // create course

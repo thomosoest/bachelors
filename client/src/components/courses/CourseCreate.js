@@ -34,7 +34,7 @@ const CourseCreate = () => {
     const onSubmitHandler = (e) => {
         e.preventDefault();
         courseContext.addCourse(
-            {name, skills, date, description, company}
+            {name, skills, date, description, company, competencies}
         );
     }
 
@@ -90,7 +90,7 @@ const CourseCreate = () => {
                     />
                 </div>
                 )}
-                <button onClick={addCompetency}>Ny kompetanse</button>
+                <button type="button" onClick={addCompetency}>Ny kompetanse</button>
                 <input
                     type="submit"
                     value="Opprett kurs"
