@@ -2,28 +2,25 @@ import React, {Fragment, useContext, useEffect} from 'react';
 import TaskContext from '../../context/task/taskContext';
 import TaskItem from '../../components/task/TaskItem';
 import CompanyContext from '../../context/company/companyContext';
+import TaskCreate from '../task/TaskCreate';
+import Tasks from '../task/Task';
 
-const Tasks = (props) => { 
+const CompanyTaskTab = (props) => { 
     const taskContext = useContext(TaskContext);
     const companyContext = useContext(CompanyContext);
-    const {tasks, getCompanyTasks} = taskContext;
+    const {task, getCompanyTasks} = taskContext;
 
-    
     useEffect(() => {
-        if(companyContext.currentCompany !== null)getCompanyTasks(companyContext.currentCompany._id);
+        getCompanyTasks(companyContext.currentCompany._id);
         // eslint-disable-next-line
-    }, [companyContext.currentCompany]);
-
- 
+    }, []);
+    
     return (   
         <Fragment>
-            {tasks.map(task => (
-            <TaskItem key={task._id} case={props.case} task={task}/>
-            ))} 
+            <TaskCreate/>
+            <Tasks case="owner"/>
         </Fragment>
     );
 }
 
-
-
-export default Tasks;
+export default CompanyTaskTab;

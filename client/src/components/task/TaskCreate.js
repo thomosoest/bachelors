@@ -31,7 +31,7 @@ const TaskCreate = () => {
             <form onSubmit={onSubmitHandler} className="form">
                 <input 
                     type="text" 
-                    name="name" 
+                    name="taskName" 
                     onChange={onChange}
                     value={task.taskName}
                     placeholder="Hva heter oppgaven?"
@@ -52,7 +52,7 @@ const TaskCreate = () => {
                 />
                 <input 
                     type="text" 
-                    name="date" 
+                    name="completion" 
                     onChange={onChange}
                     value={task.completion}
                     placeholder="Når skal kurset være ferdig?"

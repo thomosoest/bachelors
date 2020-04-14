@@ -7,6 +7,7 @@ import Bank from '../companies/bank/Bank';
 import Ansatte from '../companies/bank/Ansatte';
 import CompanyDashNav from './CompanyDashNav';
 import CompanyCourseTab from './CompanyCourseTab';
+import CompanyTaskTab from './CompanyTaskTab';
 
 const CompanyDashboard = () => {
 
@@ -32,6 +33,7 @@ const CompanyDashboard = () => {
                         <Route exact path="/courses" component={CompanyCourseTab}/>
                         <Route exact path="/bank" component={Bank}/>
                         <Route exact path="/ansatte" component={Ansatte}/>
+                        <Route exact path="/task" component={CompanyTaskTab}/>
                     </Switch>
                     </div>
                 </Fragment>:

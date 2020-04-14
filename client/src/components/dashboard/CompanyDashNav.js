@@ -16,6 +16,9 @@ const CompanyDashNav = (props) => {
             <li>
                 <Link to="/courses">Kurs</Link>
             </li>
+            <li>
+                <Link to="/task">Oppgaver</Link>
+            </li>
         </Fragment>
     );
 

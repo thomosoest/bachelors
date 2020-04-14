@@ -106,7 +106,8 @@ const getCompanyTasks = async companyId => {
             loading: state.loading,
 
             addTask,
-            getTask
+            getTask,
+            getCompanyTasks
         }}>
             {props.children}
         </TaskContext.Provider>
