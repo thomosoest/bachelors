@@ -8,6 +8,7 @@ import {
 export default (state, action) => {
     switch(action.type){
         case GET_TASK:
+        case GET_COMPANY_TASKS:
             return {
                 ...state,
                 task: [...action.payload]

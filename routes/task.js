@@ -13,14 +13,13 @@ const {check, validationResult} = require("express-validator");
 
 
 router.post("/", auth,  async (req, res) =>{
-    const {taskName, description, employees, completion} = req.body;
+    const {taskName, description, date} = req.body;
     const taskFields = {};
     
     taskFields.name = taskName;
     taskFields.company = company;
     taskFields.description = description;
-    taskFields.employees = employees;
-    taskFields.completion = completion;    
+    taskFields.date = date;    
 
     try {   
         // create task
@@ -33,6 +32,46 @@ router.post("/", auth,  async (req, res) =>{
         res.status(500).send("Task Server Error");
     }
 });
+
+
+
+// @route       PUT api/task/add/:id
+// @desc        Add employees to task
+// @access      Private
+
+
+/*
+router.put('/add/:id', auth, 
+    async (req,res) =>{
+
+        try {
+            const profile = await Profile.findOne({user: req.user.id}); // Newly joined company should also show here
+            if(profile === null) return res.status(400).json({msg: "Can't join without profile"});
+            const company = await Company.findById(req.params.id);
+
+            //Check if the user already exists in the company
+            if(company.ansatte.filter(employee => employee.user.toString() === req.user.id).length > 0) {
+                return res.status(400).json({ msg: 'Already Joined'});
+            }
+
+            company.ansatte.unshift({ user: req.user.id});
+
+            await company.save();
+
+            profile.companies.unshift({company: req.params.id});
+            
+            await profile.save();
+
+            res.json(company.ansatte);
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+});
+*/
+
+
 
 
 // @router      GET api/task/:taskID

@@ -7,14 +7,12 @@ const Tasks = (props) => {
     const taskContext = useContext(TaskContext);
     const companyContext = useContext(CompanyContext);
     const {tasks, getCompanyTasks} = taskContext;
-
-    
+     
     useEffect(() => {
         if(companyContext.currentCompany !== null)getCompanyTasks(companyContext.currentCompany._id);
         // eslint-disable-next-line
-    }, [companyContext.currentCompany]);
+    }, [companyContext.currentCompany]); 
 
- 
     return (   
         <Fragment>
             {tasks.map(task => (
@@ -23,7 +21,5 @@ const Tasks = (props) => {
         </Fragment>
     );
 }
-
-
 
 export default Tasks;

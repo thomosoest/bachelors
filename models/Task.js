@@ -25,7 +25,7 @@ const TaskSchema = mongoose.Schema({
         }
     ],
 
-    completion: {
+    date: {
         type: String
     }
 

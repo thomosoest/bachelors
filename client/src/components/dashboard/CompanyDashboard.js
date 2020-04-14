@@ -26,7 +26,6 @@ const CompanyDashboard = () => {
             {profile !== null?
                 <Fragment> 
 
-                    
                     <CompanyDashNav/>
                     <div className="container">
                     <Switch>

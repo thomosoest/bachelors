@@ -12,17 +12,16 @@ const TaskCreate = () => {
         taskName: '',
         company: companyContext.currentCompany._id,
         description: '',
-        employees: '',
-        completion: ''
+        date: ''
         
     });
 
-    const { taskName, company, description, employees, completion } = task;
+    const { taskName, company, description, date } = task;
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
         taskContext.addTask(
-            {taskName, company, description, employees, completion}
+            {taskName, company, description, date}
         );
     }
 
@@ -38,24 +37,17 @@ const TaskCreate = () => {
                 />
                 <input 
                     type="text" 
-                    name="employees" 
-                    onChange={onChange}
-                    value={task.employees}
-                    placeholder="Hvilken ansatte?"
-                />
-                <input 
-                    type="text" 
                     name="description" 
                     onChange={onChange}
                     value={task.description}
-                    placeholder="Beskrivelse av kurset"
+                    placeholder="Beskrivelse av oppgaven"
                 />
                 <input 
                     type="text" 
-                    name="completion" 
+                    name="date" 
                     onChange={onChange}
-                    value={task.completion}
-                    placeholder="Når skal kurset være ferdig?"
+                    value={task.date}
+                    placeholder="Dato"
                 />
                 <input
                     type="submit"
