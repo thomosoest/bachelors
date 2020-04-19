@@ -9,7 +9,7 @@ const TaskItem = (props) => {
         case "owner":
                 output = <Card 
                     title={props.task.taskName}
-                    text={"Eier Beskrivelse: " + props.task.description}
+                    text={"Beskrivelse: " + props.task.description}
                 />
             break;
         case "ansatt":  
