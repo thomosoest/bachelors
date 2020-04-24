@@ -131,14 +131,15 @@ router.get('/mine/bank/:id', auth,
 
 // @router      GET api/companies/mine/bank/:id/:skill
 // @desc        Get Skillbank of selected company
-// @access      Private                     /* NOTE: NOT SECURE YET: AUTHORIZED TO ANYONE WHO IS LOGGED  */
+// @access      Private                     
 router.get('/mine/bank/:id/:skill', auth,
 
     
     async (req, res) => {
 
     try {
-       
+       const owner = await (await Company.findOne(req.params.id)).select("user");
+       if(owner.user == req.user._id){
         const users = await Company.aggregate([
             { 
                 $match: { _id: mongoose.Types.ObjectId(req.params.id) } 
@@ -165,9 +166,9 @@ router.get('/mine/bank/:id/:skill', auth,
         const result = users[0].users;
         await User.populate(result, {path: "user", select:  {_id: 1, name: 1}});
 
-       // if(skills.user == req.user.id) 
             res.json(result);
-      //  else return res.status(400).send("Unauthorized");
+    }
+    else return res.status(400).send("Unauthorized");
         
 
     } catch (err) {
