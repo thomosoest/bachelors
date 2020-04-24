@@ -43,7 +43,8 @@ const Bank = () => {
        
     }
 
-    return (<div><div>
+    return (
+    <div><div>
         {graphData.length > 0 ? (
             <VictoryChart domainPadding={20}>
                 <VictoryBar
@@ -87,16 +88,16 @@ const Bank = () => {
         </div>
             
         <div className="card Half">
-        {selected != 0 ?
-           selected.map(user => (
-           <div key={user.id}>  
-            <p>Navn: {user.name} </p>
-           </div>
-            )) : <h4>Ingen valgte personer</h4>
-            
-        }
+            {selected != 0 ?
+            selected.map(user => (
+            <div key={user.id}>  
+                <p>Navn: {user.name} </p>
+            </div>
+                )) : <h4>Ingen valgte personer</h4>
+                
+            }
         </div>
-    </div>)         //Boks for valgte personer
+    </div>)
 }
 
 

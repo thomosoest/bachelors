@@ -2,7 +2,13 @@ const mongoose = require("mongoose");
 
 const CurrentCourseSchema = mongoose.Schema({
     name: {type: String, require:true},
-    description: {type: String}
+    description: {type: String},
+    competencies : [
+        {
+            skill: {type: String},
+            competency: {type: String}
+        } 
+    ]
 }, {_id: false});
 
 
@@ -19,6 +25,13 @@ const ProfileSchema = mongoose.Schema({
     skills: {
         type: [String]
     },
+
+    competencies: [
+        {
+            skill: String,
+            competencies: [String]
+        }
+    ],
 
     experiences: {
         type: [String]

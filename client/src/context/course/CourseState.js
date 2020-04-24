@@ -5,6 +5,7 @@ import courseReducer from './courseReducer';
 import {
     ADD_COURSE,
     GET_COMPANY_COURSES,
+    ASSERT,
     ERR_COURSE
     
 } from '../types';
@@ -60,6 +61,30 @@ const CourseState = props => {
     }
 
 
+    const assertCourses = async (employees,courses) => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+        
+        try {
+            let res = null;
+            for(let i = 0; i < employees.length; i++){
+                res = await axios.post(`/api/courses/assign/${employees[i]}`, courses, config);
+            }
+            
+        } catch (err) {
+            dispatch({
+                type: ERR_COURSE,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
+
+
 
     return (
         <CourseContext.Provider 
@@ -69,6 +94,7 @@ const CourseState = props => {
             loading: state.loading,
 
             addCourse,
+            assertCourses,
             getCompanyCourses
         }}>
             {props.children}

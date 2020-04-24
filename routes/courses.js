@@ -106,7 +106,8 @@ router.post('/assign/:userID', auth,
                     $in: req.body.courseIDs
                 }
             }
-        ).select("name description"); 
+        ).select("name description competencies"); 
+        console.log(courses);
 
         await Profile.update({user: req.params.userID},
             {"$push": {"currentCourses": courses}});

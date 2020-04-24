@@ -1,5 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import CompanyContext from '../../context/company/companyContext';
+import CourseContext from '../../context/course/courseContext';
 import ProfileLink from '../profile/ProfileLink';
 import Courses from '../courses/Courses';
 import Card from '../UI/Card';
@@ -10,6 +11,7 @@ const Ansatte = () => {
 
     // * Use state for Modal
     const companyContext = useContext(CompanyContext);
+    const courseContext = useContext(CourseContext);
     const [selectedEmployees, setSelectedEmployees] = useState([]);  // For selecting
     const [selectedCourses, setSelectedCourses] = useState([]); // for selecting
     const {currentCompany} = companyContext;
@@ -34,6 +36,12 @@ const Ansatte = () => {
             return;
 
         setSelectedCourses([...selectedCourses, course]);
+    }
+
+    const assertCourses = () => {
+        let employeeIds = selectedEmployees.map(a => a.id);
+        let courseIds = selectedCourses.map(a => a.id);
+        courseContext.assertCourses(employeeIds, {courseIDs: courseIds});
     }
  
 
@@ -80,6 +88,7 @@ const Ansatte = () => {
                 )) : <h4>Ingen valgte kurs</h4>       
             }
         </div>
+        <button onClick={assertCourses}>Assert</button>
     </div>)
 }
 
