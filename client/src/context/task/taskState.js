@@ -4,7 +4,7 @@ import TaskContext from './taskContext';
 import taskReducer from './taskReducer';
 import {
     ADD_TASK,
-    GET_TASK,
+    //GET_TASK,
     GET_COMPANY_TASKS,
     //GET_SINGLE_TASK
     ERR_TASK
@@ -41,7 +41,7 @@ const TaskState = props => {
             });
         }
     }
-
+/* 
         // GET TASKS
         const getTask = async () => {
         
@@ -58,7 +58,7 @@ const TaskState = props => {
                 });
             }
         }
-
+*/
 
 /* 
     const getSingleTask = async taskId => {
@@ -106,7 +106,7 @@ const getCompanyTasks = async companyId => {
             loading: state.loading,
 
             addTask,
-            getTask,
+            //getTask,
             getCompanyTasks
         }}>
             {props.children}

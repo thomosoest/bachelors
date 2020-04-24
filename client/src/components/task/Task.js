@@ -6,18 +6,28 @@ import CompanyContext from '../../context/company/companyContext';
 const Tasks = (props) => { 
     const taskContext = useContext(TaskContext);
     const companyContext = useContext(CompanyContext);
-    const {tasks, getCompanyTasks} = taskContext;
+    const {task, getCompanyTasks} = taskContext;
      
     useEffect(() => {
         if(companyContext.currentCompany !== null)getCompanyTasks(companyContext.currentCompany._id);
         // eslint-disable-next-line
     }, [companyContext.currentCompany]); 
 
-    return (   
+    return (  
         <Fragment>
-            {tasks.map(task => (
-            <TaskItem key={task._id} case={props.case} task={task}/>
-            ))} 
+            <d2>Oppgaver: </d2>
+            {(task === null)? 
+                (null):
+                (task.map(task => (
+                        <TaskItem  
+                        key={task._id} 
+                        case={props.case} 
+                        task={task} 
+                        />
+            )
+           ))} 
+       
+       
         </Fragment>
     );
 }
