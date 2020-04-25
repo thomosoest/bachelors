@@ -20,31 +20,35 @@ router.post('/skillify/:id', auth,
         try {
             var company = await Company.findById(req.params.id);
             if(!company) return res.status(400).json({ msg: 'Company does not exist'});
+            let response = null;
             
-            let reqSkill = req.body.skill
-            let existingSkill = await Skill.findOne({company: company._id, skill: reqSkill});
+            let reqSkill = req.body.skill;
 
-            if(!existingSkill){
+            for(let i = 0; i < reqSkill.length; i++){
+                let existingSkill = await Skill.findOne({company: company._id, skill: reqSkill[i]});
 
-                console.log(reqSkill + " does not exist. Adding to company");
-                const newSkill = new Skill( {
-                    skill: reqSkill,
-                    company: company._id,
-                    employees: [{user: req.user.id}] // adds logged in user
-                    });
+                if(!existingSkill){
+
+                    console.log(reqSkill[i] + " does not exist. Adding to company");
+                    const newSkill = new Skill( {
+                        skill: reqSkill[i],
+                        company: company._id,
+                        employees: [{user: req.user.id}] // adds logged in user
+                        });
+                    
+                    response = await newSkill.save();
+                }
                 
-                const response = await newSkill.save();
-                res.json(response);
+                
+                else {
+                    console.log(reqSkill[i] + " does exist! Adding user to skill list");
+                    existingSkill.employees.unshift({user: req.user.id});
+                    response = await existingSkill.save(); 
+                    
+                }
             }
 
-
-            else {
-                console.log(reqSkill + " does exist! Adding user to skill list");
-                existingSkill.employees.unshift({user: req.user.id});
-                const response = await existingSkill.save(); 
-                res.json(response);
-
-            }
+            res.json(response);
             
 
         } catch (err) {
