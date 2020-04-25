@@ -15,7 +15,8 @@ import {
     GET_COMPANY_PROFILE,
     GET_BANK,
     GET_BANK_EMPLOYEES,
-    GET_GRAPH_DATA
+    GET_GRAPH_DATA,
+    CLEAR_COMPANY
 } from '../types';
 
 const CompanyState = props => {
@@ -66,6 +67,12 @@ const CompanyState = props => {
                 payload: err.response.msg
             });
         }
+    }
+
+    const clearCompany = () => {
+        dispatch({
+            type: CLEAR_COMPANY
+        })
     }
 
 
@@ -275,7 +282,8 @@ const CompanyState = props => {
             getBank,
             getBankEmployees,
             getJoinedCompanies,
-            getGraphData
+            getGraphData,
+            clearCompany
         
         }}>
             {props.children}

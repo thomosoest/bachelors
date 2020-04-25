@@ -38,11 +38,13 @@ const Companies = (props) => {
     return (
    
         <Fragment>
-            {selectedCompanies.map(company => (
+            {selectedCompanies !== null?(
+            selectedCompanies.map(company => (
                 (company === null)? 
                     (null):
                    (<CompanyItem key={company._id} case={props.case} company={company}/>)
-            ))}
+            ))): null
+        }
         </Fragment>
     );
 }

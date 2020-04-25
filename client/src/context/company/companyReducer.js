@@ -9,11 +9,23 @@ import {
     GET_COMPANY_PROFILE,
     GET_BANK,
     GET_BANK_EMPLOYEES,
-    GET_GRAPH_DATA
+    GET_GRAPH_DATA,
+    CLEAR_COMPANY
 } from '../types';
 
 export default (state, action) => {
     switch(action.type){
+        case CLEAR_COMPANY: 
+            return {
+                companies: [], 
+            ownedCompanies: [],
+            joinedCompanies: [],
+            currentCompany: null,
+            companyProfile: null,
+            bank: [],
+            employees: [],
+            graphData: [],
+            }
         case GET_COMPANY_PROFILE: 
             return {
                 ...state,

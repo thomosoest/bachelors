@@ -2,13 +2,16 @@ import React, {Fragment, useContext, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import ProfileContext from '../../context/profile/profileContext';
+import CompanyContext from '../../context/company/companyContext';
 
 const Navbar = (props) => {
     const authContext = useContext(AuthContext);
     const profileContext = useContext(ProfileContext); // Necessary to clear profile
+    const companyContext = useContext(CompanyContext); // to clear on logout
 
     const {isAuthenticated, logout, loading, loadUser} = authContext;
     const {clearProfile} = profileContext;
+    const {clearCompany} = companyContext;
 
     useEffect(() => {
         loadUser();
@@ -17,6 +20,7 @@ const Navbar = (props) => {
 
     const logOutAndClearProfile = () => {
         clearProfile();
+        clearCompany();
         logout();
     }
 
