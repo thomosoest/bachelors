@@ -9,7 +9,7 @@ const CurrentCourseSchema = mongoose.Schema({
             competency: {type: String}
         } 
     ]
-}, {_id: false});
+});
 
 
 const ProfileSchema = mongoose.Schema({

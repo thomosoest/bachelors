@@ -5,10 +5,73 @@ const Profile = require("../models/Profile");
 const User = require("../models/User");
 const Company = require("../models/Company");
 const {check, validationResult} = require("express-validator");
+const mongoose = require('mongoose'); // for ObjectId 
 
 // @route   GET api/profile/me
 // @desc    get logged in users profile
 // @access  private
+
+router.put("/completecourse/:id", auth, async (req, res) => {
+    try {
+        const courses = await Profile.aggregate([
+            {
+                "$match": {
+                    "user": mongoose.Types.ObjectId(req.user.id)
+                }
+            },
+            {
+                "$unwind": "$currentCourses"
+            },
+            {
+                "$match": {
+                    "currentCourses._id": mongoose.Types.ObjectId(req.params.id)
+                }
+            },
+            {
+                $project: {
+                    currentCourses: 1
+                  
+                }
+            }
+
+            
+        ])
+
+        if(courses.length < 1) return res.status(400).json({msg: "Courses not found"});
+        let course = courses[0].currentCourses;
+
+        const competencies = await Profile.findOne({user: req.user.id}).select("competencies");
+        if(!competencies) return res.status(400).json({msg: "Competencies not found"});
+
+        // profile has no skills / competencies
+        if(competencies.competencies.length < 1){
+                competencies.competencies.push({skill: course.competencies[0].skill, competencies: []}) 
+        }
+
+        // if it has skills / competencies
+        for(let i = 0; i < course.competencies.length; i++){
+            let found = false;
+            for(let j = 0; j < competencies.competencies.length; j++){
+                if(course.competencies[i].skill == competencies.competencies[j].skill){
+                    competencies.competencies[j].competencies.push(course.competencies[i].competency);
+                    found = true;
+                }
+            }
+            if(!found){
+                competencies.competencies.push({
+                    skill: course.competencies[i].skill, 
+                    competencies:[course.competencies[i].competency]
+                })
+            }
+        }
+        await competencies.save();
+        res.json(competencies);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+})
 
 router.get("/me", auth, async (req, res) => {
     try {
