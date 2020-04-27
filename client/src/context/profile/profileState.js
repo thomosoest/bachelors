@@ -7,7 +7,8 @@ import {
     GET_USER_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
-    CREATE_PROFILE
+    CREATE_PROFILE,
+    COMPLETE_COURSE
 } from '../types';
 
 const ProfileState = props => {
@@ -41,7 +42,11 @@ const ProfileState = props => {
 
     const completeCourse = async id => {
         try {
-            await axios.put(`/api/profile/completecourse/${id}`);
+            const res = await axios.put(`/api/profile/completecourse/${id}`);
+            dispatch({
+                type: COMPLETE_COURSE,
+                payload: res.data
+            });
            
         }catch(err) {
             dispatch({

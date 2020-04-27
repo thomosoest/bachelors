@@ -14,7 +14,7 @@ const Dashboard = () => {
     useEffect(() => {
         getCurrentProfile();
         // eslint-disable-next-line
-    }, []);           
+    }, [profile]);           
 
     return loading? <p>Loading...</p> :
           

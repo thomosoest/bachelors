@@ -29,6 +29,7 @@ export const GET_USER_PROFILE = 'GET_USER_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 export const CLEAR_PROFILE = "CLEAR_PROFILE";
 export const CREATE_PROFILE = "CREATE_PROFILE";
+export const COMPLETE_COURSE = "COMPLETE_COURSE";
 
 
 export const ADD_COURSE = 'ADD_COURSE';

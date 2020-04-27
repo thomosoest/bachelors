@@ -3,13 +3,13 @@ import {
     GET_USER_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
-    CREATE_PROFILE
+    CREATE_PROFILE,
+    COMPLETE_COURSE
 } from '../types';
 
 export default (state, action) => {
 
     switch(action.type){
-
         case GET_USER_PROFILE:
             return {
                 ...state,
@@ -17,7 +17,9 @@ export default (state, action) => {
                 error: null,
                 loading: false
             }
+            
         case CREATE_PROFILE:
+        case COMPLETE_COURSE:
         case GET_PROFILE:
             return {
                 ...state, 
