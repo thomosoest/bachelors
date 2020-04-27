@@ -39,6 +39,19 @@ const ProfileState = props => {
     }
 
 
+    const completeCourse = async id => {
+        try {
+            await axios.put(`/api/profile/completecourse/${id}`);
+           
+        }catch(err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+    }
+
+
     const getUserProfile = async id => {
         
         try {
@@ -95,7 +108,8 @@ const ProfileState = props => {
             getCurrentProfile,
             getUserProfile,
             clearProfile,
-            createProfile
+            createProfile,
+            completeCourse
         }}>
             {props.children}
         </ProfileContext.Provider>

@@ -8,7 +8,7 @@ import CourseFullItem from '../courses/CourseFullItem';
 
 const Dashboard = () => {
 
-    const {getCurrentProfile, loading, profile} = useContext(ProfileContext);
+    const {getCurrentProfile, loading, profile, completeCourse} = useContext(ProfileContext);
     const {user} = useContext(AuthContext);
 
     useEffect(() => {
@@ -49,7 +49,12 @@ const Dashboard = () => {
                         {profile.currentCourses.length != 0 ?
                             profile.currentCourses.map((course, index) => (
                             <div key={index}>  
-                                <CourseFullItem course={course}/>
+                                <CourseFullItem 
+                                    course={course} 
+                                    buttonClick={completeCourse} 
+                                    arg={course._id}
+                                    buttonName="Fullfør"
+                                    />
                             </div>
                                 )) : <h4>Ingen kurs</h4>       
                             }

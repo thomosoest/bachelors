@@ -1,6 +1,8 @@
 import React from 'react';
 
 const CourseFullItem = (props) => {
+
+
     return (<div className="card bg-light">
         <h1>{props.course.name}</h1>
         <p>{props.course.description}</p>
@@ -15,6 +17,10 @@ const CourseFullItem = (props) => {
                 </div>) )   
                 
         }
+
+        {props.buttonClick ?(
+            <button onClick={() => props.buttonClick(props.arg)}>{props.buttonName}</button>
+        ): null}
 
     </div>);
 }
