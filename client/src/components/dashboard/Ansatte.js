@@ -4,7 +4,7 @@ import CourseContext from '../../context/course/courseContext';
 import ProfileLink from '../profile/ProfileLink';
 import Courses from '../courses/Courses';
 import Card from '../UI/Card';
-import EmployeeCard from '../UI/EmployeeCard';
+
 
 
 const Ansatte = () => {
@@ -64,7 +64,7 @@ const Ansatte = () => {
         }
 
         <div className="card Half">
-            {selectedEmployees != 0 ?
+            {selectedEmployees.length > 0 ?
             selectedEmployees.map(user => (
             <div key={user.id}>  
                 <p>Navn: {user.name} </p>
@@ -80,7 +80,7 @@ const Ansatte = () => {
         />
 
         <div className="card Half">
-            {selectedCourses != 0 ?
+            {selectedCourses.length > 0 ?
             selectedCourses.map(course => (
             <div key={course.id}>  
                 <p>kurs: {course.name} </p>

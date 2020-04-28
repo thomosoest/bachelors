@@ -1,8 +1,6 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import ProfileContext from '../../context/profile/profileContext';
-// import AuthContext from '../../context/auth/authContext';
 import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
-import About from '../../components/pages/About';
 import Bank from '../companies/bank/Bank';
 import Ansatte from '../dashboard/Ansatte';
 import CompanyDashNav from './CompanyDashNav';

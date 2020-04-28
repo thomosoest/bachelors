@@ -1,5 +1,4 @@
 import React from 'react';
-import { PromiseProvider } from 'mongoose';
 
 const Card = ({title, text, click, buttonName, children, arg}) => {
 

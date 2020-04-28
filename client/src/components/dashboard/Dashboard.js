@@ -46,7 +46,7 @@ const Dashboard = () => {
                     <p>Kontoen din ble laget:   {user && user.date} </p>
                     </div>
                     <div>
-                        {profile.currentCourses.length != 0 ?
+                        {profile.currentCourses.length > 0 ?
                             profile.currentCourses.map((course, index) => (
                             <div key={index}>  
                                 <CourseFullItem 
