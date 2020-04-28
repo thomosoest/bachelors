@@ -69,10 +69,16 @@ const CourseState = props => {
         };
         
         try {
-            let res = null;
+            /*let res = null;
             for(let i = 0; i < employees.length; i++){
                 res = await axios.post(`/api/courses/assign/${employees[i]}`, courses, config);
-            }
+            }*/
+            let res = await Promise.all(
+                employees.map(async employee => {
+                  let empRes = await axios.post(`/api/courses/assign/${employee}`, courses, config);
+                  return empRes;
+                })
+              );
             
         } catch (err) {
             dispatch({
