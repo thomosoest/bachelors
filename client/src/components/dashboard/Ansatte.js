@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import CompanyContext from '../../context/company/companyContext';
 import CourseContext from '../../context/course/courseContext';
+import TaskContext from '../../context/task/taskContext';
 import ProfileLink from '../profile/ProfileLink';
 import Courses from '../courses/Courses';
 import Card from '../UI/Card';
@@ -12,9 +13,11 @@ const Ansatte = () => {
     // * Use state for Modal
     const companyContext = useContext(CompanyContext);
     const courseContext = useContext(CourseContext);
+    const taskContext = useContext(TaskContext);
     const [selectedEmployees, setSelectedEmployees] = useState([]);  // For selecting
     const [selectedCourses, setSelectedCourses] = useState([]); // for selecting
     const {currentCompany} = companyContext;
+    const {addEmployee} = taskContext;
 
     useEffect(() => {
        // getBank();
@@ -43,6 +46,14 @@ const Ansatte = () => {
         let courseIds = selectedCourses.map(a => a.id);
         courseContext.assertCourses(employeeIds, {courseIDs: courseIds});
     }
+    
+    const assignTask = () => {
+       
+        selectedEmployees.map(user => (
+            addEmployee(user._id)
+                ))
+        console.log("ASDF");
+    }
  
 
     return (<div>
@@ -68,9 +79,11 @@ const Ansatte = () => {
             selectedEmployees.map(user => (
             <div key={user.id}>  
                 <p>Navn: {user.name} </p>
+
             </div>
                 )) : <h4>Ingen valgte personer</h4>       
             }
+            <button onClick={assignTask}>Gi oppgave</button>
         </div>
 
         <Courses 

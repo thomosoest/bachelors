@@ -506,3 +506,9 @@ table th {
   position: relative;
   top: -95px;
 }
+
+.dash-buttons a {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.2rem;
+}

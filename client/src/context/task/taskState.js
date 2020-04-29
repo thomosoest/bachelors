@@ -7,6 +7,7 @@ import {
     //GET_TASK,
     GET_COMPANY_TASKS,
     //GET_SINGLE_TASK
+    ADD_EMPLOYEE,
     ERR_TASK
 } from '../types';
 
@@ -81,6 +82,28 @@ const TaskState = props => {
 */
 
 
+    // ADD EMPLOYEE
+    const addEmployee = async id => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.put(`/api/task/join/${id}`, config);
+            dispatch({
+                type: ADD_EMPLOYEE,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_TASK,
+                payload: err.response.msg
+            });
+        }
+    }
+
 const getCompanyTasks = async companyId => {
         
     try {
@@ -104,9 +127,11 @@ const getCompanyTasks = async companyId => {
             task: state.task,
             tasks: state.tasks,
             loading: state.loading,
-
+            employee: state.employee,
+        
             addTask,
             //getTask,
+            addEmployee,
             getCompanyTasks
         }}>
             {props.children}

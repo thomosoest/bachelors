@@ -39,28 +39,26 @@ router.post("/", auth,  async (req, res) =>{
 // @desc        Add employees to task
 // @access      Private
 
-
-/*
-router.put('/add/:id', auth, 
+router.put('/join/:id', auth, 
     async (req,res) =>{
 
         try {
-            const profile = await Profile.findOne({user: req.user.id}); // Newly joined company should also show here
-            if(profile === null) return res.status(400).json({msg: "Can't join without profile"});
-            const company = await Company.findById(req.params.id);
+            //const profile = await Profile.findOne({user: req.user.id});
+            //if(profile === null) return res.status(400).json({msg: "Can't join without profile"});
+            const task = await Task.findById(req.params.id);
 
-            //Check if the user already exists in the company
-            if(company.ansatte.filter(employee => employee.user.toString() === req.user.id).length > 0) {
-                return res.status(400).json({ msg: 'Already Joined'});
+            //Check if the user already exists in the task
+            if(company.employee.filter(employee => employee.user.toString() === req.user.id).length > 0) {
+                return res.status(400).json({ msg: 'Already On Task'});
             }
 
-            company.ansatte.unshift({ user: req.user.id});
+            task.employee.unshift({ user: req.user.id});
 
-            await company.save();
+            await task.save();
 
-            profile.companies.unshift({company: req.params.id});
+            //profile.companies.unshift({company: req.params.id});
             
-            await profile.save();
+            //await profile.save();
 
             res.json(company.ansatte);
         } catch (err) {
@@ -69,10 +67,8 @@ router.put('/add/:id', auth,
         }
 
 });
-*/
 
-
-
+ 
 
 // @router      GET api/task/:taskID
 // @desc        Get task by ID

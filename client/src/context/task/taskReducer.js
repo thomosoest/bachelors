@@ -2,6 +2,7 @@ import {
     ADD_TASK,
     GET_TASK,
     GET_COMPANY_TASKS,
+    ADD_EMPLOYEE,
     ERR_TASK
 } from '../types';
 

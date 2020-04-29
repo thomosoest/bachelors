@@ -1,15 +1,18 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import ProfileContext from '../../context/profile/profileContext';
+import TaskContext from '../../context/task/taskContext';
 import AuthContext from '../../context/auth/authContext';
 import {Link} from 'react-router-dom';
 import CourseFullItem from '../courses/CourseFullItem';
-
+import DashboardActions from './DashboardActions';
 
 
 const Dashboard = () => {
 
     const {getCurrentProfile, loading, profile, completeCourse} = useContext(ProfileContext);
     const {user} = useContext(AuthContext);
+    //const taskContext = useContext(TaskContext);
+    //const {task, getCompanyTasks} = taskContext;    
 
     useEffect(() => {
         getCurrentProfile();
@@ -65,7 +68,9 @@ const Dashboard = () => {
                     <p style={{color: "red"}}>Opprett profil først</p>
                     <Link to="create-profile" className="btn btn-primary">Opprett</Link>
                 </Fragment>}
-               
+                <Fragment>
+                    <DashboardActions/>
+                </Fragment>
 
 
         </Fragment>
