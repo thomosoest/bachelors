@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Course = require("../models/Courses");
-const User = require("../models/User");
 const Profile = require("../models/Profile");
-const {check, validationResult} = require("express-validator");
 
 // @router      GET api/courses/:courseID
 // @desc        Get course by ID

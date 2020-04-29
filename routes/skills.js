@@ -1,11 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-
 const Skill = require('../models/Skill');
 const Company = require('../models/Company');
-const Profile = require('../models/Profile');
-const User = require('../models/User');
 const mongoose = require('mongoose'); // for ObjectId 
 
 

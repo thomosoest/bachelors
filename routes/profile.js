@@ -2,9 +2,6 @@ const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const Profile = require("../models/Profile");
-const User = require("../models/User");
-const Company = require("../models/Company");
-const {check, validationResult} = require("express-validator");
 const mongoose = require('mongoose'); // for ObjectId 
 
 // @route   GET api/profile/me

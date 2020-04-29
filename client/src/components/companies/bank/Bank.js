@@ -5,7 +5,6 @@ import Modal from '../../UI/Modal';
 import ProfileLink from '../../profile/ProfileLink';
 import Card from '../../UI/Card';
 import {VictoryBar, VictoryChart} from 'victory';
-import { get } from 'mongoose';
 
 
 const Bank = () => {
@@ -88,7 +87,7 @@ const Bank = () => {
         </div>
             
         <div className="card Half">
-            {selected != 0 ?
+            {selected.length > 0 ?
             selected.map(user => (
             <div key={user.id}>  
                 <p>Navn: {user.name} </p>
