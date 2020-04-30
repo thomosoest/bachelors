@@ -95,6 +95,26 @@ const ProfileState = props => {
         }
     }
 
+    const sendTask = async (taskId, employeeIDs) => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        try {
+            let body = {employeeIDs : employeeIDs};
+            const res = await axios.put(`api/profile/task/${taskId}`, body, config);
+            
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+        
+    }
+
     const clearProfile = () => {
         dispatch({type: CLEAR_PROFILE});
     }
@@ -114,7 +134,8 @@ const ProfileState = props => {
             getUserProfile,
             clearProfile,
             createProfile,
-            completeCourse
+            completeCourse,
+            sendTask
         }}>
             {props.children}
         </ProfileContext.Provider>

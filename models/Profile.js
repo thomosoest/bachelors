@@ -50,7 +50,15 @@ const ProfileSchema = mongoose.Schema({
         }
     ],
 
-    currentCourses: [CurrentCourseSchema]
+    currentCourses: [CurrentCourseSchema],
+    tasks: [
+        {
+            task: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'task'
+            }
+        }
+    ]
 
 });
 

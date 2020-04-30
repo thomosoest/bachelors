@@ -16,7 +16,7 @@ router.post("/", auth,  async (req, res) =>{
     const {taskName, description, date, company} = req.body;
     const taskFields = {};
     
-    taskFields.name = taskName;
+    taskFields.taskName = taskName;
     taskFields.company = company;
     taskFields.description = description;
     taskFields.date = date;    
@@ -43,24 +43,12 @@ router.put('/join/:id', auth,
     async (req,res) =>{
 
         try {
-            //const profile = await Profile.findOne({user: req.user.id});
-            //if(profile === null) return res.status(400).json({msg: "Can't join without profile"});
             const task = await Task.findById(req.params.id);
-
-            //Check if the user already exists in the task
-            if(company.employee.filter(employee => employee.user.toString() === req.user.id).length > 0) {
-                return res.status(400).json({ msg: 'Already On Task'});
-            }
-
-            task.employee.unshift({ user: req.user.id});
-
+            task.employees = [...task.employees, ...req.body.employees];
+            task.status = "Begin";
             await task.save();
-
-            //profile.companies.unshift({company: req.params.id});
-            
-            //await profile.save();
-
-            res.json(company.ansatte);
+            res.json(task);
+           
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server Error');
@@ -81,9 +69,8 @@ router.get('/:id', auth,
 
     try {
         let id = req.params.id;
-        const task = await Task
-            .findById(id)
-            .populate("taskName", ["students"]);
+        const task = await Task.findById(id);
+            
         res.json(task);
 
     } catch (err) {

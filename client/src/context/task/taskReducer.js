@@ -12,7 +12,7 @@ export default (state, action) => {
         case GET_COMPANY_TASKS:
             return {
                 ...state,
-                task: [...action.payload]
+                tasks: [...action.payload]
             }
         case ADD_TASK:
             return {

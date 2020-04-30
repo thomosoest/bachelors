@@ -10,6 +10,9 @@ const TaskItem = (props) => {
                 output = <Card 
                     title={props.task.taskName}
                     text={"Beskrivelse: " + props.task.description}
+                    arg={{name: props.task.taskName, id: props.task._id}}
+                    buttonName={props.buttonName}
+                    click={props.click}
                 />
             break;
         case "ansatt":  

@@ -73,6 +73,26 @@ router.put("/completecourse/:id", auth, async (req, res) => {
     }
 })
 
+router.put("/task/:taskId", auth, async (req, res) => {
+    try {
+     
+        let resp = await Promise.all(
+            req.body.employeeIDs.map(async employeeID => {
+              let tasks = await Profile.findOne({user: employeeID}).select("tasks");
+              tasks.tasks = [...tasks.tasks, {task: req.params.taskId}];
+              await tasks.save();
+              return tasks;
+            })
+        );
+
+        res.json(resp);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
+
 router.get("/me", auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({user: req.user.id}).populate(

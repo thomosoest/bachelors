@@ -3,28 +3,24 @@ const mongoose = require('mongoose');
 const TaskSchema = mongoose.Schema({
     
     taskName: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'name',
-        require: true
+        type: String
+      
     },
     
     company: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'company',
-        require: true
     },
 
     description: {
         type: String
     },
+
+    status: {
+        type: String
+    },
     
     employees: [
-        {       
-            user: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'user'  
-            }      
-        }
+       String
     ],
 
     date: {

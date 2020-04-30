@@ -6,7 +6,7 @@ import CompanyContext from '../../context/company/companyContext';
 const Tasks = (props) => { 
     const taskContext = useContext(TaskContext);
     const companyContext = useContext(CompanyContext);
-    const {task, getCompanyTasks} = taskContext;
+    const {tasks, getCompanyTasks} = taskContext;
      
     useEffect(() => {
         if(companyContext.currentCompany !== null)getCompanyTasks(companyContext.currentCompany._id);
@@ -15,17 +15,18 @@ const Tasks = (props) => {
 
     return (  
         <Fragment>
-            <d2>Oppgaver: </d2>
-            {(task === null)? 
-                (null):
-                (task.map(task => (
+            <h2>Oppgaver: </h2>
+            {(tasks.length > 0)? 
+                (tasks.map(task => (
                         <TaskItem  
                         key={task._id} 
                         case={props.case} 
                         task={task} 
+                        click={props.click}
+                        buttonName={props.buttonName}
                         />
             )
-           ))} 
+           )) : (null)} 
        
        
         </Fragment>

@@ -83,7 +83,7 @@ const TaskState = props => {
 
 
     // ADD EMPLOYEE
-    const addEmployee = async id => {
+    const addEmployee = async (id, employees) => {
         const config = {
             headers: {
                 "Content-Type" : "application/json"
@@ -91,11 +91,13 @@ const TaskState = props => {
         };
 
         try {
-            const res = await axios.put(`/api/task/join/${id}`, config);
-            dispatch({
+            let body = {employees: employees};
+            console.log(body);
+            const res = await axios.put(`/api/task/join/${id}`, body, config);
+           /* dispatch({
                 type: ADD_EMPLOYEE,
                 payload: res.data
-            });
+            });*/
         } catch (err) {
             dispatch({
                 type: ERR_TASK,

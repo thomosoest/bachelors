@@ -47,14 +47,7 @@ const Ansatte = () => {
         courseContext.assertCourses(employeeIds, {courseIDs: courseIds});
     }
     
-    const assignTask = () => {
-       
-        selectedEmployees.map(user => (
-            addEmployee(user._id)
-                ))
-        console.log("ASDF");
-    }
- 
+    
 
     return (<div>
         {currentCompany != null ?
@@ -83,7 +76,7 @@ const Ansatte = () => {
             </div>
                 )) : <h4>Ingen valgte personer</h4>       
             }
-            <button onClick={assignTask}>Gi oppgave</button>
+           
         </div>
 
         <Courses 
