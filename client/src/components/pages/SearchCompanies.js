@@ -6,7 +6,7 @@ const SearchCompanies = () => {
    
     return (
         <div className="padding1">
-            <h1 >Finn din bedrift</h1>
+            <h1 >Bli med en bedrift</h1>
             <Search/>
             <Companies/>
         </div>

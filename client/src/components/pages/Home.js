@@ -5,8 +5,8 @@ const Home = () => {
     
     return (
         <div>
-            <h1>Home</h1>
-            <h4>Her kan du opprette en bedrift</h4>
+            <h1>Opprette bedrift</h1>
+            <p>Hvis du er bedrift eier kan du opprette en bedrift med denne linken.</p>
             <Link to="/companies/make">Opprett bedrift</Link>
         </div>
     )

@@ -1,7 +1,9 @@
 import React, {useState, useContext} from 'react';
 import ProfileContext from '../../context/profile/profileContext';
+import { useHistory } from 'react-router-dom';
 
 const ProfileCreate = () => {
+    const history = useHistory();
     const [ profile, setProfile] = useState({
         bio: '',
         skills: '',
@@ -20,6 +22,7 @@ const ProfileCreate = () => {
         profileContext.createProfile(
             {bio, skills, title, experiences}
         );
+        history.push("dashboard");
     }
 
   

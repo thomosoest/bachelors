@@ -22,6 +22,7 @@ const CreateCompany = () => {
             <h1>
                 <span className="text-primate">Opprett bedrift</span>
             </h1>
+            <p>Ansatte kan finne denne bedriften og legge seg til ved å søke bedriftens navn</p>
             <form onSubmit={onSubmit}>
         
                 <div className="form-group">

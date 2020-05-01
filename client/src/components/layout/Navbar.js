@@ -30,7 +30,7 @@ const Navbar = (props) => {
                 <Link to="/dashboard">Min profil</Link>
             </li>
             <li>
-                <Link to="/">Hjem</Link>
+                <Link to="/">Bli bedrift eier</Link>
             </li>
             <li>
                 <Link to="/companies">Bedrifter</Link>

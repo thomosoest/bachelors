@@ -25,6 +25,7 @@ const Companies = (props) => {
     }, []);
 
     let selectedCompanies = [];
+    let title = <h2>{props.title}</h2>;
 
     switch(props.case){
         case "owner": selectedCompanies = ownedCompanies; break;      
@@ -38,6 +39,7 @@ const Companies = (props) => {
     return (
    
         <Fragment>
+            {selectedCompanies.length > 0 ?(<h2>{props.title}</h2>) : null}
             {selectedCompanies !== null?(
             selectedCompanies.map(company => (
                 (company === null)? 

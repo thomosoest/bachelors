@@ -5,11 +5,12 @@ import Companies from './Companies';
 const CompanyLists = () => {
     return (
     <div>
-        <div>
-            <Companies case="owner"/>
-            <Companies case="employee" />
-        </div>
         <SearchCompanies></SearchCompanies>
+        <div>
+            
+            <Companies case="owner" title="Bedrifter du eier"/>
+            <Companies case="employee" title="Bedrifter du er med i" />
+        </div>
     </div>)
 }
 
