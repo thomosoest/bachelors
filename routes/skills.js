@@ -17,11 +17,39 @@ router.post('/skillify/:id', auth,
         try {
             var company = await Company.findById(req.params.id);
             if(!company) return res.status(400).json({ msg: 'Company does not exist'});
-            let response = null;
             
             let reqSkill = req.body.skill;
+            
+            
+            let resp = await Promise.all(
+                reqSkill.map(async skill => {
+                    let existingSkill = await Skill.findOne({company: company._id, skill: skill});
+                    if(!existingSkill){
 
-            for(let i = 0; i < reqSkill.length; i++){
+                        console.log(skill + " does not exist. Adding to company");
+                        const newSkill = new Skill( {
+                            skill: skill,
+                            company: company._id,
+                            employees: [req.user.id] // adds logged in user
+                        });
+                        
+                        await newSkill.save();
+                        return newSkill;
+                    }
+                    
+                    else {
+                        console.log(skill + " does exist! Adding user to skill list");
+                        existingSkill.employees.addToSet(req.user.id);
+                        await existingSkill.save(); 
+                        return existingSkill;    
+                    }
+                })
+                );
+                
+                
+                /*  let response = null;
+                
+                for(let i = 0; i < reqSkill.length; i++){
                 let existingSkill = await Skill.findOne({company: company._id, skill: reqSkill[i]});
 
                 if(!existingSkill){
@@ -42,10 +70,10 @@ router.post('/skillify/:id', auth,
                     existingSkill.employees.addToSet(req.user.id);
                     response = await existingSkill.save(); 
                     
-                }
-            }
-
-            res.json(response);
+                }*/
+    
+            
+            res.json(resp);
             
 
         } catch (err) {
