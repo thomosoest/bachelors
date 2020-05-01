@@ -88,16 +88,16 @@ const Bank = () => {
         }
 
         <Modal show={showModal} clicked={modalOff} >
-            {employees != null ?
+            {employees.length > 0 ?
                 employees.map(user => (
                     <div key={user._id}>
                         <Card 
-                            title={user.user.name} 
+                            title={user.name} 
                             click={addSelected}
                             buttonName="Legg til oppdrag"
-                            arg={{name: user.user.name, id: user.user._id}}
+                            arg={{name: user.name, id: user._id}}
                         >
-                            <button className="btn btn-dark btn-sm"><ProfileLink user={user.user}>
+                            <button className="btn btn-dark btn-sm"><ProfileLink user={user}>
                                 <p>Se Profil</p>
                             </ProfileLink></button>
                         </Card>

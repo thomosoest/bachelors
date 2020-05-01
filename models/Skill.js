@@ -14,10 +14,8 @@ const SkillSchema = mongoose.Schema({
     
     employees: [
         {
-            user: {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'user'
-            }
         }
     ]
 });

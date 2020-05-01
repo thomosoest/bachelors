@@ -30,7 +30,7 @@ router.post('/skillify/:id', auth,
                     const newSkill = new Skill( {
                         skill: reqSkill[i],
                         company: company._id,
-                        employees: [{user: req.user.id}] // adds logged in user
+                        employees: [req.user.id] // adds logged in user
                         });
                     
                     response = await newSkill.save();
@@ -39,7 +39,7 @@ router.post('/skillify/:id', auth,
                 
                 else {
                     console.log(reqSkill[i] + " does exist! Adding user to skill list");
-                    existingSkill.employees.unshift({user: req.user.id});
+                    existingSkill.employees.addToSet(req.user.id);
                     response = await existingSkill.save(); 
                     
                 }
@@ -124,7 +124,7 @@ router.get('/:id/:skill', auth,
     try {
        
         const employees = await Skill.findOne({company: req.params.id, skill: req.params.skill})
-                                .select('employees').populate("employees.user", ["name"]);
+                                .select('employees').populate("employees", ["name"]);
 
         
         res.json(employees.employees);
