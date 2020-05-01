@@ -10,6 +10,7 @@ import {
     GET_BANK,
     GET_BANK_EMPLOYEES,
     GET_GRAPH_DATA,
+    GET_COMPETENCIES,
     CLEAR_COMPANY
 } from '../types';
 
@@ -25,6 +26,7 @@ export default (state, action) => {
             bank: [],
             employees: [],
             graphData: [],
+            competencies: []
             }
         case GET_COMPANY_PROFILE: 
             return {
@@ -40,6 +42,11 @@ export default (state, action) => {
             return {
                 ...state,
                 employees: [...action.payload]
+            }
+        case GET_COMPETENCIES:
+            return {
+                ...state,
+                competencies: [...action.payload]
             }
         case GET_BANK: 
             return {

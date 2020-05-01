@@ -7,6 +7,7 @@ const SkillItem = (props) => {
     const displayEmployees = () => {
         props.getEmployees(props.skill.skill);
         console.log(props.employees);
+        props.updateSkill(props.skill.skill);
         props.showModal();
     }
 

@@ -199,4 +199,39 @@ router.get("/user/:id", async (req, res) => {
     }
 });
 
+
+router.get("/competency/:userID/:skill", auth, async (req, res) => {
+    try {
+        const profile = await Profile.aggregate([
+            {
+                "$match": {
+                    "user": mongoose.Types.ObjectId(req.params.userID)
+                }
+            },
+            {
+                "$unwind": "$competencies"
+            },
+            {
+                "$match": {
+                    "competencies.skill": req.params.skill
+                }
+            },
+            {
+                $project: {
+                    competencies: 1
+                  
+                }
+            }   
+        ])
+
+        if(profile.length > 0)
+            res.json(profile[0].competencies.competencies);
+        else res.json(profile);
+        
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send("server error");
+    }
+});
+
 module.exports = router;

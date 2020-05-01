@@ -12,6 +12,7 @@ export const GET_BANK = "GET_BANK";
 export const GET_BANK_EMPLOYEES = "GET_BANK_EMPLOYEES";
 export const GET_GRAPH_DATA = "GET_GRAPH_DATA";
 export const GET_COMPANY_PROFILE = "GET_COMPANY_PROFILE";
+export const GET_COMPETENCIES = "GET_COMPETENCIES";
 export const CLEAR_COMPANY = "CLEAR_COMPANY";
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
@@ -38,6 +39,6 @@ export const ERR_COURSE = 'ERR_COURSE';
 
 export const ADD_TASK = 'ADD_TASK';
 export const GET_TASK = 'GET_TASK';
-export const ADD_EMPLOYEE = "ADD_EMPLOYEE";
 export const GET_COMPANY_TASKS = 'GET_COMPANY_TASKS';
+export const ADD_EMPLOYEE = "ADD_EMPLOYEE";
 export const ERR_TASK = 'ERR_TASK';

@@ -5,6 +5,7 @@ import AuthContext from '../../context/auth/authContext';
 import {Link} from 'react-router-dom';
 import CourseFullItem from '../courses/CourseFullItem';
 import DashboardActions from './DashboardActions';
+import Competencies from '../competencies/Competencies';
 
 
 const Dashboard = () => {
@@ -40,14 +41,13 @@ const Dashboard = () => {
                     </div>
 
                                
-                    <div className="card Half bio">
-                    <p>Kompetanse:             {profile && profile.skills}</p>
-                    <p>Erfaringer:              {profile && profile.experiences}</p>  
+                    <div>
+                        <Competencies competencies={profile.competencies} /> 
                     </div>
 
-                    <div className="date">
+                   
                     <p>Kontoen din ble laget:   {user && user.date} </p>
-                    </div>
+                    
                     <div>
                         {profile.currentCourses.length > 0 ?
                             profile.currentCourses.map((course, index) => (

@@ -16,6 +16,7 @@ import {
     GET_BANK,
     GET_BANK_EMPLOYEES,
     GET_GRAPH_DATA,
+    GET_COMPETENCIES,
     CLEAR_COMPANY
 } from '../types';
 
@@ -29,6 +30,7 @@ const CompanyState = props => {
         bank: [],
         graphData: [],
         employees: [],
+        competencies: [],
         loading: true
     };
 
@@ -41,6 +43,23 @@ const CompanyState = props => {
             const res = await axios.get("/api/companies");
             dispatch({
                 type: GET_COMPANIES,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_COMPANY,
+                payload: err.response.msg
+            });
+        }
+    }
+
+    // GET COMPETENCIES of user's skill
+    const getCompetencies = async (userID, skill) => {
+        
+        try {
+            const res = await axios.get(`/api/profile/competency/${userID}/${skill}`);
+            dispatch({
+                type: GET_COMPETENCIES,
                 payload: res.data
             });
         } catch (err) {
@@ -270,6 +289,7 @@ const CompanyState = props => {
             bank: state.bank,
             employees: state.employees,
             graphData: state.graphData,
+            competencies: state.competencies,
             
             addCompany,
             getCompanies,
@@ -283,6 +303,7 @@ const CompanyState = props => {
             getBankEmployees,
             getJoinedCompanies,
             getGraphData,
+            getCompetencies,
             clearCompany
         
         }}>

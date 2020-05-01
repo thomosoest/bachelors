@@ -15,12 +15,21 @@ const Bank = () => {
  
     // * Use state for Modal
     const [showModal, setModal] = useState(false);
+    const [currentSkill, setCurrentSkill] = useState("");
     const [selected, setSelected] = useState([]);  // For when the owner assigns tasks to selected employees
     const [selectedTask, setSelectedTask] = useState(null);
     const companyContext = useContext(CompanyContext);
     const taskContext = useContext(TaskContext);
     const profileContext = useContext(ProfileContext);
-    const {getBank, getGraphData, graphData, bank, getBankEmployees, employees} = companyContext;
+    const {
+        getBank, 
+        getGraphData, 
+        graphData, 
+        bank, 
+        getBankEmployees, 
+        employees,
+        competencies,
+        getCompetencies} = companyContext;
   
 
     useEffect(() => {
@@ -53,6 +62,11 @@ const Bank = () => {
         setSelectedTask(task);
     }
 
+    const updateCurrentSkill = skill => {
+        
+        setCurrentSkill(skill);
+    }
+
     const assertTask = () => {
         let employeeNames = selected.map(a => a.name);
         let employeeIDs = selected.map(a => a.id);
@@ -83,6 +97,7 @@ const Bank = () => {
                     getEmployees={getBankEmployees}
                     employees={employees}
                     showModal={modalOn}
+                    updateSkill={updateCurrentSkill}
                 />
             )) : null
         }
@@ -100,9 +115,19 @@ const Bank = () => {
                             <button className="btn btn-dark btn-sm"><ProfileLink user={user}>
                                 <p>Se Profil</p>
                             </ProfileLink></button>
+                            <button
+                                className="btn btn-dark btn-sm"
+                                onClick={() => getCompetencies(user._id, currentSkill)}
+                            >
+                                Kompetanser
+                            </button>
                         </Card>
                     </div>
                 )) : null
+            }
+            <h3>kompetanser</h3>
+            {
+                competencies.map(c => (<p>{c}</p>))
             }
         </Modal>
         </div>
