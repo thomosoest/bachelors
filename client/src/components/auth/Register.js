@@ -14,7 +14,7 @@ const Register = (props) => {
     const {register, isAuthenticated} = authContext;
 
     useEffect(() => {
-        if(isAuthenticated) props.history.push("/");
+        if(isAuthenticated) props.history.push("/dashboard");
         // eslint-disable-next-lint
     }, [isAuthenticated, props.history])
 
