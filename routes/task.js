@@ -99,7 +99,7 @@ router.get("/", async (req, res) => {
 
 
 // @router      GET api/task/company/:id
-// @desc        Get ALL tasks in specific company
+// @desc        Get ALL tasks from specific COMPANY
 // @access      Private
 router.get('/company/:id', auth, 
 
@@ -114,6 +114,24 @@ router.get('/company/:id', auth,
     }
 });
 
+
+// @router      GET api/task/user/:id
+// @desc        Get ALL tasks from specific USER
+// @access      Private
+router.get('/user/:id', auth, 
+
+    async (req, res) => {
+
+    try {
+        const task = await Task.findOne({user: req.params.id});
+        res.json(task);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server error');
+    }
+});
+
+//.populate("user", ["name"])
 
 
 module.exports = router;

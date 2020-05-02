@@ -6,7 +6,7 @@ import {
     ADD_TASK,
     //GET_TASK,
     GET_COMPANY_TASKS,
-    //GET_SINGLE_TASK
+    GET_USER_TASKS,
     ADD_EMPLOYEE,
     ERR_TASK
 } from '../types';
@@ -42,45 +42,6 @@ const TaskState = props => {
             });
         }
     }
-/* 
-        // GET TASKS
-        const getTask = async () => {
-        
-            try {
-                const res = await axios.get("/api/task");
-                dispatch({
-                    type: GET_TASK,
-                    payload: res.data
-                });
-            } catch (err) {
-                dispatch({
-                    type: ERR_TASK,
-                    payload: err.response.msg
-                });
-            }
-        }
-*/
-
-/* 
-    const getSingleTask = async taskId => {
-        
-        try {
-            const res = await axios.get(`/api/task/${taskId}`);
-            console.log(res.data);
-            dispatch({
-                type: GET_SINGLE_TASK,
-                payload: res.data
-            });
-        } catch (err) {
-            dispatch({
-                type: ERR_TASK,
-                payload: err.response.msg
-            });
-        }
-    }
-
-*/
-
 
     // ADD EMPLOYEE
     const addEmployee = async (id, employees) => {
@@ -123,6 +84,25 @@ const getCompanyTasks = async companyId => {
     }
 }
 
+
+const getUserTasks = async userId => {
+        
+    try {
+        const res = await axios.get(`/api/task/company/${userId}`);
+        console.log(res.data);
+        dispatch({
+            type: GET_USER_TASKS,
+            payload: res.data
+        });
+    } catch (err) {
+        dispatch({
+            type: ERR_TASK,
+            payload: err.response.msg
+        });
+    }
+}
+
+
     return (
         <TaskContext.Provider 
         value={{
@@ -132,9 +112,9 @@ const getCompanyTasks = async companyId => {
             employee: state.employee,
         
             addTask,
-            //getTask,
             addEmployee,
-            getCompanyTasks
+            getCompanyTasks,
+            getUserTasks
         }}>
             {props.children}
         </TaskContext.Provider>

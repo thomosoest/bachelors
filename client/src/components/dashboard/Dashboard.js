@@ -6,14 +6,13 @@ import {Link} from 'react-router-dom';
 import CourseFullItem from '../courses/CourseFullItem';
 import DashboardActions from './DashboardActions';
 import Competencies from '../competencies/Competencies';
+import ManageTask from '../task/ManageTask';
 
 
 const Dashboard = () => {
 
     const {getCurrentProfile, loading, profile, completeCourse} = useContext(ProfileContext);
     const {user} = useContext(AuthContext);
-    //const taskContext = useContext(TaskContext);
-    //const {task, getCompanyTasks} = taskContext;    
 
     useEffect(() => {
         getCurrentProfile();
@@ -31,7 +30,6 @@ const Dashboard = () => {
                     <h2>{user && user.name}</h2>
                     <p><i className="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i> {profile && profile.title} </p>
                     <p><i className="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i> {user && user.email} </p>
-                   
 
                     </div>
                 
@@ -39,12 +37,12 @@ const Dashboard = () => {
                     <h4>Bio</h4>
                     <p>                     {profile && profile.bio}</p>
                     </div>
+      
+                    <div><ManageTask case="owner"/></div>
 
-                               
                     <div>
                         <Competencies competencies={profile.competencies} /> 
                     </div>
-
                    
                     <p>Kontoen din ble laget:   {user && user.date} </p>
                     
