@@ -121,9 +121,8 @@ router.get('/company/:id', auth,
 router.get('/user/:id', auth, 
 
     async (req, res) => {
-
     try {
-        const task = await Task.findOne({user: req.params.id});
+        const task = await Task.find({employees: 'Mozart'});
         res.json(task);
     } catch (err) {
         console.error(err.message);
@@ -132,6 +131,7 @@ router.get('/user/:id', auth,
 });
 
 //.populate("user", ["name"])
+
 
 
 module.exports = router;

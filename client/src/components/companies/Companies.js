@@ -18,7 +18,7 @@ const Companies = (props) => {
             case "owner": getOwnedCompanies(); break;
             case "all" : getCompanies(); break;
             case "employee": getJoinedCompanies(); break;
-            default: ;  break;
+            default: break;
         }
     
         // eslint-disable-next-line

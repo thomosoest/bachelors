@@ -15,7 +15,8 @@ const Tasks = (props) => {
 
     return (  
         <Fragment>
-            <h2>Oppgaver: </h2>
+            <h1 className="text-left">Oppgaver: </h1>
+            <div className="flex-container">
             {(tasks.length > 0)? 
                 (tasks.map(task => (
                         <TaskItem  
@@ -27,7 +28,7 @@ const Tasks = (props) => {
                         />
             )
            )) : (null)} 
-       
+            </div>
        
         </Fragment>
     );

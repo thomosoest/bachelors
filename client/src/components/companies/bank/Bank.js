@@ -132,7 +132,7 @@ const Bank = () => {
         </Modal>
         </div>
             
-        <div className="card Half">
+        <div className="card half">
             {selected.length > 0 ?
             selected.map(user => (
             <div key={user.id}>  
@@ -146,7 +146,7 @@ const Bank = () => {
 
         <Tasks case="owner" buttonName="Velg" click={updateSelectedTask}/>
         {selectedTask !== null ? (
-            <div className="card Half">
+            <div className="card half">
                 <h2>Valgt Oppgave</h2>
                 <p>{selectedTask.name}</p>
             </div>

@@ -10,7 +10,7 @@ const Card = ({title, text, click, buttonName, children, arg}) => {
     }
 
     return (
-        <div className="card bg-light">
+        <div className="card bg-light half rounded">
             <h3>{title}</h3>
         <p>{text}</p>
         <button onClick={clickHandler} className="btn btn-dark btn-sm">{buttonName}</button>

@@ -98,8 +98,12 @@ img {
   
 }
 
-.Half {
-  width: 350px;
+.half {
+  width: 475px;
+}
+
+.profile-width {
+  width: 300px;
 }
 /* List */
 .list {
@@ -368,6 +372,7 @@ table th {
   border-bottom: solid 1px var(--primary-color);
   opacity: 0.9;
   margin-bottom: 1rem;
+  background-color: ;
 }
 
 .navbar ul {
@@ -511,4 +516,34 @@ table th {
   display: block;
   width: 100%;
   margin-bottom: 0.2rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+.flex-container-profil {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 10px;
+  justify-content: space-between;
+}
+
+.rounded {
+  border-radius: 1em;
+}
+
+.button-width {
+  width: 130px;
+}
+
+
+.scaled {
+  transform: scale(0.7); /* Equal to scaleX(0.7) scaleY(0.7) */
+  background-color: pink;
 }

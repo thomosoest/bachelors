@@ -67,7 +67,7 @@ const Ansatte = () => {
             )) : null
         }
 
-        <div className="card Half">
+        <div className="card half">
             {selectedEmployees.length > 0 ?
             selectedEmployees.map(user => (
             <div key={user.id}>  
@@ -85,7 +85,7 @@ const Ansatte = () => {
             click={addSelectedCourses}
         />
 
-        <div className="card Half">
+        <div className="card half">
             {selectedCourses.length > 0 ?
             selectedCourses.map(course => (
             <div key={course.id}>  

@@ -71,7 +71,6 @@ const getCompanyTasks = async companyId => {
         
     try {
         const res = await axios.get(`/api/task/company/${companyId}`);
-        console.log(res.data);
         dispatch({
             type: GET_COMPANY_TASKS,
             payload: res.data
@@ -85,11 +84,10 @@ const getCompanyTasks = async companyId => {
 }
 
 
-const getUserTasks = async userId => {
+const getUserTasks = async userName => {
         
     try {
-        const res = await axios.get(`/api/task/company/${userId}`);
-        console.log(res.data);
+        const res = await axios.get(`/api/task/user/${userName}`);
         dispatch({
             type: GET_USER_TASKS,
             payload: res.data

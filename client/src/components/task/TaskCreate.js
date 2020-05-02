@@ -52,7 +52,7 @@ const TaskCreate = () => {
                 <input
                     type="submit"
                     value="Opprett oppgave"
-                    className="btn btn-dark btn-block"
+                    className="btn btn-dark btn-block text-left button-width"
                 />
             </form>
         </div>

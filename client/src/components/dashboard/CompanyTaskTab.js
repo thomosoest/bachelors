@@ -9,7 +9,7 @@ import Tasks from '../task/Task';
 const CompanyTaskTab = (props) => { 
     const taskContext = useContext(TaskContext);
     const companyContext = useContext(CompanyContext);
-    const {task, getCompanyTasks} = taskContext;
+    const {getCompanyTasks} = taskContext;
 
     useEffect(() => {
         getCompanyTasks(companyContext.currentCompany._id);
