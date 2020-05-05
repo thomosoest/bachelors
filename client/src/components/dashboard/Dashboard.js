@@ -11,13 +11,19 @@ import ManageTask from '../task/ManageTask';
 
 const Dashboard = () => {
 
-    const {getCurrentProfile, loading, profile, completeCourse} = useContext(ProfileContext);
+    const {getCurrentProfile, loading, profile, completeCourse, sendCompetenciesToCompanies} = useContext(ProfileContext);
     const {user} = useContext(AuthContext);
 
     useEffect(() => {
         getCurrentProfile();
         // eslint-disable-next-line
-    }, [profile]);           
+    }, [profile]);  
+    
+    const sendCompetencies = () => {
+        let skills = profile.competencies.map(a => a.skill);
+        let companies = profile.companies.map(a => a.company);
+        sendCompetenciesToCompanies(skills, companies);
+    }
 
     return loading? <p>Loading...</p> :
           
@@ -41,7 +47,8 @@ const Dashboard = () => {
                     <div><ManageTask id={user && user.name}/></div>
 
                     <div>
-                        <Competencies competencies={profile.competencies} /> 
+                        <Competencies competencies={profile.competencies} />
+                        <button onClick={sendCompetencies}>Send kompetanser</button>
                     </div>
                    
                     <p>Kontoen din ble opprettet:   {user && user.date} </p>

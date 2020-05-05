@@ -115,6 +115,33 @@ const ProfileState = props => {
         
     }
 
+
+    const sendCompetenciesToCompanies = async (skills, companyIDs) => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+
+        try {
+
+            let body = {skill : skills};
+            let res = await Promise.all(
+                companyIDs.map(async companyID => {
+                  let skillRes = await axios.post(`api/skills/skillify/${companyID}`, body, config);
+                  return skillRes;
+                })
+              ); 
+            
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+        
+    }
+
     const clearProfile = () => {
         dispatch({type: CLEAR_PROFILE});
     }
@@ -135,7 +162,8 @@ const ProfileState = props => {
             clearProfile,
             createProfile,
             completeCourse,
-            sendTask
+            sendTask,
+            sendCompetenciesToCompanies
         }}>
             {props.children}
         </ProfileContext.Provider>
