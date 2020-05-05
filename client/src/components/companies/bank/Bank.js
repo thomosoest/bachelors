@@ -96,7 +96,6 @@ const Bank = () => {
                     key={skill.skill} 
                     skill={skill} 
                     getEmployees={getBankEmployees}
-                    employees={employees}
                     showModal={modalOn}
                     updateSkill={updateCurrentSkill}
                 />
@@ -129,7 +128,7 @@ const Bank = () => {
             }
             <h3>kompetanser</h3>
             {
-                competencies.map(c => (<p>{c}</p>))
+                competencies.map((c, i) => (<p key={i}>{c}</p>))
             }
         </Modal>
         </div>

@@ -1,6 +1,9 @@
 import React, {Fragment, useContext, useEffect} from 'react';
 import CompanyContext from '../../context/company/companyContext';
 import CompanyItem from '../../components/companies/CompanyItem';
+import PropTypes from 'prop-types';
+
+
 
 
 const Companies = (props) => {
@@ -25,7 +28,6 @@ const Companies = (props) => {
     }, []);
 
     let selectedCompanies = [];
-    let title = <h2>{props.title}</h2>;
 
     switch(props.case){
         case "owner": selectedCompanies = ownedCompanies; break;      
@@ -53,5 +55,10 @@ const Companies = (props) => {
         </Fragment>
     );
 }
+
+Companies.propTypes = {
+    case: PropTypes.string,
+    title: PropTypes.string
+};
 
 export default Companies;

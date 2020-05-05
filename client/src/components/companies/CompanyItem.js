@@ -2,6 +2,7 @@ import React, {useContext} from 'react';
 import CompanyContext from '../../context/company/companyContext';
 import { useHistory } from 'react-router-dom';
 import Card from '../UI/Card';
+import PropTypes from 'prop-types';
 
 const CompanyItem = (props) => {
     const history = useHistory();
@@ -54,6 +55,10 @@ const CompanyItem = (props) => {
     return (
         output
     )
+};
+
+CompanyItem.propTypes = {
+    company: PropTypes.object
 };
 
 export default CompanyItem;

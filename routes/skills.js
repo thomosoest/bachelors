@@ -101,7 +101,9 @@ router.get('/graph/:id', auth,
                     skill: 1,
                     employee_count: { $size: "$employees" }
                 }
-            }
+            },
+            { $sort : { employee_count : -1} },
+            { $limit: 6 }
         ])
 
         
