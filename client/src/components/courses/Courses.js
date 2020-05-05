@@ -16,6 +16,7 @@ const Courses = (props) => {
 
     return (   
         <Fragment>
+            <div className="flex-container">
             {courses.map(course => (
             <CourseItem 
                 key={course._id} 
@@ -25,6 +26,7 @@ const Courses = (props) => {
                 click={props.click}
                 />
             ))}
+            </div>
         </Fragment>
     );
 }

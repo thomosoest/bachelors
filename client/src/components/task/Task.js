@@ -19,7 +19,7 @@ const Tasks = (props) => {
             <div className="flex-container">
             {(tasks.length > 0)? 
                 (tasks.map(task => (
-                        <TaskItem  
+                        <TaskItem 
                         key={task._id} 
                         case={props.case} 
                         task={task} 

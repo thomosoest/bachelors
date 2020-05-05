@@ -89,6 +89,7 @@ const Bank = () => {
             </VictoryChart>
         ) : null}
 
+        <div className="flex-container">
         {bank != null ?
             bank.map(skill => (
                 <SkillItem 
@@ -101,6 +102,7 @@ const Bank = () => {
                 />
             )) : null
         }
+        </div>
 
         <Modal show={showModal} clicked={modalOff} >
             {employees.length > 0 ?

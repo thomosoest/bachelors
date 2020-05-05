@@ -93,11 +93,20 @@ router.put("/task/:taskId", auth, async (req, res) => {
     }
 });
 
+/*,
+                "description",
+                "date",
+                "status"
+ */
+
 router.get("/me", auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({user: req.user.id}).populate(
             "user", [
                 "name"
+            ],
+            "task", [
+                "id_"
             ]
         );
 

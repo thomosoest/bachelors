@@ -50,6 +50,8 @@ const Ansatte = () => {
     
 
     return (<div>
+        <div className="flex-container">
+       
         {currentCompany != null ?
             currentCompany.ansatte.map(user => (
                 <div key={user.user._id}>
@@ -66,8 +68,9 @@ const Ansatte = () => {
                 </div>
             )) : null
         }
+        </div>  
 
-        <div className="card half">
+        <div className="card half flex-container">
             {selectedEmployees.length > 0 ?
             selectedEmployees.map(user => (
             <div key={user.id}>  

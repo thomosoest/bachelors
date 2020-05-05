@@ -83,11 +83,9 @@ const getCompanyTasks = async companyId => {
     }
 }
 
-
-const getUserTasks = async userName => {
-        
+const getUserTasks = async employee => {
     try {
-        const res = await axios.get(`/api/task/user/${userName}`);
+        const res = await axios.get(`/api/task/user/${employee}`);
         dispatch({
             type: GET_USER_TASKS,
             payload: res.data
@@ -99,7 +97,6 @@ const getUserTasks = async userName => {
         });
     }
 }
-
 
     return (
         <TaskContext.Provider 

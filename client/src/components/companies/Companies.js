@@ -39,14 +39,17 @@ const Companies = (props) => {
     return (
    
         <Fragment>
+            
             {selectedCompanies.length > 0 ?(<h2>{props.title}</h2>) : null}
+            <div className="flex-container">
             {selectedCompanies !== null?(
             selectedCompanies.map(company => (
                 (company === null)? 
                     (null):
                    (<CompanyItem key={company._id} case={props.case} company={company}/>)
             ))): null
-        }
+            }
+            </div>
         </Fragment>
     );
 }

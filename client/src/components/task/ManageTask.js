@@ -25,7 +25,7 @@ const ManageTasks = (props) => {
                     case={props.case} 
                     task={task} 
                     click={props.click}
-                    buttonName={props.buttonName}
+                    buttonName={props.buttonName} 
                     />
         )
        )) : (null)} 

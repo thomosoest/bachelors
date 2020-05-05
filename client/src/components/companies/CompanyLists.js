@@ -6,8 +6,7 @@ const CompanyLists = () => {
     return (
     <div>
         <SearchCompanies></SearchCompanies>
-        <div>
-            
+        <div>     
             <Companies case="owner" title="Bedrifter du eier"/>
             <Companies case="employee" title="Bedrifter du er med i" />
         </div>
