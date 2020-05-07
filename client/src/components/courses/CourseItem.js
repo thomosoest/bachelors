@@ -17,6 +17,8 @@ const CourseItem = (props) => {
             break;
         case "ansatt":  
                 output = <Card 
+                    click={() => {props.click(props.course._id)}}
+                    buttonName={props.buttonName}
                     title={props.course.name}
                     text={"Beskrivelse: " + props.course.description + '\n' + 
                     "Dato: " + props.course.date}

@@ -86,6 +86,21 @@ const CourseState = props => {
     }
 
 
+    const takeCourse = async (courseID) => {
+        
+        try {
+
+            let empRes = await axios.post(`/api/courses/take/${courseID}`);     
+            
+        } catch (err) {
+            dispatch({
+                type: ERR_COURSE,
+                payload: err.response.msg
+            });
+        }
+    }
+
+
 
 
 
@@ -98,7 +113,8 @@ const CourseState = props => {
 
             addCourse,
             assertCourses,
-            getCompanyCourses
+            getCompanyCourses,
+            takeCourse
         }}>
             {props.children}
         </CourseContext.Provider>

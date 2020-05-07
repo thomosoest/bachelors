@@ -4,12 +4,12 @@ const Competencies = (props) => {
     return (
         <div>
             <h2>Kompetanser</h2>
-            {props.competencies.map(skill => {
+            {props.competencies.map((skill, i) => {
                 return (
-                    <div>
+                    <div key={i}>
                         <h3>{skill.skill}</h3>
-                        { skill.competencies.map(competency => {
-                            return <p>{competency}</p>
+                        { skill.competencies.map((competency, j) => {
+                            return <p key={j}>{competency}</p>
                         })}
                     </div>
                 )

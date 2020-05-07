@@ -105,14 +105,37 @@ router.post('/assign/:userID', auth,
                 }
             }
         ).select("name description competencies"); 
-        console.log(courses);
+        
 
         await Profile.update({user: req.params.userID},
             {"$push": {"currentCourses": courses}});
 
         res.json({courses: courses});
     } catch (err) {
-        console.error(err.message);
+        
+        res.status(500).send('Server error');
+    }
+});
+
+
+router.post('/take/:courseID', auth,  
+
+    async (req, res) => {
+
+    try {
+        const course = await Course.find({  // Get all the courses
+                _id: 
+                    req.params.courseID
+                }
+        ).select("name description competencies"); 
+        
+
+        const response = await Profile.update({user: req.user.id},
+            {"$push": {"currentCourses": course}});
+
+        res.json(response);
+    } catch (err) {
+        
         res.status(500).send('Server error');
     }
 });
