@@ -62,13 +62,11 @@ const CourseCreate = () => {
                     value={course.description}
                     placeholder="Beskrivelse av kurset"
                 />
-                <input 
-                    type="text" 
-                    name="date" 
-                    onChange={onChange}
-                    value={course.date}
-                    placeholder="Når skal kurset være?"
-                />
+                <input type="date"  name="date"
+                placeholder="Når skal kurset være?"
+                onChange={onChange}
+                value={course.date}/>
+
                 <h1>Kompetanse del</h1>
                 <p>For hver kompetanse skal det skrives kun ett fagområde, og én kompetanse under. </p>
                 {
