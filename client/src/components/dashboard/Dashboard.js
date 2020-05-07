@@ -17,8 +17,9 @@ const Dashboard = () => {
     
     useEffect(() => {
         getCurrentProfile();
+        console.log("PROFILE");
         // eslint-disable-next-line
-    }, [profile]);  
+    }, []);  
     
     const sendCompetencies = () => {
         let skills = profile.competencies.map(a => a.skill);

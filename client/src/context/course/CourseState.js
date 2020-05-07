@@ -47,7 +47,7 @@ const CourseState = props => {
         
         try {
             const res = await axios.get(`/api/courses/company/${companyId}`);
-            console.log(res.data);
+            console.log("Get courses");
             dispatch({
                 type: GET_COMPANY_COURSES,
                 payload: res.data

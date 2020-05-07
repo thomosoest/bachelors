@@ -11,10 +11,11 @@ const CompanyCourseTab = () => {
 
     const [showForm, changeShowForm] = useState(false);
 
-    useEffect(() => {
+   /* useEffect(() => {
         getCompanyCourses(companyContext.currentCompany._id);
+        console.log("COURSETAB");
         // eslint-disable-next-line
-    }, [courseContext.courses]);
+    }, []);*/
 
     const clickHandler = () => {
         changeShowForm(true);

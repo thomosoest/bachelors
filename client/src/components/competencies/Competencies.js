@@ -3,7 +3,7 @@ import React from 'react';
 const Competencies = (props) => {
     return (
         <div>
-            <h2>Kompetencies</h2>
+            <h2>Kompetanser</h2>
             {props.competencies.map(skill => {
                 return (
                     <div>
