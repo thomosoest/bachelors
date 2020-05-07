@@ -14,7 +14,7 @@ export default (state, action) => {
         case ADD_COURSE:
             return {
                 ...state,
-                course: action.payload
+                courses: [action.payload,[...state.courses]]
             }
         default:
             return state;
