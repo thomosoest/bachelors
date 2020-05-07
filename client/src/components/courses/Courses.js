@@ -10,7 +10,6 @@ const Courses = (props) => {
 
     useEffect(() => {
         if(companyContext.currentCompany !== null)getCompanyCourses(companyContext.currentCompany._id);
-        console.log("COURSES");
         // eslint-disable-next-line
     }, [companyContext.currentCompany]);
 
