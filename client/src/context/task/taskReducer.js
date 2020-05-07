@@ -1,5 +1,8 @@
 import {
     ADD_TASK,
+    UPDATE_TASK_STATUS,
+    FINISH_TASK,
+    DELETE_TASK,
     GET_TASK,
     GET_COMPANY_TASKS,
     GET_USER_TASKS,

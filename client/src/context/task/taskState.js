@@ -4,7 +4,9 @@ import TaskContext from './taskContext';
 import taskReducer from './taskReducer';
 import {
     ADD_TASK,
-    //GET_TASK,
+    UPDATE_TASK_STATUS,
+    DELETE_TASK,
+    FINISH_TASK,
     GET_COMPANY_TASKS,
     GET_USER_TASKS,
     ADD_EMPLOYEE,
@@ -43,7 +45,78 @@ const TaskState = props => {
         }
     }
 
-    // ADD EMPLOYEE
+    //UPDATE_TASK_STATUS
+    
+    const updateTaskStatus = async (id, statusUpdate) => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+       
+        try {
+            let body = {status: statusUpdate};
+            const res = await axios.put(`/api/task/update/${id}`, body, config);
+            console.log(body);
+            dispatch({
+                type: UPDATE_TASK_STATUS,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_TASK,
+                payload: err.response.msg
+            });
+        }
+    }
+    
+    //FINISH_TASK
+
+    const finishTask = async taskFields => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.post("/api/task", taskFields, config);
+            dispatch({
+                type: FINISH_TASK,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_TASK,
+                payload: err.response.msg
+            });
+        }
+    }
+
+    //DELETE_TASK
+
+    const deleteTask = async taskFields => {
+        const config = {
+            headers: {
+                "Content-Type" : "application/json"
+            }
+        };
+
+        try {
+            const res = await axios.post("/api/task", taskFields, config);
+            dispatch({
+                type: DELETE_TASK,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_TASK,
+                payload: err.response.msg
+            });
+        }
+    }
+
+    // ADD EMPLOYEE TO TASK
     const addEmployee = async (id, employees) => {
         const config = {
             headers: {
@@ -67,6 +140,8 @@ const TaskState = props => {
         }
     }
 
+    // GET SPECIFIED COMPANY'S TASKS
+
 const getCompanyTasks = async companyId => {
         
     try {
@@ -83,8 +158,14 @@ const getCompanyTasks = async companyId => {
     }
 }
 
+
+    // GET SPECIFIED USER'S TASKS
+
 const getUserTasks = async employee => {
+
+
     try {
+        console.log(employee);
         const res = await axios.get(`/api/task/user/${employee}`);
         dispatch({
             type: GET_USER_TASKS,
@@ -107,6 +188,9 @@ const getUserTasks = async employee => {
             employee: state.employee,
         
             addTask,
+            updateTaskStatus,
+            finishTask,
+            deleteTask,
             addEmployee,
             getCompanyTasks,
             getUserTasks

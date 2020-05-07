@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import CourseFullItem from '../courses/CourseFullItem';
 import DashboardActions from './DashboardActions';
 import Competencies from '../competencies/Competencies';
-import ManageTask from '../task/ManageTask';
+import TaskManager from '../task/TaskManager';
 
 
 const Dashboard = () => {
@@ -14,6 +14,7 @@ const Dashboard = () => {
     const {user} = useContext(AuthContext);
     const {tasks} = useContext(TaskContext)
 
+    
     useEffect(() => {
         getCurrentProfile();
         // eslint-disable-next-line
@@ -37,9 +38,7 @@ const Dashboard = () => {
                         <h2>{user && user.name}</h2>
                         <p><i className="fa fa-briefcase fa-fw text-primary"></i> {profile && profile.title} </p>
                         <p><i className="fa fa-envelope fa-fw text-primary"></i> {user && user.email} </p>
-
                         </div>
-
                         <div className="card profile-width rounded">
                         <h4>Bio</h4>
                         <p> {profile && profile.bio} </p>
@@ -47,7 +46,7 @@ const Dashboard = () => {
                     </div>
 
                     <div>
-                        <ManageTask id={user && user.name}/>
+                        <TaskManager id={profile && profile.tasks}/>
                     </div>
 
                     <div>

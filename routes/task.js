@@ -33,7 +33,24 @@ router.post("/", auth,  async (req, res) =>{
     }
 });
 
+// @route       PUT api/task/add/:id
+// @desc        Add employees to task
+// @access      Private
 
+router.put('/update/:id', auth, async (req,res) =>{
+
+        try {
+            const task = await Task.findById(req.params.id);
+            task.status = req.body.status;
+            await task.save();
+            res.json(task);
+           
+        } catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+});
 
 // @route       PUT api/task/add/:id
 // @desc        Add employees to task
@@ -122,7 +139,7 @@ router.get('/user/:id', auth,
 
     async (req, res) => {
     try {
-        const task = await Task.find({employees: 'Mozart'});
+        const task = await Task.find({employees: req.params.id});
         res.json(task);
     } catch (err) {
         console.error(err.message);

@@ -38,6 +38,9 @@ export const GET_COMPANY_COURSES = 'GET_COMPANY_COURSES';
 export const ERR_COURSE = 'ERR_COURSE';
 
 export const ADD_TASK = 'ADD_TASK';
+export const UPDATE_TASK_STATUS = 'UPDATE_TASK';
+export const DELETE_TASK = 'DELETE_TASK';
+export const FINISH_TASK = 'FINISH_TASK';
 export const GET_TASK = 'GET_TASK';
 export const GET_COMPANY_TASKS = 'GET_COMPANY_TASKS';
 export const GET_USER_TASKS = 'GET_USER_TASKS';
