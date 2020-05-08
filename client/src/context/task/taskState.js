@@ -93,9 +93,9 @@ const TaskState = props => {
         }
     }
 
-    //DELETE_TASK
+    //REMOVE_TASK
 
-    const deleteTask = async taskFields => {
+    const removeTaskFromProfile = async (id, body) => {
         const config = {
             headers: {
                 "Content-Type" : "application/json"
@@ -103,7 +103,7 @@ const TaskState = props => {
         };
 
         try {
-            const res = await axios.post("/api/task", taskFields, config);
+            const res = await axios.put(`/api/task/removeUser/${id}`, body, config)
             dispatch({
                 type: DELETE_TASK,
                 payload: res.data
@@ -115,6 +115,28 @@ const TaskState = props => {
             });
         }
     }
+
+
+
+
+    //REMOVE_TASK
+
+    const deleteTask = async (id) => {
+        
+        try {
+            const res = await axios.delete(`/api/task/deleteTask/${id}`)
+            dispatch({
+                type: DELETE_TASK,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: ERR_TASK,
+                payload: err.response.msg
+            });
+        }
+    }
+
 
     // ADD EMPLOYEE TO TASK
     const addEmployee = async (id, employees) => {
@@ -190,6 +212,7 @@ const getUserTasks = async employee => {
             addTask,
             updateTaskStatus,
             finishTask,
+            removeTaskFromProfile,
             deleteTask,
             addEmployee,
             getCompanyTasks,

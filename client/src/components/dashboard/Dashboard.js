@@ -46,7 +46,10 @@ const Dashboard = () => {
                     </div>
 
                     <div>
-                        <TaskManager id={profile && profile.tasks}/>
+                        <TaskManager 
+                        task={profile && profile.tasks}
+                        profileId={profile && profile._id}
+                        />
                     </div>
 
                     <div>

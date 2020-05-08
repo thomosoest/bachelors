@@ -98,17 +98,13 @@ router.put("/task/:taskId", auth, async (req, res) => {
 // @access  private
 
 router.get("/me", auth, async (req, res) => {
+   
     try {
-        const profile = await Profile
-        .findOne({user: req.user.id})
-        .populate(
+        const profile = await Profile.findOne({user: req.user.id}).populate(
             "user", [
                 "name"
-            ],
-            "task", [
-                "_id"
             ]
-        );
+        ).populate("tasks.task")
 
         if(!profile) return res.status(400).json({msg: "User not found by this name"});
 

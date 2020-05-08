@@ -2,15 +2,14 @@ import React ,{useContext}  from 'react';
 import TaskContext from '../../context/task/taskContext';
 
 
-const TaskCard = ({title, text, date, status, click, buttonName, children, id, arg }) => {
+const TaskCard = ({title, text, date, status, click, buttonName, children, id, arg, newStatus }) => {
     const taskContext = useContext(TaskContext);
     const {updateTaskStatus} = taskContext;
-    
-    let newStatus;
 
 
     const onSubmitHandler = (e) => {
-        e.preventDefault();
+       e.preventDefault();
+
         updateTaskStatus(id,newStatus);
 
         console.log(id,newStatus);
@@ -29,7 +28,7 @@ const TaskCard = ({title, text, date, status, click, buttonName, children, id, a
         <p>{text}</p>
         <h5>{date}</h5>
         <h5>{status}</h5>
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} className="form">
                 <input 
                     type="text" 
                     name="newStatus"
@@ -38,7 +37,7 @@ const TaskCard = ({title, text, date, status, click, buttonName, children, id, a
                 />
                 <input type="submit" value="Oppdater Status" className="btn btn-dark btn-sm"
                 />
-            </form> 
+            </form>
         <button onClick={clickHandler} className="btn btn-dark btn-sm">{buttonName}</button>
         {children}
        

@@ -5,10 +5,13 @@ import TaskContext from '../../context/task/taskContext';
 
 
 const TaskManagerItem = (props) => {
-
+    const taskContext = useContext(TaskContext);
+    const { removeTaskFromProfile} = taskContext;
+    
     const leaveTask = () => {
-        console.log("FDSA")
+        removeTaskFromProfile(props.task._id,props.userId);
     }
+
 
     return (
         <div>
@@ -21,6 +24,7 @@ const TaskManagerItem = (props) => {
         arg={{name: props.task.taskName, id: props.task._id}}
         buttonName="Fjern"
         click={leaveTask}
+
     />
     </div>
     )

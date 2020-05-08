@@ -33,8 +33,8 @@ router.post("/", auth,  async (req, res) =>{
     }
 });
 
-// @route       PUT api/task/add/:id
-// @desc        Add employees to task
+// @route       PUT api/task/update/:id
+// @desc        Status of a task is updated
 // @access      Private
 
 router.put('/update/:id', auth, async (req,res) =>{
@@ -51,6 +51,30 @@ router.put('/update/:id', auth, async (req,res) =>{
         }
 
 });
+
+//const res = await axios.put(`/api/task/removeUser/${id}`, body, config)
+// @route       PUT api/task/removeUser/:id
+// @desc        Removes user from the specified task
+// @access      Private
+
+router.put('/removeUser/:id', auth, async (req,res) =>{
+
+    try {
+        
+        const task = await Task.findById(req.params.id);
+
+        console.log("ASDF")
+
+        await task.save();
+        res.json(task);
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
 
 // @route       PUT api/task/add/:id
 // @desc        Add employees to task
@@ -73,7 +97,6 @@ router.put('/join/:id', auth,
 
 });
 
- 
 
 // @router      GET api/task/:taskID
 // @desc        Get task by ID
@@ -115,6 +138,22 @@ router.get("/", async (req, res) => {
 });
 
 
+// @route       PUT api/task/update/:id
+// @desc        Status of a task is updated
+// @access      Private
+
+router.delete('/deleteTask/:id', auth, async (req,res) =>{
+
+    try {
+        const task = await Task.findByIdAndDelete(req.params.id);
+       
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+
+});
+
 // @router      GET api/task/company/:id
 // @desc        Get ALL tasks from specific COMPANY
 // @access      Private
@@ -130,25 +169,6 @@ router.get('/company/:id', auth,
         res.status(500).send('Server error');
     }
 });
-
-
-// @router      GET api/task/user/:id
-// @desc        Get ALL tasks from specific USER
-// @access      Private
-router.get('/user/:id', auth, 
-
-    async (req, res) => {
-    try {
-        const task = await Task.find({employees: req.params.id});
-        res.json(task);
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server error');
-    }
-});
-
-//.populate("user", ["name"])
-
 
 
 module.exports = router;
