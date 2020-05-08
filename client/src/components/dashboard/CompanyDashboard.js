@@ -10,7 +10,6 @@ import CompanyTaskTab from './CompanyTaskTab';
 const CompanyDashboard = () => {
 
     const {getCurrentProfile, loading, profile} = useContext(ProfileContext);
-    // const {user} = useContext(AuthContext);
 
     useEffect(() => {
         getCurrentProfile();

@@ -34,7 +34,7 @@ const CourseSchema = mongoose.Schema({
     },
 
     date: {
-        type: String
+        type: Date
     },
 
 });

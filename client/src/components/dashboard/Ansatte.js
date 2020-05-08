@@ -70,7 +70,7 @@ const Ansatte = () => {
         }
         </div>  
 
-        <div className="card half flex-container">
+        <div className="card half">
             {selectedEmployees.length > 0 ?
             selectedEmployees.map(user => (
             <div key={user.id}>  
