@@ -249,10 +249,9 @@ router.get("/competency/:userID/:skill", auth, async (req, res) => {
 router.put('/removetask/:id', auth, async (req,res) => {
    
     try {
-        console.log(req.params.id);
         await Profile.findOneAndUpdate(
             { user: req.user.id}, 
-            { $pull : { "tasks": {task: testId} }
+            { $pull : { "tasks": {task: req.params.id} }
         });
 
     } catch (err) {
