@@ -57,7 +57,6 @@ const TaskState = props => {
         try {
             let body = {status: statusUpdate};
             const res = await axios.put(`/api/task/update/${id}`, body, config);
-            console.log(body);
             dispatch({
                 type: UPDATE_TASK_STATUS,
                 payload: res.data
@@ -92,30 +91,6 @@ const TaskState = props => {
             });
         }
     }
-
-    //REMOVE_TASK
-
-    const removeTaskFromProfile = async (id, body) => {
-        const config = {
-            headers: {
-                "Content-Type" : "application/json"
-            }
-        };
-
-        try {
-            const res = await axios.put(`/api/task/removeUser/${id}`, body, config)
-            dispatch({
-                type: DELETE_TASK,
-                payload: res.data
-            });
-        } catch (err) {
-            dispatch({
-                type: ERR_TASK,
-                payload: err.response.msg
-            });
-        }
-    }
-
 
 
 
@@ -212,7 +187,6 @@ const getUserTasks = async employee => {
             addTask,
             updateTaskStatus,
             finishTask,
-            removeTaskFromProfile,
             deleteTask,
             addEmployee,
             getCompanyTasks,

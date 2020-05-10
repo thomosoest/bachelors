@@ -1,6 +1,7 @@
 import {
     GET_PROFILE,
     GET_USER_PROFILE,
+    REMOVE_TASK_FROM_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
     CREATE_PROFILE,
@@ -21,6 +22,7 @@ export default (state, action) => {
         case CREATE_PROFILE:
         case COMPLETE_COURSE:
         case GET_PROFILE:
+        case REMOVE_TASK_FROM_PROFILE:
             return {
                 ...state, 
                 profile: action.payload,

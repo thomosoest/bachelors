@@ -31,15 +31,13 @@ const Dashboard = () => {
         <Fragment>
             {profile !== null?
                 <Fragment> 
-                    <div className="flex-container-profil">
+                    <div>
                         <div className="card profile-width rounded">
                         <p style={{color: "red"}}>Du har opprettet en profil.</p>
                         <img src="https://image.shutterstock.com/image-vector/example-stamp-600w-426673501.jpg" className="w3-round" alt="Norway"></img>
                         <h2>{user && user.name}</h2>
                         <p><i className="fa fa-briefcase fa-fw text-primary"></i> {profile && profile.title} </p>
                         <p><i className="fa fa-envelope fa-fw text-primary"></i> {user && user.email} </p>
-                        </div>
-                        <div className="card profile-width rounded">
                         <h4>Bio</h4>
                         <p> {profile && profile.bio} </p>
                         </div>
@@ -48,7 +46,6 @@ const Dashboard = () => {
                     <div>
                         <TaskManager 
                         task={profile && profile.tasks}
-                        profileId={profile && profile._id}
                         />
                     </div>
 

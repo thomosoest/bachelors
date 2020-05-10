@@ -1,18 +1,24 @@
-import React ,{useContext}  from 'react';
+import React , {useState, useContext}  from 'react';
 import TaskContext from '../../context/task/taskContext';
 
 
-const TaskCard = ({title, text, date, status, click, buttonName, children, id, arg, newStatus }) => {
+const TaskCard = ({title, text, date, status, click, buttonName, children, id, arg}) => {
     const taskContext = useContext(TaskContext);
     const {updateTaskStatus} = taskContext;
+
+    const onChange = e => setBody({ ...body, [e.target.name]: e.target.value });
+
+    const [ body, setBody] = useState({
+        newStatus: ''
+    });
+
+    const {newStatus} = body;
 
 
     const onSubmitHandler = (e) => {
        e.preventDefault();
-
-        updateTaskStatus(id,newStatus);
-
-        console.log(id,newStatus);
+        updateTaskStatus(id,body.newStatus);
+        console.log(id,body.newStatus);
     }
 
     const clickHandler = () => {
@@ -28,11 +34,12 @@ const TaskCard = ({title, text, date, status, click, buttonName, children, id, a
         <p>{text}</p>
         <h5>{date}</h5>
         <h5>{status}</h5>
-        <form onSubmit={onSubmitHandler} className="form">
+        <form onSubmit={onSubmitHandler}>
                 <input 
                     type="text" 
                     name="newStatus"
-                    value={newStatus}
+                    onChange={onChange}
+                    value={body.newStatus}
                     placeholder="Ny Status?"
                 />
                 <input type="submit" value="Oppdater Status" className="btn btn-dark btn-sm"

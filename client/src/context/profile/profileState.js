@@ -8,6 +8,7 @@ import {
     PROFILE_ERROR,
     CLEAR_PROFILE,
     CREATE_PROFILE,
+    REMOVE_TASK_FROM_PROFILE,
     COMPLETE_COURSE
 } from '../types';
 
@@ -142,6 +143,30 @@ const ProfileState = props => {
         
     }
 
+    
+    //REMOVE_TASK
+
+    const removeTaskFromProfile = async (id) => {
+        const config = {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        };
+        try {
+            const res = await axios.put(`/api/profile/removetask/${id}`, config);
+            dispatch({
+                type: REMOVE_TASK_FROM_PROFILE,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: { msg: err.response.statusText, status: err.response.status }
+            });
+        }
+        
+    }
+
     const clearProfile = () => {
         dispatch({type: CLEAR_PROFILE});
     }
@@ -163,6 +188,7 @@ const ProfileState = props => {
             createProfile,
             completeCourse,
             sendTask,
+            removeTaskFromProfile,
             sendCompetenciesToCompanies
         }}>
             {props.children}

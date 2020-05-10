@@ -52,28 +52,6 @@ router.put('/update/:id', auth, async (req,res) =>{
 
 });
 
-//const res = await axios.put(`/api/task/removeUser/${id}`, body, config)
-// @route       PUT api/task/removeUser/:id
-// @desc        Removes user from the specified task
-// @access      Private
-
-router.put('/removeUser/:id', auth, async (req,res) =>{
-
-    try {
-        
-        const task = await Task.findById(req.params.id);
-
-        console.log("ASDF")
-
-        await task.save();
-        res.json(task);
-
-    } catch (err) {
-        console.error(err.message);
-        res.status(500).send('Server Error');
-    }
-
-});
 
 
 // @route       PUT api/task/add/:id

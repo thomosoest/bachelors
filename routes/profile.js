@@ -116,6 +116,9 @@ router.get("/me", auth, async (req, res) => {
     }
 });
 
+// @route   GET api/me/companies
+// @desc    get 
+// @access  private
 
 router.get("/me/companies", auth, async (req, res) => {
     try {
@@ -236,6 +239,25 @@ router.get("/competency/:userID/:skill", auth, async (req, res) => {
     } catch (err) {
         console.error(err.message);
         res.status(500).send("server error");
+    }
+
+});
+// @route       PUT api/profile/remove/:id
+// @desc        Removes a task from the profile
+// @access      Private
+
+router.put('/removetask/:id', auth, async (req,res) => {
+   
+    try {
+        console.log(req.params.id);
+        await Profile.findOneAndUpdate(
+            { user: req.user.id}, 
+            { $pull : { "tasks": {task: testId} }
+        });
+
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
     }
 });
 
