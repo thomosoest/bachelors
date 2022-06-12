@@ -1,2 +1,2 @@
 # Backup
-My programming assignment for the bachelors degree
+Backup of my bachelors programming assignment
